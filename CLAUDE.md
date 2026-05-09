@@ -142,7 +142,6 @@ Depois acessa `http://localhost:8000/admin/setup.php` pra criar TEU usuário loc
 - **WhatsApp `5519984231452`** está hardcoded em vários lugares (header, modal, footer, CTAs). Mudança = busca-e-substitui.
 - **URLs absolutas em todo o site** (`/assets/...`, `/admin/...`). Quebra se hospedar em subpath.
 - **`100vh` em iOS Safari** pode dar layout shift pela barra do navegador. Considerar `100dvh` se virar problema.
-- **Bug pendente**: tanto no buscador (`encontre.html`, função `rR()`) quanto possivelmente em outros, plural de "profissional" sai como "profissionalis" em vez de "profissionais". Já corrigido no admin, no buscador ainda não.
 - **CRLF warnings** ao commitar — `core.autocrlf=true` do Git for Windows convertendo line endings. Normal, não é erro.
 
 ---
