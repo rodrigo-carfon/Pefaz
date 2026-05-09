@@ -46,7 +46,9 @@ Pefaz/
 │       └── credenciados.json      ← profissionais (editado via admin)
 └── admin/                         ← painel PHP (auth + CRUD + multi-user)
     ├── _auth.php                  ← helpers + CSRF + sessão (include)
-    ├── admin.css                  ← visual do painel
+    ├── _header.php                ← header visual compartilhado (include)
+    ├── admin.css                  ← visual do painel (segue identidade do site)
+    ├── credenciados-importar.php  ← upload de CSV pra criar credenciados em massa
     ├── editar.php                 ← form de credenciado
     ├── index.php                  ← lista credenciados
     ├── login.php / logout.php
@@ -68,7 +70,8 @@ Pefaz/
 - **Variáveis CSS globais** ficam em `:root` no `shared.css` (paleta `--lime`, `--dark-*`, `--gray-*`).
 - **Componentes com paleta própria** isolam sob seletor (ex: `.buscador-wrap` usa `--brand`, `--s0`–`--s9`). Padrão a seguir pra novos componentes que tragam estilo próprio.
 - **Caminhos**: absolutos a partir da raiz (`/assets/...`, `/admin/...`). Assume hospedagem na raiz do domínio. **Subpath quebraria** todo o site.
-- **Header/footer**: NÃO duplicar em páginas. Usar placeholders `<div id="site-header"></div>` e `<div id="site-footer"></div>` que o `components.js` preenche.
+- **Header/footer do site público**: NÃO duplicar em páginas. Usar placeholders `<div id="site-header"></div>` e `<div id="site-footer"></div>` que o `components.js` preenche.
+- **Header do admin**: NÃO duplicar entre páginas do `/admin/`. Usar `<?php $active_page = 'X'; include __DIR__ . '/_header.php'; ?>` no topo do `<body>` (X = `'credenciados'`, `'usuarios'` ou `'meus-dados'`). Editar `admin/_header.php` propaga a mudança em todas as páginas do admin.
 - **Item de menu ativo**: cada página chama `setActiveNav('home')` (ou `'cursos'`, `'encontre'`...) no fim do `<body>`.
 - **Commits**: PT-BR, minúsculo, atômicos (1 unidade de trabalho por commit), corpo explica o porquê não o quê.
 
@@ -132,6 +135,7 @@ Depois acessa `http://localhost:8000/admin/setup.php` pra criar TEU usuário loc
 4. **Blog vai virar estático também** (decidido, não implementado).
 5. **Email noreply do GitHub** nos commits (privacidade dos devs).
 6. **Variáveis CSS isoladas por componente** quando trazem paleta própria.
+7. **Admin segue identidade do site público** — mesma logo, mesmas fontes (Plus Jakarta Sans + Outfit), mesma paleta lime/dark, mesmo padrão de header sticky branco. Diferenciado por uma badge "Admin" verde-lima ao lado do logo.
 
 ---
 

@@ -18,20 +18,7 @@ $flash = consume_flash();
 </head>
 <body>
 
-<header class="adm-header">
-  <div class="adm-header-inner">
-    <div class="adm-brand">⚡ Allaser Admin</div>
-    <nav class="adm-nav">
-      <a href="index.php" class="adm-nav-link">Credenciados</a>
-      <span class="adm-nav-link is-disabled" title="Em breve">Professores</span>
-      <a href="usuarios.php" class="adm-nav-link">Usuários</a>
-    </nav>
-    <div class="adm-userbox">
-      <a href="meus-dados.php" class="adm-username is-active" title="Meus dados">👤 <?= h(current_user_name()) ?></a>
-      <a href="logout.php" class="adm-logout">Sair</a>
-    </div>
-  </div>
-</header>
+<?php $active_page = 'meus-dados'; include __DIR__ . '/_header.php'; ?>
 
 <main class="adm-main">
 
