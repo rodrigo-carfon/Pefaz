@@ -42,7 +42,7 @@ body {
   color: var(--dark-600);
   background: var(--gray-50);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 a { text-decoration: none; color: inherit; }
 button { border: none; background: none; cursor: pointer; font-family: inherit; }
@@ -51,6 +51,9 @@ ul { list-style: none; }
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--gray-50); }
 ::-webkit-scrollbar-thumb { background: var(--lime-dark); border-radius: 2px; }
+
+/* HEADER WRAPPER — display:contents libera o sticky do .header pra atuar no body inteiro */
+#site-header { display: contents; }
 
 /* TOP BAR */
 .topbar { background: var(--dark-900); border-bottom: 1px solid rgba(255,255,255,0.04); }

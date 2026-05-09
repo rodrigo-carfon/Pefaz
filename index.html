@@ -15,9 +15,14 @@
    HERO
 ═══════════════════════════════════════════════════════ */
 .hero {
-  position: relative; height: 100vh; min-height: 700px;
+  position: relative;
+  height: calc(100vh - 106px);
+  min-height: 600px;
   overflow: hidden; background: #ffffff;
   display: flex; align-items: center; justify-content: center;
+}
+@media (max-width: 640px) {
+  .hero { height: calc(100vh - 60px); min-height: 520px; }
 }
 #three-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero-overlay {
@@ -361,7 +366,7 @@
   </div>
   <div class="courses-grid">
     <div class="course-card" onclick="location.href='https://allaser.com.br/cursos/cursos-laserterapia-profissionais-saude/'">
-      <img class="course-thumb" src="https://allaser.com.br/wp-content/uploads/elementor/thumbs/Start-Laser-Banner-1-rkyb4vmq6szabfjcy9umf92i2ay6lahx9p06bsoxxs.png" alt="Start Laser" onerror="this.style.display='none'">
+      <img class="course-thumb" src="/assets/images/curso-start-laser.png" alt="Start Laser" onerror="this.style.display='none'">
       <span class="course-tag">Online</span>
       <div class="course-name">Start Laser — Laserterapia para Profissionais da Saúde</div>
       <div class="course-desc">Curso introdutório completo, ideal para quem está começando. Aprenda no seu ritmo com início imediato.</div>
@@ -371,7 +376,7 @@
       </div>
     </div>
     <div class="course-card" onclick="location.href='https://allaser.com.br/cursos/curso-de-fotoneuromodulacao/'">
-      <img class="course-thumb" src="https://allaser.com.br/wp-content/uploads/elementor/thumbs/Fotoneuro-Q-rasjgnu3mx4wmrl9iiebpn1fpj4fr9ks09gyviwzio.png" alt="Fotoneuromodulação" onerror="this.style.display='none'">
+      <img class="course-thumb" src="/assets/images/curso-fotoneuro.png" alt="Fotoneuromodulação" onerror="this.style.display='none'">
       <span class="course-tag hib">Híbrido</span>
       <div class="course-name">Curso de Fotoneuromodulação</div>
       <div class="course-desc">Aplicações do laser no sistema nervoso. Protocolos, indicações e evidências científicas atualizadas.</div>
@@ -381,7 +386,7 @@
       </div>
     </div>
     <div class="course-card" onclick="location.href='https://allaser.com.br/cursos/capacitacao-em-fotobiomodulacao-sanguinea-ilib-modificado-presencial/'">
-      <img class="course-thumb" src="https://allaser.com.br/wp-content/uploads/elementor/thumbs/ILIB-15-2-qmr7nu8kwac7zrtdeo6m8vqhsihidmyx8r73fjziz4.jpg" alt="ILIB" onerror="this.style.display='none'">
+      <img class="course-thumb" src="/assets/images/curso-ilib.jpg" alt="ILIB" onerror="this.style.display='none'">
       <span class="course-tag pres">Presencial</span>
       <div class="course-name">ILIB — Fotobiomodulação Sanguínea</div>
       <div class="course-desc">Irradiação laser intravascular de baixa intensidade. Próxima turma: 31/03 · 20h · Online ao vivo.</div>
@@ -391,7 +396,7 @@
       </div>
     </div>
     <div class="course-card" onclick="location.href='https://allaser.com.br/cursos/curso-de-laserpuntura/'">
-      <img class="course-thumb" src="https://allaser.com.br/wp-content/uploads/elementor/thumbs/Inserir-um-titulo-1080-x-1080-px-5-rkybb73o4pmod2cy206c6no1tjt0c1kysyvogrbo40.png" alt="Laserpuntura" onerror="this.style.display='none'">
+      <img class="course-thumb" src="/assets/images/curso-laserpuntura.png" alt="Laserpuntura" onerror="this.style.display='none'">
       <span class="course-tag">Online</span>
       <div class="course-name">Curso de Laserpuntura</div>
       <div class="course-desc">Integração do laser com pontos de acupuntura. Protocolo completo com abordagem prática e teórica.</div>
@@ -401,7 +406,7 @@
       </div>
     </div>
     <div class="course-card" onclick="location.href='https://allaser.com.br/cursos/laserterapia-para-fisioterapeutas/'">
-      <img class="course-thumb" src="https://allaser.com.br/wp-content/uploads/elementor/thumbs/Curso_fisio_allaser_q-1-qb8uk5j9hqckyz28u6qa0f3kgqg6ymx4rw2o08hx3k.png" alt="Fisioterapia" onerror="this.style.display='none'">
+      <img class="course-thumb" src="/assets/images/curso-fisioterapia.png" alt="Fisioterapia" onerror="this.style.display='none'">
       <span class="course-tag hib">Híbrido</span>
       <div class="course-name">Laserterapia para Fisioterapeutas</div>
       <div class="course-desc">Protocolos para fisioterapia: dor, inflamação, reabilitação musculoesquelética e mais.</div>
@@ -411,7 +416,7 @@
       </div>
     </div>
     <div class="course-card" onclick="location.href='https://allaser.com.br/cursos/laserterapia-no-tratamento-de-feridas/'">
-      <img class="course-thumb" src="https://allaser.com.br/wp-content/uploads/elementor/thumbs/Curso_feridas_allaser_q-qb8p8egjafusiplcjau5ct2duzkkphoeet0rk4t6fk.png" alt="Feridas" onerror="this.style.display='none'">
+      <img class="course-thumb" src="/assets/images/curso-feridas.png" alt="Feridas" onerror="this.style.display='none'">
       <span class="course-tag">Online</span>
       <div class="course-name">Laserterapia no Tratamento de Feridas</div>
       <div class="course-desc">Cicatrização de feridas crónicas, úlceras e pós-operatório com protocolos baseados em evidências.</div>
@@ -472,7 +477,7 @@
 <section class="prof-section" id="professores">
   <div class="prof-inner">
     <div class="prof-image-wrap">
-      <img src="https://allaser.com.br/wp-content/uploads/2025/08/b-819x1024.jpg" alt="Profa. Dra. Daiane T. Meneguzzo" onerror="this.src='https://allaser.com.br/wp-content/uploads/2023/05/3gsy4fjgaqm.jpg'">
+      <img src="/assets/images/prof-daiane.jpg" alt="Profa. Dra. Daiane T. Meneguzzo" onerror="this.src='/assets/images/prof-daiane-fallback.jpg'">
       <div class="prof-badge">
         <h4>Profa. Dra. Daiane T. Meneguzzo</h4>
         <p>Fundadora · Doutora pela USP</p>
@@ -553,7 +558,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <div class="fm-logo">
-      <img src="https://allaser.com.br/wp-content/uploads/2022/06/logo-allaser.png-1024x305.webp" alt="Allaser">
+      <img src="/assets/images/logo-allaser.webp" alt="Allaser">
     </div>
     <div class="fm-progress"><div class="fm-progress-bar" id="fmProgress"></div></div>
     <div class="fm-step-label" id="fmStepLabel">Etapa 1 de 4</div>
