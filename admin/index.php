@@ -37,7 +37,10 @@ $flash = $_GET['ok'] ?? '';
       <h1>Credenciados</h1>
       <p class="muted"><?= $total ?> <?= $total === 1 ? 'profissional cadastrado' : 'profissionais cadastrados' ?></p>
     </div>
-    <a href="editar.php" class="adm-btn adm-btn--primary">+ Novo credenciado</a>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="credenciados-importar.php" class="adm-btn adm-btn--ghost">⤴ Importar CSV</a>
+      <a href="editar.php" class="adm-btn adm-btn--primary">+ Novo credenciado</a>
+    </div>
   </div>
 
   <?php if ($flash === 'add'): ?>
