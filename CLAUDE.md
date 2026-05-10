@@ -35,13 +35,15 @@ Ambos com push access direto na `main`. Não usamos PRs (apenas 2 pessoas). Para
 Pefaz/
 ├── CLAUDE.md                      ← este arquivo (contexto do projeto)
 ├── index.html                     ← home (única página de conteúdo pronta)
+├── cursos.html                    ← hub de cursos (hub hierárquico por categoria)
 ├── encontre.html                  ← busca de credenciados
 ├── _template.html                 ← esqueleto pra novas páginas
 ├── assets/
 │   ├── shared.css                 ← reset + tokens + header/footer + responsivo
 │   ├── components.js              ← injeta header+footer compartilhados
 │   ├── shared.js                  ← scroll header, menu mobile, FAQ accordion
-│   ├── images/                    ← assets locais (logo, fotos, thumbs)
+│   ├── cursos-data.js             ← catálogo centralizado de cursos (window.CURSOS_DATA)
+│   ├── images/                    ← assets locais (logo, fotos, thumbs, banners)
 │   └── data/
 │       └── credenciados.json      ← profissionais (editado via admin)
 └── admin/                         ← painel PHP (auth + CRUD + multi-user)
@@ -83,7 +85,7 @@ Pefaz/
 |---|---|---|---|
 | ✅ | Home | `index.html` | Hero 3D (three.js), cursos, depoimentos, prof, FAQ, modal de captura |
 | ✅ | Encontre profissional | `encontre.html` | Mapa SVG do Brasil (IBGE), filtros, JSON com 35 credenciados |
-| 🔲 | Cursos | `cursos.html` | Linkado no menu — dá 404 |
+| ✅ | Cursos | `cursos.html` | Hub hierárquico com 50+ produtos do Odoo, categorias colapsáveis, banner Start Laser |
 | 🔲 | Sobre / Quem Somos | `sobre.html` | |
 | 🔲 | Professores | `professores.html` | |
 | 🔲 | FAQ completo | `faq.html` | |
@@ -136,6 +138,9 @@ Depois acessa `http://localhost:8000/admin/setup.php` pra criar TEU usuário loc
 5. **Email noreply do GitHub** nos commits (privacidade dos devs).
 6. **Variáveis CSS isoladas por componente** quando trazem paleta própria.
 7. **Admin segue identidade do site público** — mesma logo, mesmas fontes (Plus Jakarta Sans + Outfit), mesma paleta lime/dark, mesmo padrão de header sticky branco. Diferenciado por uma badge "Admin" verde-lima ao lado do logo.
+8. **Catálogo de cursos centralizado em `assets/cursos-data.js`** (`window.CURSOS_DATA`) — único ponto de verdade para nome, descrição, thumb, URL e categoria de cada produto. `cursos.html` consome esse arquivo via JS e renderiza dinamicamente. Para adicionar ou editar um curso, edite apenas `cursos-data.js`.
+9. **Checkout dos cursos via Odoo** (`allazercursos.odoo.com.br`) — todos os links de inscrição apontam para o Odoo. O site estático é vitrine; a transação ocorre fora.
+10. **Página de cursos usa tema claro** (mesma paleta da home: branco/cinza + lime-dark) — não segue o estilo dark das seções de destaque internas. Decisão visual para manter coerência com o restante do site.
 
 ---
 
@@ -147,6 +152,9 @@ Depois acessa `http://localhost:8000/admin/setup.php` pra criar TEU usuário loc
 - **URLs absolutas em todo o site** (`/assets/...`, `/admin/...`). Quebra se hospedar em subpath.
 - **`100vh` em iOS Safari** pode dar layout shift pela barra do navegador. Considerar `100dvh` se virar problema.
 - **CRLF warnings** ao commitar — `core.autocrlf=true` do Git for Windows convertendo line endings. Normal, não é erro.
+- **Banner do Start Laser** salvo em `/assets/images/banner-start-laser.jpg` (1920×1080). Exibido com `width:100%; height:auto; max-width:1060px; max-height:600px; object-fit:contain` — não cortar com `cover`.
+- **`cursos-data.js` tem 50+ entradas**; cursos sem imagem local usam `thumb: null` e exibem placeholder visual. Adicionar a imagem em `/assets/images/` e apontar o campo `thumb` no objeto correspondente para ativá-la.
+- **`body { overflow-x: clip }`** (não `hidden`) em `shared.css` — necessário para que `position: sticky` funcione dentro de containers com overflow. Não reverter para `hidden`.
 
 ---
 
