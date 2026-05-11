@@ -294,7 +294,7 @@
 
 .course-thumb-wrap {
   position: relative;
-  aspect-ratio: 16/10;
+  aspect-ratio: 1/1;
   overflow: hidden;
   background: var(--gray-50);
   flex-shrink: 0;
@@ -978,7 +978,13 @@
   function thumbHtml(c) {
     var badge = MOD_CLS[c.modalidade]
       ? '<span class="course-mod-badge ' + MOD_CLS[c.modalidade] + '">' + esc(c.modalidade) + '</span>' : '';
-    if (c.thumb) return '<div class="course-thumb-wrap">' + badge + '<img src="' + esc(c.thumb) + '" alt="' + esc(c.nome) + '" loading="lazy"></div>';
+    var placeholder = '<div class="course-thumb-placeholder" style="display:none">'
+      + '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>'
+      + '<span>' + esc(c.categoria) + '</span></div>';
+    if (c.thumb) return '<div class="course-thumb-wrap">' + badge
+      + '<img src="' + esc(c.thumb) + '" alt="' + esc(c.nome) + '" loading="lazy"'
+      + ' onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
+      + placeholder + '</div>';
     return '<div class="course-thumb-wrap">' + badge
       + '<div class="course-thumb-placeholder">'
       + '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>'
