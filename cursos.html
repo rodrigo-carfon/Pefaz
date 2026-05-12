@@ -109,154 +109,124 @@
   box-shadow: 0 8px 40px rgba(0,0,0,0.12);
 }
 
-/* ── Cat Nav ───────────────────────────────────────── */
-.cat-nav {
+/* ── Cursos Explorer ───────────────────────────────── */
+.cursos-explorer {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── Filter sidebar ─────────────────────────────── */
+.cursos-filter {
   position: sticky;
-  top: var(--header-h);
-  z-index: 90;
+  top: calc(var(--header-h) + 20px);
   background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.cursos-filter__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-300);
+  padding: 14px 16px 12px;
   border-bottom: 1px solid var(--gray-100);
-  padding: 0 24px;
-  height: var(--catnav-h);
+}
+.filter-item {
   display: flex;
   align-items: center;
-  box-shadow: 0 1px 0 var(--gray-100);
+  gap: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--gray-50);
+  transition: background 0.12s;
+  user-select: none;
 }
-.cat-nav__inner {
-  display: flex;
-  gap: 4px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  white-space: nowrap;
-  max-width: 1260px;
-  margin: 0 auto;
-  width: 100%;
+.filter-item:hover { background: var(--gray-50); }
+.filter-item.active { background: var(--lime-subtle); }
+.filter-item__check {
+  width: 14px; height: 14px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--white);
+  transition: background 0.12s, border-color 0.12s;
+  position: relative;
 }
-.cat-nav__inner::-webkit-scrollbar { display: none; }
-.cat-nav__link {
+.filter-item.active .filter-item__check {
+  border-color: var(--lime-dark);
+  background: var(--lime-dark);
+  box-shadow: inset 0 0 0 3px var(--white);
+}
+.filter-item__label {
   font-family: 'Outfit', sans-serif;
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--gray-400);
-  text-decoration: none;
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  transition: background 0.15s, color 0.15s;
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  color: var(--gray-500);
+  flex: 1;
+  line-height: 1.3;
 }
-.cat-nav__link:hover {
-  color: var(--dark-700);
-  background: var(--gray-50);
-}
-.cat-nav__link.active {
-  background: var(--lime-subtle);
-  color: var(--lime-dark);
-}
-.cat-nav__count {
-  font-size: 0.65rem;
+.filter-item.active .filter-item__label { color: var(--lime-dark); }
+.filter-item__count {
+  font-size: 0.62rem;
   font-weight: 700;
-  opacity: 0.7;
+  color: var(--gray-300);
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+  padding: 1px 7px;
+  border-radius: 99px;
+  flex-shrink: 0;
 }
-
-/* ── Seções colapsáveis ────────────────────────────── */
-.cat-section {
-  border-bottom: 1px solid var(--gray-100);
+.filter-item.active .filter-item__count {
+  color: var(--lime-dark);
+  background: rgba(201,220,68,0.15);
+  border-color: rgba(201,220,68,0.25);
 }
-.cat-section:nth-child(odd)  { background: var(--white); }
-.cat-section:nth-child(even) { background: var(--gray-50); }
-
-.cat-section__toggle {
+.cursos-filter__clear {
   width: 100%;
   background: none;
   border: none;
+  border-top: 1px solid var(--gray-100);
+  padding: 10px 16px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gray-300);
   cursor: pointer;
-  padding: 28px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
   text-align: left;
-  transition: background 0.15s;
+  transition: color 0.12s, background 0.12s;
 }
-.cat-section__toggle:hover { background: rgba(201,220,68,0.04); }
-.cat-section__toggle-inner {
-  max-width: 1260px;
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-.cat-section__toggle-left { display: flex; flex-direction: column; gap: 2px; }
-.cat-section__label {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--lime-dark);
-}
-.cat-section__title {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(16px, 2vw, 22px);
-  font-weight: 800;
-  color: var(--dark-800);
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-.cat-section__toggle-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-shrink: 0;
-}
-.cat-section__count-badge {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--lime-dark);
-  background: var(--lime-subtle);
-  border: 1px solid rgba(201,220,68,0.25);
-  padding: 3px 10px;
-  border-radius: var(--radius-full);
-}
-.cat-section__chevron {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--gray-50);
-  border: 1px solid var(--gray-100);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gray-400);
-  transition: transform 0.25s var(--ease), background 0.15s;
-  flex-shrink: 0;
-}
-.cat-section.open .cat-section__chevron {
-  transform: rotate(180deg);
-  background: var(--lime-subtle);
-  color: var(--lime-dark);
-  border-color: rgba(201,220,68,0.3);
-}
+.cursos-filter__clear:hover { color: var(--lime-dark); background: var(--lime-subtle); }
 
-.cat-section__body {
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.38s var(--ease-out), padding 0.25s;
-  padding: 0 24px;
+/* ── Results ────────────────────────────────────── */
+.cursos-results__header { margin-bottom: 18px; }
+.cursos-results__count {
+  font-size: 0.72rem;
+  color: var(--gray-300);
+  font-weight: 500;
 }
-.cat-section.open .cat-section__body {
-  max-height: 9999px;
-  padding: 0 24px 40px;
+.cursos-results__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: start;
 }
-.cat-section__body-inner {
-  max-width: 1260px;
-  margin: 0 auto;
+.cursos-results__empty {
+  padding: 60px 24px;
+  text-align: center;
+  color: var(--gray-300);
+  font-size: 0.88rem;
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--gray-100);
 }
 
 /* ── Grids ─────────────────────────────────────────── */
@@ -294,22 +264,30 @@
 
 .course-thumb-wrap {
   position: relative;
-  aspect-ratio: 1/1;
+  width: 100%;
   overflow: hidden;
   background: var(--gray-50);
   flex-shrink: 0;
 }
-.course-thumb-wrap img {
+.course-thumb-wrap::before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+.course-thumb-wrap img,
+.course-thumb-placeholder {
+  position: absolute;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
+}
+.course-thumb-wrap img {
   object-fit: cover;
   display: block;
   transition: transform 0.4s var(--ease);
 }
 .course-card:hover .course-thumb-wrap img { transform: scale(1.04); }
 .course-thumb-placeholder {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -344,7 +322,6 @@
   padding: 18px 18px 14px;
   display: flex;
   flex-direction: column;
-  flex: 1;
 }
 .course-name {
   font-family: 'Outfit', sans-serif;
@@ -718,12 +695,12 @@
 }
 .detail-close:hover { background: var(--gray-100); color: var(--dark-700); }
 .detail-img {
-  width: 100%; aspect-ratio: 16/7;
+  width: 100%; aspect-ratio: 1/1;
   object-fit: cover; display: block;
   background: var(--gray-50);
 }
 .detail-img-placeholder {
-  width: 100%; aspect-ratio: 16/7;
+  width: 100%; aspect-ratio: 1/1;
   background: var(--gray-50);
   display: flex; align-items: center; justify-content: center;
 }
@@ -819,19 +796,22 @@
 
 /* ── Responsivo ────────────────────────────────────── */
 @media (max-width: 1080px) {
-  .courses-grid    { grid-template-columns: repeat(2, 1fr); }
-  .courses-grid--4 { grid-template-columns: repeat(2, 1fr); }
-  .academy-card    { grid-template-columns: 1fr; }
-  .cta-inner       { grid-template-columns: 1fr; text-align: center; }
-  .cta-actions     { flex-direction: row; }
-  .proof-strip__inner { grid-template-columns: repeat(2, 1fr); }
+  .cursos-results__grid         { grid-template-columns: repeat(2, 1fr); }
+  .academy-card                 { grid-template-columns: 1fr; }
+  .cta-inner                    { grid-template-columns: 1fr; text-align: center; }
+  .cta-actions                  { flex-direction: row; }
+  .proof-strip__inner           { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .cursos-explorer              { grid-template-columns: 1fr; gap: 20px; }
+  .cursos-filter                { position: static; }
+  .cursos-filter__list          { display: flex; flex-wrap: wrap; }
+  .filter-item                  { flex: 0 0 auto; border: 1px solid var(--gray-100); border-radius: var(--radius-md); border-bottom: 1px solid var(--gray-100); }
 }
 @media (max-width: 640px) {
   .page-hero                    { padding: 48px 16px 36px; }
-  .cat-section__toggle          { padding: 20px 16px; }
-  .cat-section.open .cat-section__body { padding: 0 16px 28px; }
-  .courses-grid, .courses-grid--2 { grid-template-columns: 1fr; }
-  .courses-grid--4              { grid-template-columns: repeat(2, 1fr); }
+  .cursos-explorer              { padding: 20px 16px; }
+  .cursos-results__grid         { grid-template-columns: 1fr; }
   .forum-card                   { flex-direction: column; align-items: flex-start; }
   .academy-card                 { padding: 24px 18px; }
   .detail-body                  { padding: 20px 18px 24px; }
@@ -878,20 +858,22 @@
     Salve o banner como: /assets/images/banner-start-laser.jpg
   ──────────────────────────────────────────────────── -->
   <div class="banner-destaque">
-    <img src="/assets/images/banner-start-laser.jpg"
-         alt="START LASER — Laserterapia para Profissionais da Saúde"
-         class="banner-destaque__img">
+    <a href="#" onclick="openDetail('start-laser');return false;" aria-label="Ver detalhes do START LASER">
+      <img src="/assets/images/banner-start-laser.jpg"
+           alt="START LASER — Laserterapia para Profissionais da Saúde"
+           class="banner-destaque__img">
+    </a>
   </div>
 
-  <!-- ── Cat nav ───────────────────────────────────── -->
-  <nav class="cat-nav" aria-label="Categorias de cursos">
-    <div class="cat-nav__inner" id="catNavInner">
-      <!-- preenchido por JS -->
-    </div>
-  </nav>
-
-  <!-- ── Seções colapsáveis ─────────────────────────── -->
-  <div id="cursos-sections"></div>
+  <!-- ── Explorer (filtro lateral + grid) ─────────── -->
+  <div class="cursos-explorer">
+    <aside class="cursos-filter" aria-label="Filtrar por categoria">
+      <div class="cursos-filter__title">Categorias</div>
+      <div class="cursos-filter__list" id="cursosFilterList"></div>
+      <button class="cursos-filter__clear" id="cursosClearFilter">Ver todos os cursos</button>
+    </aside>
+    <div class="cursos-results" id="cursosResults"></div>
+  </div>
 
   <!-- ── Proof strip ───────────────────────────────── -->
   <section class="proof-strip">
@@ -958,16 +940,19 @@
 
   /* ── Categorias ──────────────────────────────────── */
   var CATEGORIAS = [
-    { id: 'base',         label: 'Formação Base',           desc: 'Os cursos fundacionais da Allaser',              tipo: 'grid',    cols: 3, open: true  },
-    { id: 'complementar', label: 'Especializações & Combos', desc: 'Aprofundamentos e pacotes temáticos',            tipo: 'grid',    cols: 3, open: false },
-    { id: 'masterclass',  label: 'Master Classes',           desc: 'Treinamentos especializados em temas avançados', tipo: 'grid',    cols: 3, open: false },
-    { id: 'presencial',   label: 'Cursos Presenciais',       desc: 'Turmas presenciais em Campinas, SP',             tipo: 'grid',    cols: 3, open: false },
-    { id: 'forum',        label: 'Fóruns Clínicos',          desc: 'Gravações dos eventos anuais da Allaser',        tipo: 'forum',   cols: 1, open: false },
-    { id: 'plantao',      label: 'Plantões de Dúvidas',      desc: 'Sessões ao vivo para tirar dúvidas',             tipo: 'plantao', cols: 2, open: false },
-    { id: 'protocolo',    label: 'Protocolos',               desc: 'Materiais práticos de referência clínica',       tipo: 'prot',    cols: 4, open: false },
-    { id: 'assinatura',   label: 'Allaser Academy',          desc: 'Assinatura com acesso amplo ao ecossistema',     tipo: 'academy', cols: 1, open: false },
-    { id: 'outro',        label: 'Mini Cursos & Materiais',  desc: 'Conteúdos avulsos e materiais de apoio',         tipo: 'grid',    cols: 3, open: false },
+    { id: 'base',         label: 'Formação Base'           },
+    { id: 'complementar', label: 'Especializações & Combos' },
+    { id: 'masterclass',  label: 'Master Classes'           },
+    { id: 'presencial',   label: 'Cursos Presenciais'       },
+    { id: 'forum',        label: 'Fóruns Clínicos'          },
+    { id: 'plantao',      label: 'Plantões de Dúvidas'      },
+    { id: 'protocolo',    label: 'Protocolos'               },
+    { id: 'assinatura',   label: 'Allaser Academy'          },
+    { id: 'outro',        label: 'Mini Cursos & Materiais'  },
   ];
+
+  /* ── Estado do filtro ────────────────────────────── */
+  var activeCat = 'all'; // 'all' ou um id de categoria
 
   /* ── Helpers ─────────────────────────────────────── */
   function esc(s) {
@@ -1045,89 +1030,64 @@
       + '<a href="' + esc(c.url) + '" target="_blank" rel="noopener" class="btn-academy">Assinar Academy →</a></div>';
   }
 
-  /* ── Chevron SVG ─────────────────────────────────── */
-  var CHEVRON = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5l5 5 5-5"/></svg>';
-
-  /* ── Toggle de seção ─────────────────────────────── */
-  function toggleSection(btn) {
-    var section = btn.closest('.cat-section');
-    if (!section) return;
-    section.classList.toggle('open');
+  /* ── Card dispatcher ────────────────────────────── */
+  function cardHtml(c) {
+    return courseCardHtml(c);
   }
 
-  /* ── Render ──────────────────────────────────────── */
-  function renderSections() {
-    var sectionsEl = document.getElementById('cursos-sections');
-    var navEl      = document.getElementById('catNavInner');
-    if (!sectionsEl || !navEl || !window.CURSOS_DATA) return;
-
-    var html = '', navHtml = '';
-
+  /* ── Render filter ───────────────────────────────── */
+  function renderFilter() {
+    var listEl = document.getElementById('cursosFilterList');
+    if (!listEl || !window.CURSOS_DATA) return;
+    var total = CURSOS_DATA.length;
+    var html = '<div class="filter-item' + (activeCat === 'all' ? ' active' : '') + '" onclick="toggleFilter(\'all\')" role="radio" aria-checked="' + (activeCat === 'all') + '">'
+      + '<span class="filter-item__check"></span>'
+      + '<span class="filter-item__label">Todas</span>'
+      + '<span class="filter-item__count">' + total + '</span>'
+      + '</div>';
     CATEGORIAS.forEach(function (cat) {
-      var itens = CURSOS_DATA.filter(function (c) { return c.categoria === cat.id && !c.destaque; });
-      if (!itens.length) return;
-
-      navHtml += '<a href="#cat-' + cat.id + '" class="cat-nav__link" data-cat="' + cat.id + '">'
-        + esc(cat.label) + '<span class="cat-nav__count">(' + itens.length + ')</span></a>';
-
-      var gridClass = 'courses-grid';
-      if (cat.cols === 2) gridClass += ' courses-grid--2';
-      if (cat.cols === 4) gridClass += ' courses-grid--4';
-
-      var cardsHtml = '';
-      itens.forEach(function (c) {
-        if      (cat.tipo === 'prot')    cardsHtml += protCardHtml(c);
-        else if (cat.tipo === 'forum')   cardsHtml += forumCardHtml(c);
-        else if (cat.tipo === 'plantao') cardsHtml += plantaoCardHtml(c);
-        else if (cat.tipo === 'academy') cardsHtml += academyCardHtml(c);
-        else                             cardsHtml += courseCardHtml(c);
-      });
-
-      var inner = (cat.tipo === 'academy')
-        ? cardsHtml
-        : '<div class="' + gridClass + '">' + cardsHtml + '</div>';
-
-      html += '<section class="cat-section' + (cat.open ? ' open' : '') + '" id="cat-' + cat.id + '">'
-        + '<button class="cat-section__toggle" onclick="toggleCat(this)" aria-expanded="' + (cat.open ? 'true' : 'false') + '">'
-        + '<div class="cat-section__toggle-inner">'
-        + '<div class="cat-section__toggle-left">'
-        + '<div class="cat-section__label">' + esc(cat.label) + '</div>'
-        + '<h2 class="cat-section__title">' + esc(cat.label) + '</h2>'
-        + '</div>'
-        + '<div class="cat-section__toggle-right">'
-        + '<span class="cat-section__count-badge">' + itens.length + ' cursos</span>'
-        + '<span class="cat-section__chevron">' + CHEVRON + '</span>'
-        + '</div></div></button>'
-        + '<div class="cat-section__body"><div class="cat-section__body-inner">' + inner + '</div></div>'
-        + '</section>';
+      var count = CURSOS_DATA.filter(function (c) { return c.categoria === cat.id; }).length;
+      if (!count) return;
+      var active = activeCat === cat.id;
+      html += '<div class="filter-item' + (active ? ' active' : '') + '" onclick="toggleFilter(\'' + cat.id + '\')" role="radio" aria-checked="' + active + '">'
+        + '<span class="filter-item__check"></span>'
+        + '<span class="filter-item__label">' + esc(cat.label) + '</span>'
+        + '<span class="filter-item__count">' + count + '</span>'
+        + '</div>';
     });
-
-    sectionsEl.innerHTML = html;
-    navEl.innerHTML      = navHtml;
-
-    var firstLink = navEl.querySelector('.cat-nav__link');
-    if (firstLink) firstLink.classList.add('active');
-
-    /* IntersectionObserver para nav ativa */
-    var sections = sectionsEl.querySelectorAll('.cat-section');
-    var navLinks = navEl.querySelectorAll('.cat-nav__link');
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        var id = e.target.id.replace('cat-', '');
-        navLinks.forEach(function (l) { l.classList.toggle('active', l.dataset.cat === id); });
-      });
-    }, { rootMargin: '-30% 0px -60% 0px' });
-    sections.forEach(function (s) { io.observe(s); });
+    listEl.innerHTML = html;
   }
 
-  /* ── Toggle exposto globalmente ──────────────────── */
-  window.toggleCat = function (btn) {
-    var section = btn.closest('.cat-section');
-    if (!section) return;
-    var isOpen = section.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  /* ── Render results ──────────────────────────────── */
+  function renderResults() {
+    var el = document.getElementById('cursosResults');
+    if (!el || !window.CURSOS_DATA) return;
+    var filtered = activeCat === 'all'
+      ? CURSOS_DATA
+      : CURSOS_DATA.filter(function (c) { return c.categoria === activeCat; });
+    var n = filtered.length;
+    el.innerHTML = '<div class="cursos-results__header"><span class="cursos-results__count">' + n + ' curso' + (n !== 1 ? 's' : '') + '</span></div>'
+      + '<div class="cursos-results__grid">' + filtered.map(cardHtml).join('') + '</div>';
+  }
+
+  /* ── Selecionar categoria (exposto globalmente) ──── */
+  window.toggleFilter = function (catId) {
+    activeCat = catId;
+    renderFilter();
+    renderResults();
   };
+
+  /* ── Init ────────────────────────────────────────── */
+  function initExplorer() {
+    if (!window.CURSOS_DATA) return;
+    renderFilter();
+    renderResults();
+    document.getElementById('cursosClearFilter').addEventListener('click', function () {
+      activeCat = 'all';
+      renderFilter();
+      renderResults();
+    });
+  }
 
   /* ── Modal ───────────────────────────────────────── */
   window.openDetail = function (id) {
@@ -1136,8 +1096,11 @@
     if (!c.detalhes) { window.open(c.url, '_blank', 'noopener'); return; }
     var d = c.detalhes;
     var topicosHtml = (d.topicos || []).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('');
+    var placeholder = '<div class="detail-img-placeholder" id="detailImgPlaceholder" style="display:none"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gray-200)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg></div>';
     var imgHtml = c.thumb
-      ? '<img class="detail-img" src="' + esc(c.thumb) + '" alt="' + esc(c.nome) + '">'
+      ? '<img class="detail-img" src="' + esc(c.thumb) + '" alt="' + esc(c.nome) + '"'
+        + ' onerror="this.style.display=\'none\';document.getElementById(\'detailImgPlaceholder\').style.display=\'flex\'">'
+        + placeholder
       : '<div class="detail-img-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gray-200)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg></div>';
     document.getElementById('detailContent').innerHTML =
       imgHtml + '<div class="detail-body">'
@@ -1174,7 +1137,7 @@
   document.getElementById('detailModal').addEventListener('click', function (e) { if (e.target === this) closeDetail(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDetail(); });
 
-  renderSections();
+  initExplorer();
 })();
 </script>
 
