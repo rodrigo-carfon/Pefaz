@@ -75,6 +75,7 @@ Pefaz/
 - **Header/footer do site público**: NÃO duplicar em páginas. Usar placeholders `<div id="site-header"></div>` e `<div id="site-footer"></div>` que o `components.js` preenche.
 - **Header do admin**: NÃO duplicar entre páginas do `/admin/`. Usar `<?php $active_page = 'X'; include __DIR__ . '/_header.php'; ?>` no topo do `<body>` (X = `'credenciados'`, `'usuarios'` ou `'meus-dados'`). Editar `admin/_header.php` propaga a mudança em todas as páginas do admin.
 - **Item de menu ativo**: cada página chama `setActiveNav('home')` (ou `'cursos'`, `'encontre'`...) no fim do `<body>`.
+- **Carrossel de destaques da home**: banners ficam numa lista `const DESTAQUES_BANNERS` no `<script>` inline do `index.html`. Pra adicionar/remover banner, edita só essa lista — não mexe no HTML/CSS. Cada item: `{ src, alt, href }`. Imagem recomendada 1920×1080.
 - **Commits**: PT-BR, minúsculo, atômicos (1 unidade de trabalho por commit), corpo explica o porquê não o quê.
 
 ---
@@ -83,7 +84,7 @@ Pefaz/
 
 | Estado | Página | Arquivo | Notas |
 |---|---|---|---|
-| ✅ | Home | `index.html` | Hero 3D (three.js), cursos, depoimentos, prof, FAQ, modal de captura |
+| ✅ | Home | `index.html` | Hero 3D (three.js), carrossel de destaques, depoimentos em vídeo do YouTube, prof, FAQ, modal de captura |
 | ✅ | Encontre profissional | `encontre.html` | Mapa SVG do Brasil (IBGE), filtros, JSON com 35 credenciados |
 | ✅ | Cursos | `cursos.html` | Hub hierárquico com 50+ produtos do Odoo, categorias colapsáveis, banner Start Laser |
 | 🔲 | Sobre / Quem Somos | `sobre.html` | |
@@ -152,6 +153,7 @@ Depois acessa `http://localhost:8000/admin/setup.php` pra criar TEU usuário loc
 - **URLs absolutas em todo o site** (`/assets/...`, `/admin/...`). Quebra se hospedar em subpath.
 - **`100vh` em iOS Safari** pode dar layout shift pela barra do navegador. Considerar `100dvh` se virar problema.
 - **CRLF warnings** ao commitar — `core.autocrlf=true` do Git for Windows convertendo line endings. Normal, não é erro.
+- **YouTube embed em vídeo "Não listado"**: a flag **"Permitir incorporação"** é uma configuração SEPARADA da visibilidade — está em Detalhes → Mostrar mais. Sem ela ligada, o embed mostra "Vídeo indisponível" mesmo o vídeo estando no ar. Verificar por vídeo no YouTube Studio quando algum embed falhar.
 - **Banner do Start Laser** salvo em `/assets/images/banner-start-laser.jpg` (1920×1080). Exibido com `width:100%; height:auto; max-width:1060px; max-height:600px; object-fit:contain` — não cortar com `cover`.
 - **`cursos-data.js` tem 50+ entradas**; cursos sem imagem local usam `thumb: null` e exibem placeholder visual. Adicionar a imagem em `/assets/images/` e apontar o campo `thumb` no objeto correspondente para ativá-la.
 - **`body { overflow-x: clip }`** (não `hidden`) em `shared.css` — necessário para que `position: sticky` funcione dentro de containers com overflow. Não reverter para `hidden`.

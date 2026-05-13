@@ -107,12 +107,13 @@
 }
 .stat-label { font-size: 12.5px; color: var(--gray-400); margin-top: 6px; font-weight: 400; }
 
-/* COURSES */
-.courses-section { background: var(--gray-50); }
-.courses-header {
-  display: flex; align-items: flex-end; justify-content: space-between;
-  margin-bottom: 48px; max-width: 1260px; margin-left: auto; margin-right: auto;
+/* DESTAQUES — carrossel de banners */
+.destaques-section { background: var(--gray-50); padding: 72px 24px 64px; }
+.destaques-header {
+  max-width: 1260px; margin: 0 auto 32px;
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap;
 }
+.destaques-header .section-eyebrow { margin-bottom: 0; }
 .link-all {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 0.82rem; font-weight: 600; color: var(--dark-700);
@@ -120,35 +121,82 @@
   padding: 9px 20px; transition: all 0.2s; white-space: nowrap;
 }
 .link-all:hover { border-color: var(--lime-dark); color: var(--lime-dark); background: var(--lime-subtle); }
-.courses-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 16px; max-width: 1260px; margin: 0 auto;
+
+.carousel {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
 }
-.course-card {
-  background: var(--white); border: 1px solid var(--gray-100);
-  border-radius: var(--radius-lg); padding: 24px;
-  position: relative; transition: all 0.3s var(--ease-out); cursor: pointer; overflow: hidden;
+.carousel__viewport {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+  background: var(--gray-100);
 }
-.course-card::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 3px; background: var(--lime); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+.carousel__track {
+  display: flex;
+  transition: transform 0.55s var(--ease-out);
+  will-change: transform;
 }
-.course-card:hover { border-color: rgba(201,220,68,0.45); box-shadow: 0 12px 40px rgba(0,0,0,0.07); transform: translateY(-3px); }
-.course-card:hover::after { transform: scaleX(1); }
-.course-thumb { width: 100%; height: 152px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 18px; background: var(--gray-50); display: block; }
-.course-tag {
-  display: inline-block; font-size: 0.67rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 3px 10px; border-radius: var(--radius-full); margin-bottom: 10px;
-  background: var(--lime-subtle); color: var(--lime-dark);
+.carousel__slide {
+  flex: 0 0 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  background: var(--gray-100);
 }
-.course-tag.pres { background: #fff3e0; color: #c47700; }
-.course-tag.hib  { background: #e8f5e9; color: #2e7d32; }
-.course-name { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; color: var(--dark-800); line-height: 1.25; margin-bottom: 8px; letter-spacing: -0.02em; }
-.course-desc { font-size: 0.82rem; color: var(--gray-400); line-height: 1.6; margin-bottom: 20px; }
-.course-footer { display: flex; align-items: center; justify-content: space-between; }
-.course-badge { display: flex; align-items: center; gap: 5px; font-size: 0.75rem; color: var(--gray-300); }
-.course-arrow { width: 34px; height: 34px; border-radius: var(--radius-sm); background: var(--lime-subtle); border: 1px solid rgba(201,220,68,0.3); display: grid; place-items: center; color: var(--lime-dark); transition: all 0.22s; }
-.course-card:hover .course-arrow { background: var(--lime); border-color: var(--lime); color: var(--dark-900); }
+.carousel__slide img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.carousel__slide a {
+  display: block; width: 100%; height: 100%;
+}
+
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px; height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  color: var(--dark-800);
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  display: grid; place-items: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transition: all 0.2s;
+  z-index: 2;
+}
+.carousel__btn:hover { background: var(--lime); transform: translateY(-50%) scale(1.06); }
+.carousel__btn--prev { left: 16px; }
+.carousel__btn--next { right: 16px; }
+
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+.carousel__dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: var(--gray-200);
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+}
+.carousel__dot.is-active {
+  background: var(--lime-dark);
+  width: 28px;
+  border-radius: 99px;
+}
+.carousel__dot:hover { background: var(--gray-400); }
+.carousel__dot.is-active:hover { background: var(--lime-dark); }
 
 /* WHY */
 .why-section { background: var(--white); }
@@ -172,15 +220,58 @@
 .test-header { text-align: center; margin-bottom: 52px; }
 .test-header .section-eyebrow { justify-content: center; }
 .test-header .section-sub { margin: 0 auto; }
-.test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1260px; margin: 0 auto; }
-.test-card { background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-lg); padding: 28px; display: flex; flex-direction: column; gap: 16px; transition: all 0.25s; }
-.test-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); border-color: rgba(201,220,68,0.35); }
-.stars { color: #e8a020; font-size: 13px; letter-spacing: 2px; }
-.test-text { font-size: 0.88rem; color: var(--gray-500); line-height: 1.72; font-style: italic; flex: 1; }
-.test-author { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid var(--gray-100); }
-.author-av { width: 40px; height: 40px; border-radius: 50%; background: var(--lime); color: var(--dark-900); display: grid; place-items: center; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 13px; flex-shrink: 0; }
-.author-name { font-size: 0.86rem; font-weight: 600; color: var(--dark-700); }
-.author-role { font-size: 0.72rem; color: var(--gray-300); margin-top: 2px; }
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  max-width: 960px;
+  margin: 0 auto;
+  justify-content: center;
+}
+.video-card {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--dark-900);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border: 1px solid var(--gray-100);
+  transition: all 0.25s var(--ease-out);
+}
+.video-card:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+  border-color: rgba(201,220,68,0.35);
+}
+.video-card iframe {
+  width: 100%; height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Dots — visiveis so no mobile como indicador do carrossel */
+.video-dots {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+.video-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: var(--gray-200);
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.video-dot.is-active {
+  background: var(--lime-dark);
+  width: 28px;
+  border-radius: 99px;
+}
+.video-dot:hover { background: var(--gray-400); }
+.video-dot.is-active:hover { background: var(--lime-dark); }
 
 /* PROFESSOR */
 .prof-section { background: var(--white); }
@@ -289,8 +380,8 @@
 /* RESPONSIVIDADE — conteúdo da página */
 @media (max-width: 1024px) {
   .prof-inner { grid-template-columns: 1fr; gap: 44px; }
-  .test-grid { grid-template-columns: repeat(2, 1fr); }
-  .courses-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .video-grid { grid-template-columns: repeat(2, 1fr); }
+  .destaques-header { flex-direction: column; align-items: flex-start; gap: 12px; }
   .why-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 860px) {
@@ -300,7 +391,10 @@
 @media (max-width: 768px) {
   .stat-number { font-size: 34px; letter-spacing: -1.5px; }
   .prof-image-wrap { max-width: 380px; margin: 0 auto; }
-  .courses-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+  .carousel__btn { width: 38px; height: 38px; font-size: 18px; }
+  .carousel__btn--prev { left: 10px; }
+  .carousel__btn--next { right: 10px; }
+  .destaques-section { padding: 52px 16px 48px; }
 }
 @media (max-width: 640px) {
   .stats-strip { flex-wrap: wrap; gap: 32px; padding: 32px 20px; }
@@ -309,7 +403,25 @@
   .prof-badge { right: 0; }
 }
 @media (max-width: 600px) {
-  .test-grid { grid-template-columns: 1fr; }
+  /* Mobile: carrossel horizontal com snap */
+  .video-grid {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    padding: 0 16px 8px;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+  }
+  .video-grid::-webkit-scrollbar { display: none; }
+  .video-card {
+    flex: 0 0 88%;
+    scroll-snap-align: center;
+  }
+  .video-dots { display: flex; }
 }
 @media (max-width: 560px) {
   .fm-card { padding: 28px 22px; }
@@ -354,79 +466,105 @@
   <div class="stat-item"><div class="stat-number">USP</div><div class="stat-label">Professores doutores</div></div>
 </div>
 
-<!-- CURSOS -->
-<section class="courses-section" id="cursos">
-  <div class="courses-header">
+<!-- DESTAQUES -->
+<section class="destaques-section" id="destaques">
+  <div class="destaques-header">
     <div>
-      <div class="section-eyebrow">Cursos Allaser</div>
-      <h2 class="section-title">Escolha sua<br>especialidade</h2>
-      <p class="section-sub">Online, híbrido ou presencial. Início imediato após a matrícula.</p>
+      <div class="section-eyebrow">Destaques</div>
     </div>
     <a href="/cursos.html" class="link-all">Ver todos os cursos →</a>
   </div>
-  <div class="courses-grid">
-    <div class="course-card" onclick="location.href='https://allaser.com.br/cursos/cursos-laserterapia-profissionais-saude/'">
-      <img class="course-thumb" src="/assets/images/curso-start-laser.png" alt="Start Laser" onerror="this.style.display='none'">
-      <span class="course-tag">Online</span>
-      <div class="course-name">Start Laser — Laserterapia para Profissionais da Saúde</div>
-      <div class="course-desc">Curso introdutório completo, ideal para quem está começando. Aprenda no seu ritmo com início imediato.</div>
-      <div class="course-footer">
-        <div class="course-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Início imediato</div>
-        <div class="course-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </div>
+
+  <div class="carousel" id="destaquesCarousel" aria-roledescription="carrossel" aria-label="Destaques">
+    <div class="carousel__viewport">
+      <div class="carousel__track" id="destaquesTrack"></div>
     </div>
-    <div class="course-card" onclick="location.href='https://allaser.com.br/cursos/curso-de-fotoneuromodulacao/'">
-      <img class="course-thumb" src="/assets/images/curso-fotoneuro.png" alt="Fotoneuromodulação" onerror="this.style.display='none'">
-      <span class="course-tag hib">Híbrido</span>
-      <div class="course-name">Curso de Fotoneuromodulação</div>
-      <div class="course-desc">Aplicações do laser no sistema nervoso. Protocolos, indicações e evidências científicas atualizadas.</div>
-      <div class="course-footer">
-        <div class="course-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Início imediato</div>
-        <div class="course-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </div>
-    </div>
-    <div class="course-card" onclick="location.href='https://allaser.com.br/cursos/capacitacao-em-fotobiomodulacao-sanguinea-ilib-modificado-presencial/'">
-      <img class="course-thumb" src="/assets/images/curso-ilib.jpg" alt="ILIB" onerror="this.style.display='none'">
-      <span class="course-tag pres">Presencial</span>
-      <div class="course-name">ILIB — Fotobiomodulação Sanguínea</div>
-      <div class="course-desc">Irradiação laser intravascular de baixa intensidade. Próxima turma: 31/03 · 20h · Online ao vivo.</div>
-      <div class="course-footer">
-        <div class="course-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 31/03 — Próxima turma</div>
-        <div class="course-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </div>
-    </div>
-    <div class="course-card" onclick="location.href='https://allaser.com.br/cursos/curso-de-laserpuntura/'">
-      <img class="course-thumb" src="/assets/images/curso-laserpuntura.png" alt="Laserpuntura" onerror="this.style.display='none'">
-      <span class="course-tag">Online</span>
-      <div class="course-name">Curso de Laserpuntura</div>
-      <div class="course-desc">Integração do laser com pontos de acupuntura. Protocolo completo com abordagem prática e teórica.</div>
-      <div class="course-footer">
-        <div class="course-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Início imediato</div>
-        <div class="course-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </div>
-    </div>
-    <div class="course-card" onclick="location.href='https://allaser.com.br/cursos/laserterapia-para-fisioterapeutas/'">
-      <img class="course-thumb" src="/assets/images/curso-fisioterapia.png" alt="Fisioterapia" onerror="this.style.display='none'">
-      <span class="course-tag hib">Híbrido</span>
-      <div class="course-name">Laserterapia para Fisioterapeutas</div>
-      <div class="course-desc">Protocolos para fisioterapia: dor, inflamação, reabilitação musculoesquelética e mais.</div>
-      <div class="course-footer">
-        <div class="course-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Início imediato</div>
-        <div class="course-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </div>
-    </div>
-    <div class="course-card" onclick="location.href='https://allaser.com.br/cursos/laserterapia-no-tratamento-de-feridas/'">
-      <img class="course-thumb" src="/assets/images/curso-feridas.png" alt="Feridas" onerror="this.style.display='none'">
-      <span class="course-tag">Online</span>
-      <div class="course-name">Laserterapia no Tratamento de Feridas</div>
-      <div class="course-desc">Cicatrização de feridas crónicas, úlceras e pós-operatório com protocolos baseados em evidências.</div>
-      <div class="course-footer">
-        <div class="course-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Início imediato</div>
-        <div class="course-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </div>
-    </div>
+    <button class="carousel__btn carousel__btn--prev" id="destaquesPrev" aria-label="Banner anterior">‹</button>
+    <button class="carousel__btn carousel__btn--next" id="destaquesNext" aria-label="Próximo banner">›</button>
+    <div class="carousel__dots" id="destaquesDots" role="tablist" aria-label="Selecionar banner"></div>
   </div>
 </section>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   DESTAQUES — Lista de banners do carrossel da home
+   Pra adicionar/remover banner, edite a lista abaixo.
+   Cada banner precisa de:
+   - src:  caminho da imagem (recomendado: 1920x1080)
+   - alt:  texto pra acessibilidade
+   - href: pra onde leva ao clicar (interno ou externo)
+═══════════════════════════════════════════════════════ */
+const DESTAQUES_BANNERS = [
+  {
+    src:  '/assets/images/banner-start-laser.jpg',
+    alt:  'START LASER — Laserterapia para Profissionais da Saúde',
+    href: 'https://allaser.com.br/curso-laserterapia-para-profissionais-da-saude/'
+  },
+  {
+    src:  '/assets/images/banner-estetica-facial-20-maio.jpg',
+    alt:  'Estética Facial — 20 de maio',
+    href: 'https://allaser.com.br/masterclass-fotobiomodulacao-na-estetica-facial/'
+  }
+  // Próximos banners aqui (siga o mesmo formato):
+  // { src: '/assets/images/banner-XXX.jpg', alt: 'Descrição', href: '/destino' },
+];
+
+(function() {
+  const track  = document.getElementById('destaquesTrack');
+  const dotsEl = document.getElementById('destaquesDots');
+  const prev   = document.getElementById('destaquesPrev');
+  const next   = document.getElementById('destaquesNext');
+  const root   = document.getElementById('destaquesCarousel');
+  if (!track || !DESTAQUES_BANNERS.length) return;
+
+  // Render slides
+  track.innerHTML = DESTAQUES_BANNERS.map(function(b) {
+    return '<div class="carousel__slide">' +
+             '<a href="' + b.href + '" aria-label="' + (b.alt || '') + '">' +
+               '<img src="' + b.src + '" alt="' + (b.alt || '') + '" loading="lazy">' +
+             '</a>' +
+           '</div>';
+  }).join('');
+
+  // Render dots
+  dotsEl.innerHTML = DESTAQUES_BANNERS.map(function(_, i) {
+    return '<button class="carousel__dot' + (i === 0 ? ' is-active' : '') + '" data-i="' + i + '" role="tab" aria-label="Banner ' + (i + 1) + '"></button>';
+  }).join('');
+
+  const dots = dotsEl.querySelectorAll('.carousel__dot');
+  let current = 0;
+  let timer = null;
+  const AUTO_MS = 6000;
+
+  function goto(i) {
+    current = (i + DESTAQUES_BANNERS.length) % DESTAQUES_BANNERS.length;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach(function(d, idx) { d.classList.toggle('is-active', idx === current); });
+  }
+
+  function start() { stop(); if (DESTAQUES_BANNERS.length > 1) timer = setInterval(function() { goto(current + 1); }, AUTO_MS); }
+  function stop()  { if (timer) { clearInterval(timer); timer = null; } }
+
+  prev.addEventListener('click', function() { goto(current - 1); start(); });
+  next.addEventListener('click', function() { goto(current + 1); start(); });
+  dots.forEach(function(d) {
+    d.addEventListener('click', function() { goto(parseInt(this.dataset.i, 10)); start(); });
+  });
+
+  // Pausa quando o mouse está em cima
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+
+  // Esconde setas e dots se só tem 1 banner
+  if (DESTAQUES_BANNERS.length <= 1) {
+    prev.style.display = 'none';
+    next.style.display = 'none';
+    dotsEl.style.display = 'none';
+  }
+
+  start();
+})();
+</script>
 
 <!-- POR QUE ALLASER -->
 <section class="why-section" id="por-que">
@@ -447,31 +585,89 @@
   </div>
 </section>
 
-<!-- DEPOIMENTOS -->
+<!-- DEPOIMENTOS — videos do YouTube de alunos reais -->
 <section class="testimonials-section">
   <div class="test-header">
     <div class="section-eyebrow">Depoimentos</div>
     <h2 class="section-title">O que nossos alunos dizem</h2>
     <p class="section-sub">Mais de 5.000 profissionais transformados em todo o Brasil.</p>
   </div>
-  <div class="test-grid">
-    <div class="test-card">
-      <div class="stars">★★★★★</div>
-      <p class="test-text">"Curso incrível! A didática da Profa. Daiane é excepcional. Consegui aplicar os protocolos na minha clínica logo na semana seguinte. Meus pacientes já estão sentindo a diferença."</p>
-      <div class="test-author"><div class="author-av">MC</div><div><div class="author-name">Maria Clara S.</div><div class="author-role">Cirurgiã-Dentista · São Paulo, SP</div></div></div>
+  <div class="video-grid">
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/ZXvj-kvzVj4"
+              title="Depoimento Ana Samways — Laserpuntura"
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
     </div>
-    <div class="test-card">
-      <div class="stars">★★★★★</div>
-      <p class="test-text">"Profissionalismo e conhecimento absurdo. O suporte pós-curso é diferenciado. Perguntas respondidas com embasamento científico real. Vale cada centavo investido."</p>
-      <div class="test-author"><div class="author-av">RF</div><div><div class="author-name">Rafael F.</div><div class="author-role">Fisioterapeuta · Curitiba, PR</div></div></div>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/iF5zJI0UTt8"
+              title="Depoimento Maria Oliveira — Laserpuntura"
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
     </div>
-    <div class="test-card">
-      <div class="stars">★★★★★</div>
-      <p class="test-text">"Já fiz 3 cursos na Allaser. É a única instituição que une profundidade técnica com facilidade de aprender. Recomendo a todo profissional da saúde."</p>
-      <div class="test-author"><div class="author-av">AM</div><div><div class="author-name">Ana M. L.</div><div class="author-role">Enfermeira · Belo Horizonte, MG</div></div></div>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/MLrORjx6OiI"
+              title="Depoimento Rosangela Fuzimotto"
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+    </div>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/w-gA2tHys4w"
+              title="Depoimento Danielle Modanese"
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
     </div>
   </div>
+  <div class="video-dots" id="videoDots" aria-label="Indicador de posição"></div>
 </section>
+
+<script>
+/* Carrossel de depoimentos — dots indicator (so no mobile) */
+(function() {
+  const grid   = document.querySelector('.video-grid');
+  const dotsEl = document.getElementById('videoDots');
+  if (!grid || !dotsEl) return;
+  const cards = grid.querySelectorAll('.video-card');
+  if (cards.length < 2) return;
+
+  // Render dots
+  dotsEl.innerHTML = Array.from(cards).map(function(_, i) {
+    return '<button class="video-dot' + (i === 0 ? ' is-active' : '') + '" data-i="' + i + '" aria-label="Ir para vídeo ' + (i + 1) + '"></button>';
+  }).join('');
+  const dots = dotsEl.querySelectorAll('.video-dot');
+
+  // Atualiza dot ativo conforme o usuário rola
+  function updateActiveDot() {
+    const gridRect = grid.getBoundingClientRect();
+    const center = gridRect.left + gridRect.width / 2;
+    let closest = 0;
+    let minDist = Infinity;
+    cards.forEach(function(card, i) {
+      const cardRect = card.getBoundingClientRect();
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      const dist = Math.abs(cardCenter - center);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    dots.forEach(function(d, i) { d.classList.toggle('is-active', i === closest); });
+  }
+  grid.addEventListener('scroll', updateActiveDot, { passive: true });
+
+  // Clique no dot rola pro vídeo correspondente
+  dots.forEach(function(d) {
+    d.addEventListener('click', function() {
+      const i = parseInt(this.dataset.i, 10);
+      const card = cards[i];
+      if (card) {
+        grid.scrollTo({ left: card.offsetLeft - (grid.offsetWidth - card.offsetWidth) / 2, behavior: 'smooth' });
+      }
+    });
+  });
+})();
+</script>
 
 <!-- PROFESSORA -->
 <section class="prof-section" id="professores">

@@ -228,7 +228,7 @@
         <a href="https://allaser.com.br/politica-de-privacidade/">Privacidade</a>
         <a href="https://allaser.com.br/termos-e-condicoes/">Termos</a>
       </div>
-      <span class="footer__credit">Desenvolvido por <a href="https://cloudesign.com.br/cloudesign/">Cloudesign</a></span>
+      <span class="footer__credit">Desenvolvido por <a href="https://www.pefaz.com.br" target="_blank" rel="noopener">PEFAZ</a></span>
     </div>
   </div>
 </footer>
