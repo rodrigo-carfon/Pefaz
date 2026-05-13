@@ -272,6 +272,11 @@
   height: 100%;
   transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease), border-color 0.22s;
   position: relative;
+  cursor: pointer;
+}
+.course-card:focus-visible {
+  outline: 2px solid var(--lime-dark);
+  outline-offset: 2px;
 }
 .course-card::after {
   content: '';
@@ -1285,9 +1290,9 @@
       + '<span>' + esc(c.categoria) + '</span></div></div>';
   }
 
-  function btnDetalhes(c) {
-    if (c.lp) return '<a href="' + esc(c.lp) + '" target="_blank" rel="noopener" class="btn-ver-detalhes">Saiba mais →</a>';
-    return '<button class="btn-ver-detalhes" onclick="openLeadModal(\'' + esc(c.id) + '\')">Tenho interesse</button>';
+  function cardAction(c) {
+    if (c.lp) return 'onclick="window.open(\'' + esc(c.lp) + '\',\'_blank\',\'noopener\')"';
+    return 'onclick="openLeadModal(\'' + esc(c.id) + '\')"';
   }
 
   /* ── Card builders ───────────────────────────────── */
@@ -1295,10 +1300,10 @@
     var meta = '';
     if (c.cargaHoraria) meta += '<span class="course-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>' + esc(c.cargaHoraria) + '</span>';
     if (c.inicio)       meta += '<span class="course-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>' + esc(c.inicio) + '</span>';
-    return '<article class="course-card">' + thumbHtml(c)
+    return '<article class="course-card" ' + cardAction(c) + ' role="button" tabindex="0">' + thumbHtml(c)
       + '<div class="course-body"><h3 class="course-name">' + esc(c.nome) + '</h3>'
       + '<p class="course-desc">' + esc(c.desc) + '</p>'
-      + '<div class="course-footer-row"><div class="course-meta">' + meta + '</div>' + btnDetalhes(c) + '</div>'
+      + (meta ? '<div class="course-footer-row"><div class="course-meta">' + meta + '</div></div>' : '')
       + '</div></article>';
   }
 
@@ -1549,6 +1554,14 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeDetail(); closeLeadModal(); } });
 
   initExplorer();
+
+  // Suporte a teclado nos cards
+  document.getElementById('cursosResults').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      var card = e.target.closest('.course-card');
+      if (card) { e.preventDefault(); card.click(); }
+    }
+  });
 })();
 </script>
 
