@@ -220,58 +220,15 @@
 .test-header { text-align: center; margin-bottom: 52px; }
 .test-header .section-eyebrow { justify-content: center; }
 .test-header .section-sub { margin: 0 auto; }
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 22px;
-  max-width: 960px;
-  margin: 0 auto;
-  justify-content: center;
-}
-.video-card {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--dark-900);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  border: 1px solid var(--gray-100);
-  transition: all 0.25s var(--ease-out);
-}
-.video-card:hover {
-  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
-  transform: translateY(-2px);
-  border-color: rgba(201,220,68,0.35);
-}
-.video-card iframe {
+/* Carrossel de vídeos (depoimentos) — reusa classes .carousel__* */
+.carousel--video { max-width: 820px; }
+.carousel--video .carousel__viewport { box-shadow: 0 6px 24px rgba(0,0,0,0.10); }
+.carousel--video .carousel__slide { background: var(--dark-900); }
+.carousel--video .carousel__slide iframe {
   width: 100%; height: 100%;
   border: 0;
   display: block;
 }
-
-/* Dots — visiveis so no mobile como indicador do carrossel */
-.video-dots {
-  display: none;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 16px;
-}
-.video-dot {
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  border: none;
-  background: var(--gray-200);
-  padding: 0;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.video-dot.is-active {
-  background: var(--lime-dark);
-  width: 28px;
-  border-radius: 99px;
-}
-.video-dot:hover { background: var(--gray-400); }
-.video-dot.is-active:hover { background: var(--lime-dark); }
 
 /* PROFESSOR */
 .prof-section { background: var(--white); }
@@ -380,7 +337,6 @@
 /* RESPONSIVIDADE — conteúdo da página */
 @media (max-width: 1024px) {
   .prof-inner { grid-template-columns: 1fr; gap: 44px; }
-  .video-grid { grid-template-columns: repeat(2, 1fr); }
   .destaques-header { flex-direction: column; align-items: flex-start; gap: 12px; }
   .why-grid { grid-template-columns: 1fr; }
 }
@@ -403,25 +359,6 @@
   .prof-badge { right: 0; }
 }
 @media (max-width: 600px) {
-  /* Mobile: carrossel horizontal com snap */
-  .video-grid {
-    display: flex;
-    grid-template-columns: none;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 14px;
-    padding: 0 16px 8px;
-    max-width: 100%;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
-  }
-  .video-grid::-webkit-scrollbar { display: none; }
-  .video-card {
-    flex: 0 0 88%;
-    scroll-snap-align: center;
-  }
-  .video-dots { display: flex; }
 }
 @media (max-width: 560px) {
   .fm-card { padding: 28px 22px; }
@@ -452,7 +389,7 @@
         Comece sua jornada
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </button>
-      <a href="#cursos" class="btn-hero-courses">Ver todos os cursos</a>
+      <a href="/cursos.html" class="btn-hero-courses">Ver todos os cursos</a>
     </div>
   </div>
   <div class="hero-scroll">Scroll<div class="scroll-line"></div></div>
@@ -496,14 +433,14 @@
 ═══════════════════════════════════════════════════════ */
 const DESTAQUES_BANNERS = [
   {
-    src:  '/assets/images/banner-start-laser.jpg',
-    alt:  'START LASER — Laserterapia para Profissionais da Saúde',
-    href: 'https://allaser.com.br/curso-laserterapia-para-profissionais-da-saude/'
-  },
-  {
     src:  '/assets/images/banner-estetica-facial-20-maio.jpg',
     alt:  'Estética Facial — 20 de maio',
     href: 'https://allaser.com.br/masterclass-fotobiomodulacao-na-estetica-facial/'
+  },
+  {
+    src:  '/assets/images/banner-start-laser.jpg',
+    alt:  'START LASER — Laserterapia para Profissionais da Saúde',
+    href: 'https://allaser.com.br/curso-laserterapia-para-profissionais-da-saude/'
   }
   // Próximos banners aqui (siga o mesmo formato):
   // { src: '/assets/images/banner-XXX.jpg', alt: 'Descrição', href: '/destino' },
@@ -585,87 +522,80 @@ const DESTAQUES_BANNERS = [
   </div>
 </section>
 
-<!-- DEPOIMENTOS — videos do YouTube de alunos reais -->
+<!-- DEPOIMENTOS — carrossel de videos do YouTube -->
 <section class="testimonials-section">
   <div class="test-header">
     <div class="section-eyebrow">Depoimentos</div>
     <h2 class="section-title">O que nossos alunos dizem</h2>
     <p class="section-sub">Mais de 5.000 profissionais transformados em todo o Brasil.</p>
   </div>
-  <div class="video-grid">
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/ZXvj-kvzVj4"
-              title="Depoimento Ana Samways — Laserpuntura"
-              loading="lazy"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
+
+  <div class="carousel carousel--video" id="depoimentosCarousel" aria-roledescription="carrossel" aria-label="Depoimentos em vídeo">
+    <div class="carousel__viewport">
+      <div class="carousel__track" id="depoimentosTrack">
+        <div class="carousel__slide">
+          <iframe src="https://www.youtube.com/embed/ZXvj-kvzVj4"
+                  title="Depoimento Ana Samways — Laserpuntura"
+                  loading="lazy"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+        </div>
+        <div class="carousel__slide">
+          <iframe src="https://www.youtube.com/embed/iF5zJI0UTt8"
+                  title="Depoimento Maria Oliveira — Laserpuntura"
+                  loading="lazy"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+        </div>
+        <div class="carousel__slide">
+          <iframe src="https://www.youtube.com/embed/MLrORjx6OiI"
+                  title="Depoimento Rosangela Fuzimotto"
+                  loading="lazy"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+        </div>
+      </div>
     </div>
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/iF5zJI0UTt8"
-              title="Depoimento Maria Oliveira — Laserpuntura"
-              loading="lazy"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-    </div>
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/MLrORjx6OiI"
-              title="Depoimento Rosangela Fuzimotto"
-              loading="lazy"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-    </div>
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/w-gA2tHys4w"
-              title="Depoimento Danielle Modanese"
-              loading="lazy"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-    </div>
+    <button class="carousel__btn carousel__btn--prev" id="depoimentosPrev" aria-label="Vídeo anterior">‹</button>
+    <button class="carousel__btn carousel__btn--next" id="depoimentosNext" aria-label="Próximo vídeo">›</button>
+    <div class="carousel__dots" id="depoimentosDots" role="tablist" aria-label="Selecionar vídeo"></div>
   </div>
-  <div class="video-dots" id="videoDots" aria-label="Indicador de posição"></div>
 </section>
 
 <script>
-/* Carrossel de depoimentos — dots indicator (so no mobile) */
+/* Carrossel de depoimentos — controla navegação. Sem auto-rotate (vídeo está sendo assistido). */
 (function() {
-  const grid   = document.querySelector('.video-grid');
-  const dotsEl = document.getElementById('videoDots');
-  if (!grid || !dotsEl) return;
-  const cards = grid.querySelectorAll('.video-card');
-  if (cards.length < 2) return;
+  const track  = document.getElementById('depoimentosTrack');
+  const dotsEl = document.getElementById('depoimentosDots');
+  const prev   = document.getElementById('depoimentosPrev');
+  const next   = document.getElementById('depoimentosNext');
+  if (!track) return;
+  const slides = track.querySelectorAll('.carousel__slide');
+  if (!slides.length) return;
 
-  // Render dots
-  dotsEl.innerHTML = Array.from(cards).map(function(_, i) {
-    return '<button class="video-dot' + (i === 0 ? ' is-active' : '') + '" data-i="' + i + '" aria-label="Ir para vídeo ' + (i + 1) + '"></button>';
+  dotsEl.innerHTML = Array.from(slides).map(function(_, i) {
+    return '<button class="carousel__dot' + (i === 0 ? ' is-active' : '') + '" data-i="' + i + '" role="tab" aria-label="Vídeo ' + (i + 1) + '"></button>';
   }).join('');
-  const dots = dotsEl.querySelectorAll('.video-dot');
+  const dots = dotsEl.querySelectorAll('.carousel__dot');
 
-  // Atualiza dot ativo conforme o usuário rola
-  function updateActiveDot() {
-    const gridRect = grid.getBoundingClientRect();
-    const center = gridRect.left + gridRect.width / 2;
-    let closest = 0;
-    let minDist = Infinity;
-    cards.forEach(function(card, i) {
-      const cardRect = card.getBoundingClientRect();
-      const cardCenter = cardRect.left + cardRect.width / 2;
-      const dist = Math.abs(cardCenter - center);
-      if (dist < minDist) { minDist = dist; closest = i; }
-    });
-    dots.forEach(function(d, i) { d.classList.toggle('is-active', i === closest); });
+  let current = 0;
+  function goto(i) {
+    current = (i + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach(function(d, idx) { d.classList.toggle('is-active', idx === current); });
   }
-  grid.addEventListener('scroll', updateActiveDot, { passive: true });
 
-  // Clique no dot rola pro vídeo correspondente
+  prev.addEventListener('click', function() { goto(current - 1); });
+  next.addEventListener('click', function() { goto(current + 1); });
   dots.forEach(function(d) {
-    d.addEventListener('click', function() {
-      const i = parseInt(this.dataset.i, 10);
-      const card = cards[i];
-      if (card) {
-        grid.scrollTo({ left: card.offsetLeft - (grid.offsetWidth - card.offsetWidth) / 2, behavior: 'smooth' });
-      }
-    });
+    d.addEventListener('click', function() { goto(parseInt(this.dataset.i, 10)); });
   });
+
+  if (slides.length <= 1) {
+    prev.style.display = 'none';
+    next.style.display = 'none';
+    dotsEl.style.display = 'none';
+  }
 })();
 </script>
 
