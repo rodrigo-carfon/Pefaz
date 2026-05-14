@@ -902,8 +902,16 @@ img { display: block; max-width: 100%; }
     background:
       linear-gradient(180deg, rgba(6,6,15,0.75) 0%, rgba(6,6,15,0.45) 50%, rgba(6,6,15,0.8) 100%),
       url('/assets/images/fundo-curso-laserterapia-saude-mulher-mobile.png') center center / cover no-repeat;
+    padding: 72px 0 48px;
+    min-height: 100svh;
+    align-items: center;
   }
-  .hero { padding: 100px 0 72px; }
+  /* oculta o card lateral no mobile — info duplicada em outras seções */
+  .hero__card { display: none; }
+  /* compacta espaçamentos internos do hero */
+  .hero__badges { margin-bottom: 18px; }
+  .hero__title  { font-size: 2.15rem; margin-bottom: 16px; }
+  .hero__sub    { font-size: 0.95rem; margin-bottom: 28px; line-height: 1.65; }
   .lp-wrap { padding: 0 20px; }
   .pain { padding: 72px 0; }
   .learn { padding: 72px 0; }
