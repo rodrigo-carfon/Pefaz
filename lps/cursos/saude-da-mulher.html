@@ -1781,10 +1781,11 @@ img { display: block; max-width: 100%; }
     var payload = {
       nome:      document.getElementById('lmNome').value.trim(),
       email:     document.getElementById('lmEmail').value.trim(),
-      telefone:  document.getElementById('lmFone').value.replace(/\D/g, '')
+      telefone:  document.getElementById('lmFone').value.replace(/\D/g, ''),
+      lp_nome:   'Laserterapia na Saúde da Mulher'
     };
 
-    fetch('/lps/submit-lead.php', {
+    fetch('/lps/cursos/submit-lead.php', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify(payload)

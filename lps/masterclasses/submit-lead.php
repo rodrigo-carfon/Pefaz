@@ -1,12 +1,12 @@
 <?php
 // Proxy seguro para criação de leads na Kommo
+// Usado pelas LPs de masterclasses — status "Entrada LP MASTERCLASS"
 // Chamado via POST pelo formulário da LP
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: https://novo.allaser.com.br');
 header('Access-Control-Allow-Methods: POST');
 
-// Só aceita POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['ok' => false, 'error' => 'Method not allowed']);
@@ -14,20 +14,19 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // ── Configuração ─────────────────────────────────────
-define('KOMMO_TOKEN',       'SEU_TOKEN_AQUI');
+define('KOMMO_TOKEN',       'SEU_TOKEN_AQUI'); // preencher manualmente no servidor via cPanel
 define('KOMMO_SUBDOMAIN',   'allasercursos');
-define('KOMMO_PIPELINE_ID', 13501624);
-define('KOMMO_STATUS_ID',   104388432);
-define('KOMMO_TAG',         'Laserterapia na Saúde da Mulher');
-define('KOMMO_USER_ID',     14365171);
+define('KOMMO_PIPELINE_ID', 13501624);         // pipeline ROBO — fixo
+define('KOMMO_STATUS_ID',   104388432);        // Entrada LP MASTERCLASS
+define('KOMMO_USER_ID',     14365171);         // responsável padrão
 // ─────────────────────────────────────────────────────
 
-// Lê e valida o body JSON
 $body = json_decode(file_get_contents('php://input'), true);
 
 $nome     = trim($body['nome']     ?? '');
 $email    = trim($body['email']    ?? '');
 $telefone = trim($body['telefone'] ?? '');
+$lp_nome  = trim($body['lp_nome']  ?? '');
 
 if (!$nome || !$email || !$telefone) {
     http_response_code(400);
@@ -41,7 +40,6 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-// Garante formato +55XXXXXXXXXXX (remove tudo que não for dígito, adiciona +55)
 $digits = preg_replace('/\D/', '', $telefone);
 if (strlen($digits) === 11) {
     $telefone_fmt = '+55' . $digits;
@@ -53,14 +51,15 @@ if (strlen($digits) === 11) {
     exit;
 }
 
-// Monta payload para a API Kommo (endpoint complex — cria lead + contato em 1 chamada)
+$tags = $lp_nome ? [['name' => $lp_nome]] : [];
+
 $payload = [[
     'name'        => $nome,
     'pipeline_id' => KOMMO_PIPELINE_ID,
     'status_id'   => KOMMO_STATUS_ID,
     'responsible_user_id' => KOMMO_USER_ID,
     '_embedded'   => [
-        'tags'     => [['name' => KOMMO_TAG]],
+        'tags'     => $tags,
         'contacts' => [[
             'name' => $nome,
             'custom_fields_values' => [
