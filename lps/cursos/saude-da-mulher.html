@@ -986,29 +986,44 @@ img { display: block; max-width: 100%; }
     flex-direction: column;
     height: auto;
     min-height: auto;
-    padding: 60px 20px 0;
+    padding: 52px 20px 0;
     gap: 0;
-    align-items: stretch;
+    align-items: center;
+    text-align: center;
   }
-  .hero__left { padding-bottom: 28px; }
-
-  /* CTA full-width no mobile */
-  .hero__left .btn-cta {
+  .hero__left {
     width: 100%;
-    justify-content: center;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  /* Espaçamentos internos hero compactos */
-  .hero__badges { margin-bottom: 18px; }
-  .hero__title  { font-size: 2.1rem; margin-bottom: 14px; }
-  .hero__sub    { font-size: 0.92rem; margin-bottom: 26px; line-height: 1.66; }
+  /* Badges numa linha — menores para caber */
+  .hero__badges {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .hero__badge {
+    font-size: 0.58rem;
+    padding: 5px 10px;
+    gap: 5px;
+    white-space: nowrap;
+  }
 
-  /* Imagem hero mobile — full bleed */
+  /* Título e subtítulo centralizados */
+  .hero__title  { font-size: 2.1rem; margin-bottom: 14px; }
+  .hero__sub    { font-size: 0.92rem; margin-bottom: 24px; line-height: 1.66; text-align: center; }
+
+  /* Imagem hero mobile — full bleed, sem gap */
   .hero__mobile-img {
     display: block;
     width: calc(100% + 40px);
     margin-left: -20px;
     height: auto;
+    margin-top: 0;
   }
 
   /* Card — visível no mobile, abaixo da imagem */
