@@ -141,29 +141,6 @@ img { display: block; max-width: 100%; }
 /* orbs removidos — imagem já fornece a atmosfera */
 .hero__orb-1, .hero__orb-2, .hero__orb-3 { display: none; }
 
-/* Partículas decorativas */
-.hero__particles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.hero__particles span {
-  position: absolute;
-  border-radius: 50%;
-  animation: float 8s ease-in-out infinite;
-}
-.hero__particles span:nth-child(1) { width:4px;height:4px; background:var(--pink-light); top:20%;left:15%; animation-delay:0s; opacity:0.7; }
-.hero__particles span:nth-child(2) { width:3px;height:3px; background:var(--lime); top:35%;left:80%; animation-delay:1.2s; opacity:0.5; }
-.hero__particles span:nth-child(3) { width:5px;height:5px; background:#c060ff; top:60%;left:25%; animation-delay:2.4s; opacity:0.4; }
-.hero__particles span:nth-child(4) { width:3px;height:3px; background:var(--pink-light); top:75%;left:65%; animation-delay:0.8s; opacity:0.6; }
-.hero__particles span:nth-child(5) { width:4px;height:4px; background:var(--lime); top:50%;left:45%; animation-delay:3s; opacity:0.3; }
-.hero__particles span:nth-child(6) { width:6px;height:6px; background:#ff80c0; top:10%;left:55%; animation-delay:1.8s; opacity:0.35; box-shadow:0 0 10px #ff80c0; }
-
-@keyframes float {
-  0%,100% { transform: translateY(0) scale(1); opacity: 0.5; }
-  50%      { transform: translateY(-18px) scale(1.2); opacity: 1; }
-}
 
 .hero__inner {
   position: relative;
@@ -936,10 +913,6 @@ img { display: block; max-width: 100%; }
   <div class="orb hero__orb-1"></div>
   <div class="orb hero__orb-2"></div>
   <div class="orb hero__orb-3"></div>
-  <div class="hero__particles">
-    <span></span><span></span><span></span>
-    <span></span><span></span><span></span>
-  </div>
 
   <div class="lp-wrap" style="width:100%;">
     <div class="hero__inner">
