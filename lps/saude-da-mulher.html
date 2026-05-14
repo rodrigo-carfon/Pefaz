@@ -25,7 +25,7 @@
   --bg-card:     rgba(255,255,255,0.035);
   --border-glow: rgba(224, 0, 110, 0.2);
   --border-dim:  rgba(255,255,255,0.07);
-  --lime:        #c9dc44;
+  --lime:        #aebf3c;
   --lime-dark:   #9aaa1a;
   --text-main:   #f0eef5;
   --text-muted:  rgba(240,238,245,0.55);
@@ -55,8 +55,8 @@ img { display: block; max-width: 100%; }
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background: linear-gradient(135deg, var(--pink-light) 0%, var(--pink) 60%, var(--magenta) 100%);
-  color: #fff;
+  background: var(--lime);
+  color: #111;
   font-family: 'Outfit', sans-serif;
   font-weight: 800;
   font-size: 1.05rem;
@@ -64,8 +64,8 @@ img { display: block; max-width: 100%; }
   padding: 18px 44px;
   border-radius: 99px;
   text-decoration: none;
-  transition: transform 0.25s, box-shadow 0.25s;
-  box-shadow: 0 4px 32px var(--pink-glow), 0 1px 0 rgba(255,255,255,0.15) inset;
+  transition: transform 0.25s, box-shadow 0.25s, background 0.2s;
+  box-shadow: 0 4px 32px rgba(174,191,60,0.35), 0 1px 0 rgba(255,255,255,0.2) inset;
   position: relative;
   overflow: hidden;
 }
@@ -73,12 +73,13 @@ img { display: block; max-width: 100%; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%);
   pointer-events: none;
 }
 .btn-cta:hover {
+  background: #c2d444;
   transform: translateY(-3px);
-  box-shadow: 0 8px 48px var(--pink-glow), 0 1px 0 rgba(255,255,255,0.15) inset;
+  box-shadow: 0 8px 48px rgba(174,191,60,0.45), 0 1px 0 rgba(255,255,255,0.2) inset;
 }
 .btn-cta svg { flex-shrink: 0; }
 
@@ -101,6 +102,8 @@ img { display: block; max-width: 100%; }
   background: var(--pink-light);
   border-radius: 2px;
 }
+.sec-eyebrow--lime { color: var(--lime); }
+.sec-eyebrow--lime::before { background: var(--lime); }
 
 /* ── Glassmorphism card ─────────────────────────────── */
 .glass {
@@ -426,9 +429,9 @@ img { display: block; max-width: 100%; }
   top: 0; left: 0; right: 0; height: 2px;
   border-radius: 2px 2px 0 0;
 }
-.learn__module--pink::after  { background: linear-gradient(90deg, var(--pink), #c060ff); }
-.learn__module--lime::after  { background: linear-gradient(90deg, var(--lime), #88cc00); }
-.learn__module--purple::after { background: linear-gradient(90deg, #8040ff, var(--pink)); }
+.learn__module--pink::after,
+.learn__module--lime::after,
+.learn__module--purple::after { background: linear-gradient(90deg, var(--lime), rgba(174,191,60,0.4)); }
 
 .learn__module:hover {
   border-color: rgba(224,0,110,0.2);
@@ -472,12 +475,12 @@ img { display: block; max-width: 100%; }
   flex-shrink: 0;
   margin-top: 1px;
 }
-.learn__module--pink  .learn__check { background: rgba(224,0,110,0.15); }
-.learn__module--lime  .learn__check { background: rgba(201,220,68,0.12); }
-.learn__module--purple .learn__check { background: rgba(128,64,255,0.15); }
-.learn__module--pink   .learn__check svg { color: #ff80c0; }
-.learn__module--lime   .learn__check svg { color: var(--lime); }
-.learn__module--purple .learn__check svg { color: #b080ff; }
+.learn__module--pink  .learn__check,
+.learn__module--lime  .learn__check,
+.learn__module--purple .learn__check { background: rgba(174,191,60,0.15); }
+.learn__module--pink   .learn__check svg,
+.learn__module--lime   .learn__check svg,
+.learn__module--purple .learn__check svg { color: var(--lime); }
 
 /* ══════════════════════════════════════════════════════
    SEÇÃO 4 — DIFERENCIAIS
@@ -532,7 +535,7 @@ img { display: block; max-width: 100%; }
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
 }
-.diff__pill svg { color: var(--pink-light); flex-shrink: 0; }
+.diff__pill svg { color: var(--lime); flex-shrink: 0; }
 
 .diff__right {
   display: flex;
@@ -694,9 +697,9 @@ img { display: block; max-width: 100%; }
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.6);
+  background: rgba(174,191,60,0.07);
+  border: 1px solid rgba(174,191,60,0.22);
+  color: rgba(174,191,60,0.75);
 }
 
 /* ══════════════════════════════════════════════════════
@@ -1071,7 +1074,7 @@ img { display: block; max-width: 100%; }
 <section class="learn">
   <div class="learn__bg"></div>
   <div class="lp-wrap" style="position:relative;z-index:2;">
-    <div class="sec-eyebrow">Programa completo</div>
+    <div class="sec-eyebrow sec-eyebrow--lime">Programa completo</div>
     <div class="learn__header">
       <h2 class="learn__title">Conteúdo <em>aplicável</em> do início ao protocolo</h2>
     </div>
@@ -1175,7 +1178,7 @@ img { display: block; max-width: 100%; }
   <div class="lp-wrap" style="position:relative;z-index:2;">
     <div class="diff__inner">
       <div class="diff__left">
-        <div class="sec-eyebrow">Por que escolher este curso</div>
+        <div class="sec-eyebrow sec-eyebrow--lime">Por que escolher este curso</div>
         <h2 class="diff__title">Abordagem que vai <span>além da teoria</span></h2>
         <p class="diff__desc">
           O curso foi estruturado para que você saia com raciocínio clínico, segurança e protocolos prontos para aplicar na rotina — não apenas com slides para estudar.
@@ -1316,7 +1319,7 @@ img { display: block; max-width: 100%; }
   <div class="benefits__bg"></div>
   <div class="lp-wrap">
     <div class="benefits__header">
-      <div class="sec-eyebrow" style="justify-content:center;">Transformação profissional</div>
+      <div class="sec-eyebrow sec-eyebrow--lime" style="justify-content:center;">Transformação profissional</div>
       <h2 class="benefits__title">O que muda na sua <span>prática clínica</span></h2>
     </div>
     <div class="benefits__grid">
