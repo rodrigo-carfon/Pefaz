@@ -136,7 +136,7 @@ img { display: block; max-width: 100%; }
 ══════════════════════════════════════════════════════ */
 .hero {
   position: relative;
-  min-height: 100svh;
+  height: 800px;
   display: flex;
   align-items: stretch;
   overflow: hidden;
@@ -163,9 +163,8 @@ img { display: block; max-width: 100%; }
   display: grid;
   grid-template-columns: 1fr 460px;
   gap: 0 60px;
-  /* mín height = viewport - margens mínimas do conteúdo */
-  min-height: 100svh;
-  padding: 110px 32px 80px;
+  height: 800px;
+  padding: 80px 32px 64px;
   max-width: 1164px;
   margin: 0 auto;
 }
@@ -957,8 +956,11 @@ img { display: block; max-width: 100%; }
    RESPONSIVO
 ══════════════════════════════════════════════════════ */
 @media (max-width: 960px) {
+  .hero { height: auto; min-height: 100svh; }
   .hero__inner {
     grid-template-columns: 1fr;
+    height: auto;
+    min-height: 100svh;
     padding: 100px 28px 72px;
     gap: 0;
   }
