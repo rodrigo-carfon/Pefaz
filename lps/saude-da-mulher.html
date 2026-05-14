@@ -132,7 +132,7 @@ img { display: block; max-width: 100%; }
   overflow: hidden;
   background:
     linear-gradient(135deg, rgba(6,6,15,0.82) 0%, rgba(6,6,15,0.55) 50%, rgba(6,6,15,0.75) 100%),
-    url('/assets/images/fundo-curso-laserterapia-saude-mulher.png') center center / cover no-repeat;
+    url('/assets/images/fundo-curso-laserterapia-saude-mulher-desktop.png') center center / cover no-repeat;
 }
 
 /* orbs removidos — imagem já fornece a atmosfera */
@@ -895,6 +895,11 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 640px) {
+  .hero {
+    background:
+      linear-gradient(180deg, rgba(6,6,15,0.75) 0%, rgba(6,6,15,0.45) 50%, rgba(6,6,15,0.8) 100%),
+      url('/assets/images/fundo-curso-laserterapia-saude-mulher-mobile.png') center center / cover no-repeat;
+  }
   .hero { padding: 100px 0 72px; }
   .lp-wrap { padding: 0 20px; }
   .pain { padding: 72px 0; }
