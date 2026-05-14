@@ -9,27 +9,25 @@
 <style>
 /* ═══════════════════════════════════════════════════════
    LP — Laserterapia na Saúde da Mulher
-   Paleta: dark profundo + magenta + roxo + pink neon + lime Allaser
+   Paleta: dark premium (#050507) + lime Allaser (#aebf3c)
 ═══════════════════════════════════════════════════════ */
 
-/* ── Tokens LP ──────────────────────────────────────── */
+/* ── Tokens ─────────────────────────────────────────── */
 :root {
-  --pink:        #e0006e;
-  --pink-light:  #f02080;
-  --pink-glow:   rgba(224, 0, 110, 0.28);
-  --pink-subtle: rgba(224, 0, 110, 0.08);
-  --magenta:     #c2006a;
-  --purple:      #6b0fa8;
-  --purple-deep: #3a0060;
-  --bg-deep:     #06060f;
-  --bg-card:     rgba(255,255,255,0.035);
-  --border-glow: rgba(224, 0, 110, 0.2);
-  --border-dim:  rgba(255,255,255,0.07);
   --lime:        #aebf3c;
-  --lime-dark:   #9aaa1a;
-  --text-main:   #f0eef5;
-  --text-muted:  rgba(240,238,245,0.55);
-  --text-dim:    rgba(240,238,245,0.35);
+  --lime-bright: #c8d84a;
+  --lime-dim:    #8a9a20;
+  --lime-glow:   rgba(174,191,60,0.22);
+  --lime-subtle: rgba(174,191,60,0.07);
+  --lime-border: rgba(174,191,60,0.2);
+  --bg:          #050507;
+  --bg-mid:      #080809;
+  --bg-card:     rgba(255,255,255,0.03);
+  --border:      rgba(255,255,255,0.06);
+  --border-lime: rgba(174,191,60,0.18);
+  --text:        #f4f3ee;
+  --text-muted:  rgba(244,243,238,0.55);
+  --text-dim:    rgba(244,243,238,0.32);
 }
 
 /* ── Reset ──────────────────────────────────────────── */
@@ -37,90 +35,100 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  background: var(--bg-deep);
-  color: var(--text-main);
+  background: var(--bg);
+  color: var(--text);
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 a { text-decoration: none; }
 img { display: block; max-width: 100%; }
 
-/* ── Layout helpers ─────────────────────────────────── */
-.lp-wrap  { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
-.lp-wrap--sm { max-width: 780px; margin: 0 auto; padding: 0 28px; }
-.lp-wrap--xs { max-width: 620px; margin: 0 auto; padding: 0 28px; }
+/* ── Layout ─────────────────────────────────────────── */
+.lp-wrap    { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+.lp-wrap--sm { max-width: 780px;  margin: 0 auto; padding: 0 32px; }
+.lp-wrap--xs { max-width: 620px;  margin: 0 auto; padding: 0 32px; }
 
-/* ── CTA principal ──────────────────────────────────── */
+/* ── Botão CTA ──────────────────────────────────────── */
 .btn-cta {
   display: inline-flex;
   align-items: center;
   gap: 12px;
   background: var(--lime);
-  color: #111;
+  color: #0a0a0a;
   font-family: 'Outfit', sans-serif;
   font-weight: 800;
   font-size: 1.05rem;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
   padding: 18px 44px;
   border-radius: 99px;
   text-decoration: none;
-  transition: transform 0.25s, box-shadow 0.25s, background 0.2s;
-  box-shadow: 0 4px 32px rgba(174,191,60,0.35), 0 1px 0 rgba(255,255,255,0.2) inset;
   position: relative;
   overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s, background 0.2s;
+  box-shadow: 0 0 0 1px rgba(174,191,60,0.4), 0 4px 40px rgba(174,191,60,0.3);
 }
 .btn-cta::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, transparent 55%);
   pointer-events: none;
 }
 .btn-cta:hover {
-  background: #c2d444;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 48px rgba(174,191,60,0.45), 0 1px 0 rgba(255,255,255,0.2) inset;
+  background: var(--lime-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px rgba(174,191,60,0.5), 0 8px 56px rgba(174,191,60,0.4);
 }
 .btn-cta svg { flex-shrink: 0; }
 
-/* ── Seção label ────────────────────────────────────── */
+/* ── Eyebrow ────────────────────────────────────────── */
 .sec-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.7rem;
+  gap: 10px;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--pink-light);
-  margin-bottom: 16px;
+  color: var(--lime);
+  margin-bottom: 18px;
 }
 .sec-eyebrow::before {
   content: '';
   display: block;
-  width: 18px; height: 1.5px;
-  background: var(--pink-light);
+  width: 20px; height: 1px;
+  background: var(--lime);
   border-radius: 2px;
+  opacity: 0.7;
 }
-.sec-eyebrow--lime { color: var(--lime); }
-.sec-eyebrow--lime::before { background: var(--lime); }
 
-/* ── Glassmorphism card ─────────────────────────────── */
+/* ── Glassmorphism ──────────────────────────────────── */
 .glass {
-  background: rgba(255,255,255,0.035);
-  border: 1px solid var(--border-dim);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 20px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.glass--lime {
+  background: rgba(174,191,60,0.04);
+  border-color: var(--border-lime);
 }
 
-/* ── Orbs ambientais ────────────────────────────────── */
+/* ── Orb ambiental ──────────────────────────────────── */
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(90px);
   pointer-events: none;
-  opacity: 0.45;
+}
+
+/* ── Glow line decorativo ───────────────────────────── */
+.glow-line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lime-border), transparent);
+  pointer-events: none;
 }
 
 /* ══════════════════════════════════════════════════════
@@ -134,28 +142,43 @@ img { display: block; max-width: 100%; }
   padding: 120px 0 100px;
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(6,6,15,0.82) 0%, rgba(6,6,15,0.55) 50%, rgba(6,6,15,0.75) 100%),
+    linear-gradient(110deg,
+      rgba(5,5,7,0.92) 0%,
+      rgba(5,5,7,0.72) 45%,
+      rgba(5,5,7,0.55) 65%,
+      rgba(5,5,7,0.80) 100%),
     url('/assets/images/fundo-curso-laserterapia-saude-mulher-desktop.png') center center / cover no-repeat;
 }
 
-/* orbs removidos — imagem já fornece a atmosfera */
-.hero__orb-1, .hero__orb-2, .hero__orb-3 { display: none; }
-
+/* Orb lime suave no canto */
+.hero__orb-lime {
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(174,191,60,0.12) 0%, transparent 70%);
+  top: -60px; right: -80px;
+  opacity: 1;
+}
+.hero__orb-deep {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(174,191,60,0.06) 0%, transparent 70%);
+  bottom: -150px; left: -100px;
+  opacity: 1;
+}
 
 .hero__inner {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 64px;
+  grid-template-columns: 1fr 400px;
+  gap: 72px;
   align-items: center;
 }
 
+/* Badges */
 .hero__badges {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 32px;
+  margin-bottom: 30px;
 }
 .hero__badge {
   display: flex;
@@ -163,116 +186,138 @@ img { display: block; max-width: 100%; }
   gap: 7px;
   padding: 6px 14px;
   border-radius: 99px;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   border: 1px solid;
 }
-.hero__badge--pink  { background: rgba(224,0,110,0.12); border-color: rgba(224,0,110,0.3); color: #ff80c0; }
-.hero__badge--lime  { background: rgba(201,220,68,0.1);  border-color: rgba(201,220,68,0.3); color: var(--lime); }
-.hero__badge--white { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); }
+.hero__badge--lime  {
+  background: rgba(174,191,60,0.09);
+  border-color: rgba(174,191,60,0.28);
+  color: var(--lime-bright);
+}
+.hero__badge--white {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.6);
+}
 
+/* Headline */
 .hero__title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  font-size: clamp(2.7rem, 5.5vw, 4.4rem);
   font-weight: 900;
-  line-height: 1.04;
-  letter-spacing: -0.02em;
+  line-height: 1.03;
+  letter-spacing: -0.025em;
   color: #fff;
-  margin-bottom: 24px;
-  text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+  margin-bottom: 26px;
 }
 .hero__title em {
   font-style: italic;
-  background: linear-gradient(120deg, #ff80c0 0%, var(--pink-light) 40%, #c060ff 100%);
+  background: linear-gradient(115deg, var(--lime-bright) 0%, var(--lime) 50%, var(--lime-dim) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* Subtítulo com highlights lime */
 .hero__sub {
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.8);
-  line-height: 1.75;
-  max-width: 540px;
+  font-size: 1.02rem;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.78;
+  max-width: 520px;
   margin-bottom: 40px;
-  text-shadow: 0 1px 12px rgba(0,0,0,0.6);
+}
+.hero__sub em {
+  color: var(--lime);
+  font-style: normal;
+  font-weight: 600;
 }
 
-/* Card lateral hero */
+/* Card lateral */
 .hero__card {
-  padding: 40px 36px;
+  padding: 36px 32px 40px;
   position: relative;
-  background: rgba(8,4,16,0.72);
-  border: 1px solid rgba(224,0,110,0.3);
-  border-radius: 28px;
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  box-shadow: 0 8px 64px rgba(160,0,80,0.25), inset 0 1px 0 rgba(255,255,255,0.08);
+  background: rgba(5,5,7,0.75);
+  border: 1px solid var(--border-lime);
+  border-radius: 24px;
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  box-shadow: 0 8px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(174,191,60,0.08);
 }
+/* Linha decorativa topo do card */
 .hero__card::before {
   content: '';
   position: absolute;
-  top: -1px; left: 32px; right: 32px; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,120,180,0.6), transparent);
+  top: -1px; left: 28px; right: 28px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(174,191,60,0.5), transparent);
 }
 .hero__card-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.15rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  color: #fff;
-  margin-bottom: 28px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--border-dim);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-.hero__feature-list { display: flex; flex-direction: column; gap: 16px; }
+/* Grid 2 colunas no card */
+.hero__feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 16px;
+}
 .hero__feature {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 12px;
 }
 .hero__feature-icon {
-  width: 36px; height: 36px;
-  border-radius: 10px;
+  width: 32px; height: 32px;
+  border-radius: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: rgba(224,0,110,0.12);
-  border: 1px solid rgba(224,0,110,0.2);
+  background: var(--lime-subtle);
+  border: 1px solid var(--border-lime);
+  color: var(--lime);
 }
-.hero__feature-icon svg { color: #ff80c0; }
-.hero__feature-body {}
 .hero__feature-label {
   font-weight: 700;
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   color: #fff;
+  line-height: 1.3;
   margin-bottom: 2px;
 }
-.hero__feature-desc { font-size: 0.78rem; color: var(--text-dim); line-height: 1.5; }
-
-.hero__cta-wrap { margin-top: 36px; text-align: center; }
-.hero__cta-wrap p { font-size: 0.72rem; color: var(--text-dim); margin-top: 12px; }
+.hero__feature-desc {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  line-height: 1.45;
+}
 
 /* ══════════════════════════════════════════════════════
    SEÇÃO 2 — DOR + OPORTUNIDADE
 ══════════════════════════════════════════════════════ */
 .pain {
-  padding: 100px 0;
+  padding: 110px 0;
   position: relative;
-  background: linear-gradient(180deg, var(--bg-deep) 0%, #0d000d 50%, var(--bg-deep) 100%);
+  background: var(--bg-mid);
   overflow: hidden;
 }
-.pain__orb {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(107,15,168,0.3) 0%, transparent 70%);
-  top: 50%; left: -200px;
-  transform: translateY(-50%);
+.pain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 90% 40%, rgba(174,191,60,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 0% 70%, rgba(174,191,60,0.04) 0%, transparent 60%);
 }
 
-.pain__header { margin-bottom: 56px; }
+.pain__header { margin-bottom: 52px; }
 .pain__title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2rem, 4vw, 3rem);
@@ -282,60 +327,70 @@ img { display: block; max-width: 100%; }
   color: #fff;
   margin-bottom: 16px;
 }
-.pain__title span {
-  background: linear-gradient(90deg, #ff80c0, var(--pink-light));
+.pain__title em {
+  font-style: italic;
+  background: linear-gradient(90deg, var(--lime-bright), var(--lime));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.pain__intro { font-size: 1rem; color: var(--text-muted); line-height: 1.75; max-width: 600px; }
+.pain__intro {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.78;
+  max-width: 580px;
+}
 
 .pain__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 14px;
-  margin-bottom: 56px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+  margin-bottom: 52px;
 }
 .pain__item {
-  padding: 22px 20px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(224,0,110,0.12);
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.05);
   display: flex;
   align-items: center;
   gap: 14px;
   transition: border-color 0.2s, background 0.2s;
 }
-.pain__item:hover { border-color: rgba(224,0,110,0.3); background: rgba(224,0,110,0.06); }
+.pain__item:hover {
+  border-color: var(--border-lime);
+  background: var(--lime-subtle);
+}
 .pain__dot {
-  width: 8px; height: 8px;
+  width: 6px; height: 6px;
   border-radius: 50%;
-  background: var(--pink-light);
-  box-shadow: 0 0 8px var(--pink-light);
+  background: var(--lime);
+  box-shadow: 0 0 8px rgba(174,191,60,0.6);
   flex-shrink: 0;
 }
-.pain__item-text { font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.75); }
+.pain__item-text { font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.7); }
 
 .pain__bridge {
-  padding: 44px 48px;
-  border-radius: 24px;
-  background: rgba(107,15,168,0.12);
-  border: 1px solid rgba(107,15,168,0.3);
+  padding: 40px 44px;
+  border-radius: 20px;
+  background: rgba(174,191,60,0.04);
+  border: 1px solid var(--border-lime);
   position: relative;
   overflow: hidden;
 }
 .pain__bridge::before {
   content: '';
   position: absolute;
-  top: -1px; left: 60px; right: 60px; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(160,80,255,0.5), transparent);
+  top: -1px; left: 40px; right: 40px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(174,191,60,0.45), transparent);
 }
 .pain__bridge-label {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #c080ff;
+  color: var(--lime);
+  opacity: 0.8;
   margin-bottom: 20px;
 }
 .pain__consequence-list { display: flex; flex-direction: column; gap: 14px; }
@@ -343,33 +398,41 @@ img { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   gap: 14px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.85);
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
 }
 .pain__consequence-arrow {
-  font-size: 1.2rem;
-  color: var(--pink-light);
-  font-weight: 800;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--lime-subtle);
+  border: 1px solid var(--border-lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lime);
   flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 800;
 }
 
 /* ══════════════════════════════════════════════════════
    SEÇÃO 3 — O QUE VAI APRENDER
 ══════════════════════════════════════════════════════ */
 .learn {
-  padding: 100px 0;
+  padding: 110px 0;
   position: relative;
   overflow: hidden;
+  background: var(--bg);
 }
-.learn__bg {
+.learn::before {
+  content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 50% at 80% 50%, rgba(180,0,90,0.07) 0%, transparent 70%),
-              radial-gradient(ellipse 50% 40% at 10% 60%, rgba(107,15,168,0.08) 0%, transparent 60%);
+  background: radial-gradient(ellipse 55% 60% at 85% 50%, rgba(174,191,60,0.06) 0%, transparent 70%);
 }
 
-.learn__header { margin-bottom: 56px; }
+.learn__header { margin-bottom: 52px; }
 .learn__title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2rem, 4vw, 3rem);
@@ -380,7 +443,7 @@ img { display: block; max-width: 100%; }
 }
 .learn__title em {
   font-style: italic;
-  background: linear-gradient(90deg, #ff80c0, var(--pink-light));
+  background: linear-gradient(90deg, var(--lime-bright), var(--lime));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -389,13 +452,13 @@ img { display: block; max-width: 100%; }
 .learn__modules {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 18px;
 }
 .learn__module {
   padding: 32px 28px;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
   position: relative;
   overflow: hidden;
   transition: border-color 0.25s, transform 0.25s;
@@ -405,33 +468,31 @@ img { display: block; max-width: 100%; }
   position: absolute;
   top: 0; left: 0; right: 0; height: 2px;
   border-radius: 2px 2px 0 0;
+  background: linear-gradient(90deg, var(--lime), rgba(174,191,60,0.3));
 }
-.learn__module--pink::after,
-.learn__module--lime::after,
-.learn__module--purple::after { background: linear-gradient(90deg, var(--lime), rgba(174,191,60,0.4)); }
-
 .learn__module:hover {
-  border-color: rgba(224,0,110,0.2);
+  border-color: var(--border-lime);
   transform: translateY(-4px);
 }
 
 .learn__module-num {
   font-family: 'Outfit', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--lime);
+  opacity: 0.6;
   margin-bottom: 10px;
 }
 .learn__module-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #fff;
   margin-bottom: 22px;
   padding-bottom: 16px;
-  border-bottom: 1px solid var(--border-dim);
+  border-bottom: 1px solid var(--border);
 }
 
 .learn__items { display: flex; flex-direction: column; gap: 11px; }
@@ -439,39 +500,37 @@ img { display: block; max-width: 100%; }
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 0.875rem;
-  color: rgba(255,255,255,0.68);
+  font-size: 0.865rem;
+  color: rgba(255,255,255,0.62);
   line-height: 1.45;
 }
 .learn__check {
-  width: 18px; height: 18px;
+  width: 17px; height: 17px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   margin-top: 1px;
+  background: var(--lime-subtle);
+  border: 1px solid rgba(174,191,60,0.2);
+  color: var(--lime);
 }
-.learn__module--pink  .learn__check,
-.learn__module--lime  .learn__check,
-.learn__module--purple .learn__check { background: rgba(174,191,60,0.15); }
-.learn__module--pink   .learn__check svg,
-.learn__module--lime   .learn__check svg,
-.learn__module--purple .learn__check svg { color: var(--lime); }
 
 /* ══════════════════════════════════════════════════════
    SEÇÃO 4 — DIFERENCIAIS
 ══════════════════════════════════════════════════════ */
 .diff {
-  padding: 100px 0;
-  background: linear-gradient(180deg, var(--bg-deep) 0%, #0a000f 100%);
+  padding: 110px 0;
+  background: var(--bg-mid);
   position: relative;
   overflow: hidden;
 }
-.diff__orb {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(224,0,110,0.15) 0%, transparent 70%);
-  top: -100px; right: -150px;
+.diff::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 55% 70% at 5% 50%, rgba(174,191,60,0.07) 0%, transparent 70%);
 }
 
 .diff__inner {
@@ -479,9 +538,10 @@ img { display: block; max-width: 100%; }
   grid-template-columns: 1fr 1fr;
   gap: 72px;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
-.diff__left {}
 .diff__title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2rem, 3.5vw, 2.8rem);
@@ -491,84 +551,89 @@ img { display: block; max-width: 100%; }
   color: #fff;
   margin-bottom: 16px;
 }
-.diff__title span {
-  background: linear-gradient(120deg, #ff80c0, var(--pink-light), #c060ff);
+.diff__title em {
+  font-style: italic;
+  background: linear-gradient(90deg, var(--lime-bright), var(--lime));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.diff__desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 36px; }
+.diff__desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.78;
+  margin-bottom: 32px;
+}
 
-.diff__pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.diff__pills { display: flex; flex-wrap: wrap; gap: 9px; }
 .diff__pill {
   display: flex;
   align-items: center;
   gap: 7px;
-  padding: 9px 16px;
+  padding: 8px 14px;
   border-radius: 99px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.75);
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: border-color 0.2s, color 0.2s;
 }
+.diff__pill:hover { border-color: var(--border-lime); color: var(--lime); }
 .diff__pill svg { color: var(--lime); flex-shrink: 0; }
 
 .diff__right {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 .diff__card {
-  padding: 22px 24px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
+  padding: 20px 22px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
   gap: 18px;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, background 0.2s;
 }
-.diff__card:hover { border-color: rgba(224,0,110,0.25); }
+.diff__card:hover {
+  border-color: var(--border-lime);
+  background: var(--lime-subtle);
+}
 .diff__card-icon {
-  width: 44px; height: 44px;
-  border-radius: 12px;
+  width: 42px; height: 42px;
+  border-radius: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  background: var(--lime-subtle);
+  border: 1px solid var(--border-lime);
+  color: var(--lime);
 }
-.diff__card-icon--pink   { background: rgba(224,0,110,0.12); border: 1px solid rgba(224,0,110,0.2); }
-.diff__card-icon--lime   { background: rgba(201,220,68,0.1);  border: 1px solid rgba(201,220,68,0.2); }
-.diff__card-icon--purple { background: rgba(128,64,255,0.12); border: 1px solid rgba(128,64,255,0.2); }
-.diff__card-icon--pink   svg { color: #ff80c0; }
-.diff__card-icon--lime   svg { color: var(--lime); }
-.diff__card-icon--purple svg { color: #b080ff; }
-.diff__card-body {}
-.diff__card-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 3px; }
-.diff__card-desc  { font-size: 0.78rem; color: var(--text-dim); line-height: 1.5; }
+.diff__card-title { font-weight: 700; font-size: 0.88rem; color: #fff; margin-bottom: 3px; }
+.diff__card-desc  { font-size: 0.76rem; color: var(--text-dim); line-height: 1.5; }
 
 /* ══════════════════════════════════════════════════════
    SEÇÃO 5 — PROFESSORAS
 ══════════════════════════════════════════════════════ */
 .professors {
-  padding: 100px 0;
+  padding: 110px 0;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(ellipse 80% 60% at 50% 50%, #100018 0%, var(--bg-deep) 70%);
+  background: var(--bg);
 }
-.professors__orb-1 {
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(107,15,168,0.35) 0%, transparent 70%);
-  top: -100px; left: -100px;
-}
-.professors__orb-2 {
-  width: 350px; height: 350px;
-  background: radial-gradient(circle, rgba(224,0,110,0.25) 0%, transparent 70%);
-  bottom: -80px; right: -80px;
+.professors::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(174,191,60,0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 50% 0%, rgba(174,191,60,0.04) 0%, transparent 60%);
 }
 
-.professors__header { text-align: center; margin-bottom: 64px; }
+.professors__header { text-align: center; margin-bottom: 60px; position: relative; z-index: 1; }
 .professors__title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2rem, 4vw, 3rem);
@@ -579,7 +644,7 @@ img { display: block; max-width: 100%; }
 }
 .professors__title em {
   font-style: italic;
-  background: linear-gradient(90deg, #ff80c0, var(--pink-light));
+  background: linear-gradient(90deg, var(--lime-bright), var(--lime));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -587,8 +652,8 @@ img { display: block; max-width: 100%; }
 .professors__sub {
   font-size: 0.95rem;
   color: var(--text-muted);
-  line-height: 1.7;
-  max-width: 560px;
+  line-height: 1.72;
+  max-width: 540px;
   margin: 16px auto 0;
 }
 
@@ -596,39 +661,42 @@ img { display: block; max-width: 100%; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .prof-card {
-  padding: 48px 40px;
-  border-radius: 28px;
-  background: rgba(255,255,255,0.025);
-  border: 1px solid rgba(255,255,255,0.07);
+  padding: 44px 36px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
   position: relative;
   overflow: hidden;
   transition: transform 0.3s, border-color 0.3s;
 }
+/* Linha lime no topo do card */
 .prof-card::before {
   content: '';
   position: absolute;
-  top: -1px; left: 40px; right: 40px; height: 1px;
+  top: -1px; left: 32px; right: 32px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(174,191,60,0.4), transparent);
 }
-.prof-card--daiane::before { background: linear-gradient(90deg, transparent, rgba(255,120,180,0.6), transparent); }
-.prof-card--gabriella::before { background: linear-gradient(90deg, transparent, rgba(160,100,255,0.5), transparent); }
-.prof-card:hover { transform: translateY(-6px); border-color: rgba(224,0,110,0.2); }
+.prof-card:hover { transform: translateY(-5px); border-color: var(--border-lime); }
 
 .prof-card__photo-wrap {
   width: 100%;
   aspect-ratio: 4 / 5;
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
   margin-bottom: 28px;
   position: relative;
 }
+/* Fade suave na base da foto */
 .prof-card__photo-wrap::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(6,6,15,0.85) 100%);
+  background: linear-gradient(180deg, transparent 55%, rgba(5,5,7,0.88) 100%);
   pointer-events: none;
 }
 .prof-card__photo {
@@ -639,26 +707,27 @@ img { display: block; max-width: 100%; }
   display: block;
   transition: transform 0.5s ease;
 }
-.prof-card:hover .prof-card__photo { transform: scale(1.04); }
+.prof-card:hover .prof-card__photo { transform: scale(1.03); }
 
 .prof-card__name {
   font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: #fff;
   margin-bottom: 6px;
   line-height: 1.2;
 }
 .prof-card__role {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
-  color: #ff80c0;
-  margin-bottom: 24px;
+  color: var(--lime);
+  opacity: 0.85;
+  margin-bottom: 22px;
 }
 .prof-card__bio {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
   line-height: 1.8;
 }
@@ -666,34 +735,36 @@ img { display: block; max-width: 100%; }
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 24px;
+  margin-top: 22px;
 }
 .prof-card__cred {
   padding: 5px 12px;
   border-radius: 99px;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  background: rgba(174,191,60,0.07);
-  border: 1px solid rgba(174,191,60,0.22);
-  color: rgba(174,191,60,0.75);
+  background: var(--lime-subtle);
+  border: 1px solid var(--border-lime);
+  color: rgba(174,191,60,0.8);
 }
 
 /* ══════════════════════════════════════════════════════
    SEÇÃO 6 — BENEFÍCIOS
 ══════════════════════════════════════════════════════ */
 .benefits {
-  padding: 100px 0;
+  padding: 110px 0;
   position: relative;
   overflow: hidden;
+  background: var(--bg-mid);
 }
-.benefits__bg {
+.benefits::before {
+  content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, var(--bg-deep) 0%, #0c000c 50%, var(--bg-deep) 100%);
+  background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(174,191,60,0.05) 0%, transparent 70%);
 }
 
-.benefits__header { text-align: center; margin-bottom: 64px; position: relative; z-index: 1; }
+.benefits__header { text-align: center; margin-bottom: 60px; position: relative; z-index: 1; }
 .benefits__title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2rem, 4vw, 3rem);
@@ -702,8 +773,9 @@ img { display: block; max-width: 100%; }
   letter-spacing: -0.025em;
   color: #fff;
 }
-.benefits__title span {
-  background: linear-gradient(90deg, #ff80c0, #c060ff);
+.benefits__title em {
+  font-style: italic;
+  background: linear-gradient(90deg, var(--lime-bright), var(--lime));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -713,86 +785,90 @@ img { display: block; max-width: 100%; }
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
 }
 .benefit-card {
-  padding: 36px 30px;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.025);
-  border: 1px solid rgba(255,255,255,0.06);
+  padding: 34px 28px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
   text-align: center;
   transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
 .benefit-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(224,0,110,0.25);
-  box-shadow: 0 12px 40px rgba(180,0,90,0.12);
+  transform: translateY(-5px);
+  border-color: var(--border-lime);
+  box-shadow: 0 12px 40px rgba(174,191,60,0.08);
 }
 .benefit-card__icon {
-  width: 56px; height: 56px;
-  border-radius: 16px;
+  width: 52px; height: 52px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 20px;
-  background: rgba(224,0,110,0.1);
-  border: 1px solid rgba(224,0,110,0.2);
+  margin: 0 auto 18px;
+  background: var(--lime-subtle);
+  border: 1px solid var(--border-lime);
+  color: var(--lime);
 }
-.benefit-card__icon svg { color: #ff80c0; }
 .benefit-card__title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #fff;
   margin-bottom: 8px;
 }
-.benefit-card__desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+.benefit-card__desc { font-size: 0.83rem; color: var(--text-dim); line-height: 1.6; }
 
 /* ══════════════════════════════════════════════════════
    SEÇÃO 7 — CTA FINAL
 ══════════════════════════════════════════════════════ */
 .final-cta {
-  padding: 120px 0;
+  padding: 130px 0;
   position: relative;
   overflow: hidden;
   text-align: center;
-  background: radial-gradient(ellipse 90% 70% at 50% 50%, #1e0028 0%, var(--bg-deep) 70%);
+  background: var(--bg);
 }
-.final-cta__orb-1 {
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(180,0,90,0.3) 0%, transparent 70%);
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-}
-.final-cta__glow-line {
+/* Glow central lime */
+.final-cta::before {
+  content: '';
   position: absolute;
-  top: 0; left: 20%; right: 20%; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(224,0,110,0.5), transparent);
+  inset: 0;
+  background: radial-gradient(ellipse 80% 65% at 50% 50%, rgba(174,191,60,0.1) 0%, transparent 70%);
+}
+.final-cta::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 15%; right: 15%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(174,191,60,0.4), transparent);
 }
 
 .final-cta__inner { position: relative; z-index: 2; }
+
 .final-cta__eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.7rem;
+  gap: 12px;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #ff80c0;
-  margin-bottom: 24px;
+  color: var(--lime);
+  opacity: 0.85;
+  margin-bottom: 28px;
 }
 .final-cta__eyebrow span {
   display: inline-block;
-  width: 24px; height: 1.5px;
-  background: #ff80c0;
-  border-radius: 2px;
+  width: 24px; height: 1px;
+  background: var(--lime);
+  opacity: 0.6;
 }
 
 .final-cta__title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-size: clamp(2.3rem, 5vw, 4rem);
   font-weight: 900;
   line-height: 1.06;
   letter-spacing: -0.025em;
@@ -801,17 +877,17 @@ img { display: block; max-width: 100%; }
 }
 .final-cta__title em {
   font-style: italic;
-  background: linear-gradient(120deg, #ff80c0 0%, var(--pink-light) 40%, #c060ff 100%);
+  background: linear-gradient(115deg, var(--lime-bright) 0%, var(--lime) 60%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .final-cta__sub {
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   color: var(--text-muted);
-  line-height: 1.75;
-  max-width: 560px;
+  line-height: 1.78;
+  max-width: 540px;
   margin: 0 auto 48px;
 }
 
@@ -827,7 +903,7 @@ img { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-dim);
 }
 .final-cta__trust-item svg { color: var(--lime); flex-shrink: 0; }
@@ -839,9 +915,9 @@ img { display: block; max-width: 100%; }
   bottom: 0; left: 0; right: 0;
   z-index: 200;
   padding: 12px 20px;
-  background: rgba(6,6,15,0.95);
-  border-top: 1px solid rgba(224,0,110,0.2);
-  backdrop-filter: blur(16px);
+  background: rgba(5,5,7,0.97);
+  border-top: 1px solid var(--border-lime);
+  backdrop-filter: blur(20px);
 }
 .sticky-cta__inner {
   display: flex;
@@ -852,52 +928,53 @@ img { display: block; max-width: 100%; }
 }
 .sticky-cta__text {
   flex: 1;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.55);
   line-height: 1.35;
 }
-.sticky-cta .btn-cta {
-  font-size: 0.85rem;
-  padding: 13px 22px;
-  white-space: nowrap;
-}
+.sticky-cta .btn-cta { font-size: 0.85rem; padding: 12px 22px; white-space: nowrap; }
 
 /* ══════════════════════════════════════════════════════
    RESPONSIVO
 ══════════════════════════════════════════════════════ */
-@media (max-width: 900px) {
-  .hero__inner { grid-template-columns: 1fr; gap: 48px; }
-  .hero__card  { max-width: 520px; }
+@media (max-width: 960px) {
+  .hero__inner { grid-template-columns: 1fr; gap: 52px; }
+  .hero__card  { max-width: 540px; }
   .learn__modules { grid-template-columns: 1fr; }
-  .diff__inner { grid-template-columns: 1fr; gap: 48px; }
+  .diff__inner { grid-template-columns: 1fr; gap: 52px; }
   .professors__grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
+  /* Hero mobile — imagem mobile + fundo ajustado */
   .hero {
     background:
-      linear-gradient(180deg, rgba(6,6,15,0.75) 0%, rgba(6,6,15,0.45) 50%, rgba(6,6,15,0.8) 100%),
+      linear-gradient(180deg,
+        rgba(5,5,7,0.88) 0%,
+        rgba(5,5,7,0.55) 50%,
+        rgba(5,5,7,0.85) 100%),
       url('/assets/images/fundo-curso-laserterapia-saude-mulher-mobile.png') center center / cover no-repeat;
-    padding: 72px 0 48px;
+    padding: 72px 0 52px;
     min-height: 100svh;
     align-items: center;
   }
-  /* oculta o card lateral no mobile — info duplicada em outras seções */
+  /* Esconde card no mobile — conteúdo duplicado em outras seções */
   .hero__card { display: none; }
-  /* compacta espaçamentos internos do hero */
+  /* Espaçamentos internos hero compactos */
   .hero__badges { margin-bottom: 18px; }
   .hero__title  { font-size: 2.15rem; margin-bottom: 16px; }
-  .hero__sub    { font-size: 0.95rem; margin-bottom: 28px; line-height: 1.65; }
+  .hero__sub    { font-size: 0.93rem; margin-bottom: 28px; line-height: 1.68; }
+
   .lp-wrap { padding: 0 20px; }
-  .pain { padding: 72px 0; }
-  .learn { padding: 72px 0; }
-  .diff { padding: 72px 0; }
+  .pain      { padding: 72px 0; }
+  .learn     { padding: 72px 0; }
+  .diff      { padding: 72px 0; }
   .professors { padding: 72px 0; }
-  .benefits { padding: 72px 0; }
-  .final-cta { padding: 80px 0; }
-  .pain__bridge { padding: 28px 24px; }
-  .prof-card { padding: 36px 28px; }
+  .benefits  { padding: 72px 0; }
+  .final-cta { padding: 88px 0; }
+  .pain__bridge { padding: 28px 22px; }
+  .prof-card    { padding: 32px 24px; }
   .sticky-cta { display: flex; }
   body { padding-bottom: 70px; }
 }
@@ -910,18 +987,17 @@ img { display: block; max-width: 100%; }
      1 — HERO
 ══════════════════════════════════════════════════ -->
 <section class="hero">
-  <div class="orb hero__orb-1"></div>
-  <div class="orb hero__orb-2"></div>
-  <div class="orb hero__orb-3"></div>
+  <div class="orb hero__orb-lime"></div>
+  <div class="orb hero__orb-deep"></div>
 
   <div class="lp-wrap" style="width:100%;">
     <div class="hero__inner">
 
-      <!-- Esquerda -->
+      <!-- Esquerda: conteúdo editorial -->
       <div>
         <div class="hero__badges">
-          <div class="hero__badge hero__badge--pink">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          <div class="hero__badge hero__badge--lime">
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
             Online
           </div>
           <div class="hero__badge hero__badge--lime">
@@ -941,7 +1017,9 @@ img { display: block; max-width: 100%; }
         </h1>
 
         <p class="hero__sub">
-          Aprenda a aplicar a Fotobiomodulação em protocolos voltados à saúde íntima, dores pélvicas, menopausa, infertilidade e recuperação feminina — com raciocínio clínico e segurança.
+          Aprenda a aplicar a Fotobiomodulação em protocolos voltados à
+          <em>saúde íntima, dores pélvicas, menopausa, infertilidade</em> e
+          <em>recuperação feminina</em> — com raciocínio clínico e segurança.
         </p>
 
         <a href="https://allasercursos.odoo.com/shop/mc-saude-mulher" target="_blank" rel="noopener" class="btn-cta">
@@ -950,51 +1028,51 @@ img { display: block; max-width: 100%; }
         </a>
       </div>
 
-      <!-- Card direito -->
+      <!-- Direita: card glassmorphism -->
       <div class="hero__card">
         <div class="hero__card-title">O que está incluído</div>
-        <div class="hero__feature-list">
+        <div class="hero__feature-grid">
           <div class="hero__feature">
             <div class="hero__feature-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             </div>
-            <div class="hero__feature-body">
+            <div>
               <div class="hero__feature-label">Aulas gravadas</div>
-              <div class="hero__feature-desc">Acesso completo para assistir no seu ritmo</div>
+              <div class="hero__feature-desc">Escolha como e quando assistir no seu ritmo</div>
             </div>
           </div>
           <div class="hero__feature">
             <div class="hero__feature-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-            <div class="hero__feature-body">
+            <div>
               <div class="hero__feature-label">Encontros ao vivo</div>
-              <div class="hero__feature-desc">Aulas online com as professoras</div>
+              <div class="hero__feature-desc">Aulas online com apoio e interação</div>
             </div>
           </div>
           <div class="hero__feature">
             <div class="hero__feature-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
             </div>
-            <div class="hero__feature-body">
+            <div>
               <div class="hero__feature-label">Plantão de dúvidas</div>
               <div class="hero__feature-desc">Suporte educacional especializado</div>
             </div>
           </div>
           <div class="hero__feature">
             <div class="hero__feature-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             </div>
-            <div class="hero__feature-body">
+            <div>
               <div class="hero__feature-label">Material complementar</div>
-              <div class="hero__feature-desc">Protocolos e referências científicas</div>
+              <div class="hero__feature-desc">Protocolos, referências e científicas</div>
             </div>
           </div>
-          <div class="hero__feature">
+          <div class="hero__feature" style="grid-column: span 2;">
             <div class="hero__feature-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2-5H7l-2 5M3 7l2-2 2 2M17 7l2-2 2 2M9 12h6"/><circle cx="12" cy="20" r="1"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
             </div>
-            <div class="hero__feature-body">
+            <div>
               <div class="hero__feature-label">Certificado Allaser</div>
               <div class="hero__feature-desc">Reconhecimento nacional na área</div>
             </div>
@@ -1010,11 +1088,10 @@ img { display: block; max-width: 100%; }
      2 — DOR + OPORTUNIDADE
 ══════════════════════════════════════════════════ -->
 <section class="pain">
-  <div class="orb pain__orb"></div>
   <div class="lp-wrap" style="position:relative;z-index:2;">
     <div class="sec-eyebrow">O cenário clínico</div>
     <div class="pain__header">
-      <h2 class="pain__title">Sua paciente convive com <span>condições que merecem mais</span> do que tratamentos convencionais</h2>
+      <h2 class="pain__title">Sua paciente convive com <em>condições que merecem mais</em> do que tratamentos convencionais</h2>
       <p class="pain__intro">Milhares de mulheres enfrentam diariamente condições que limitam sua qualidade de vida — e muitos profissionais ainda não sabem como abordar esses casos com Laserterapia de forma estratégica.</p>
     </div>
 
@@ -1053,95 +1130,94 @@ img { display: block; max-width: 100%; }
      3 — O QUE VAI APRENDER
 ══════════════════════════════════════════════════ -->
 <section class="learn">
-  <div class="learn__bg"></div>
   <div class="lp-wrap" style="position:relative;z-index:2;">
-    <div class="sec-eyebrow sec-eyebrow--lime">Programa completo</div>
+    <div class="sec-eyebrow">Programa completo</div>
     <div class="learn__header">
       <h2 class="learn__title">Conteúdo <em>aplicável</em> do início ao protocolo</h2>
     </div>
 
     <div class="learn__modules">
 
-      <div class="learn__module learn__module--pink">
+      <div class="learn__module">
         <div class="learn__module-num">Módulo 01</div>
         <div class="learn__module-title">Fundamentos da Fotobiomodulação</div>
         <div class="learn__items">
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Princípios da luz e interação tecidual
           </div>
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Modalidades terapêuticas
           </div>
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Parâmetros clínicos essenciais
           </div>
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Base científica e evidências
           </div>
         </div>
       </div>
 
-      <div class="learn__module learn__module--purple">
+      <div class="learn__module">
         <div class="learn__module-num">Módulo 02</div>
         <div class="learn__module-title">Aplicações Clínicas — Saúde da Mulher</div>
         <div class="learn__items">
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             TPM e alterações hormonais
           </div>
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Dores pélvicas e endometriose
           </div>
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Candidíase vaginal recorrente
           </div>
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Secura vaginal e menopausa
           </div>
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Pós-operatório de cirurgia íntima
           </div>
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Infertilidade feminina
           </div>
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Incontinência urinária
           </div>
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Dispareunia e dor íntima
           </div>
         </div>
       </div>
 
-      <div class="learn__module learn__module--lime">
+      <div class="learn__module">
         <div class="learn__module-num">Módulo 03</div>
         <div class="learn__module-title">Protocolos Clínicos Aplicados</div>
         <div class="learn__items">
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Estruturação de protocolos
           </div>
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Lógica terapêutica por condição
           </div>
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Aplicação prática e segura
           </div>
           <div class="learn__item">
-            <div class="learn__check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="learn__check"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             Cuidados e contraindicações
           </div>
         </div>
@@ -1155,76 +1231,57 @@ img { display: block; max-width: 100%; }
      4 — DIFERENCIAIS
 ══════════════════════════════════════════════════ -->
 <section class="diff">
-  <div class="orb diff__orb"></div>
-  <div class="lp-wrap" style="position:relative;z-index:2;">
+  <div class="lp-wrap">
     <div class="diff__inner">
       <div class="diff__left">
-        <div class="sec-eyebrow sec-eyebrow--lime">Por que escolher este curso</div>
-        <h2 class="diff__title">Abordagem que vai <span>além da teoria</span></h2>
+        <div class="sec-eyebrow">Por que escolher este curso</div>
+        <h2 class="diff__title">Abordagem que vai <em>além da teoria</em></h2>
         <p class="diff__desc">
           O curso foi estruturado para que você saia com raciocínio clínico, segurança e protocolos prontos para aplicar na rotina — não apenas com slides para estudar.
         </p>
         <div class="diff__pills">
-          <div class="diff__pill">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-            100% online
-          </div>
-          <div class="diff__pill">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-            Baseado em evidências
-          </div>
-          <div class="diff__pill">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-            Encontros ao vivo
-          </div>
-          <div class="diff__pill">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-            Certificado reconhecido
-          </div>
-          <div class="diff__pill">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-            Suporte educacional
-          </div>
-          <div class="diff__pill">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-            Início imediato
-          </div>
+          <div class="diff__pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>100% online</div>
+          <div class="diff__pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Baseado em evidências</div>
+          <div class="diff__pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Encontros ao vivo</div>
+          <div class="diff__pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Certificado reconhecido</div>
+          <div class="diff__pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Suporte educacional</div>
+          <div class="diff__pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Início imediato</div>
         </div>
       </div>
 
       <div class="diff__right">
         <div class="diff__card">
-          <div class="diff__card-icon diff__card-icon--pink">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <div class="diff__card-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
-          <div class="diff__card-body">
+          <div>
             <div class="diff__card-title">Raciocínio clínico estruturado</div>
             <div class="diff__card-desc">Entenda o porquê por trás de cada protocolo</div>
           </div>
         </div>
         <div class="diff__card">
-          <div class="diff__card-icon diff__card-icon--purple">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <div class="diff__card-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
-          <div class="diff__card-body">
+          <div>
             <div class="diff__card-title">Protocolos prontos para aplicar</div>
             <div class="diff__card-desc">Saia do curso apto a atender com segurança</div>
           </div>
         </div>
         <div class="diff__card">
-          <div class="diff__card-icon diff__card-icon--lime">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+          <div class="diff__card-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
           </div>
-          <div class="diff__card-body">
+          <div>
             <div class="diff__card-title">Abordagem humanizada e feminina</div>
             <div class="diff__card-desc">Visão integrativa da saúde da mulher</div>
           </div>
         </div>
         <div class="diff__card">
-          <div class="diff__card-icon diff__card-icon--pink">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <div class="diff__card-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </div>
-          <div class="diff__card-body">
+          <div>
             <div class="diff__card-title">Certificado Allaser</div>
             <div class="diff__card-desc">Reconhecimento nacional em laserterapia</div>
           </div>
@@ -1238,8 +1295,6 @@ img { display: block; max-width: 100%; }
      5 — PROFESSORAS
 ══════════════════════════════════════════════════ -->
 <section class="professors">
-  <div class="orb professors__orb-1"></div>
-  <div class="orb professors__orb-2"></div>
   <div class="lp-wrap" style="position:relative;z-index:2;">
     <div class="professors__header">
       <div class="sec-eyebrow" style="justify-content:center;">Quem vai te ensinar</div>
@@ -1249,7 +1304,7 @@ img { display: block; max-width: 100%; }
 
     <div class="professors__grid">
 
-      <div class="prof-card prof-card--daiane">
+      <div class="prof-card">
         <div class="prof-card__photo-wrap">
           <img src="/assets/images/prof-daiane2.webp" alt="Dra. Daiane Meneguzzo" class="prof-card__photo">
         </div>
@@ -1266,7 +1321,7 @@ img { display: block; max-width: 100%; }
         </div>
       </div>
 
-      <div class="prof-card prof-card--gabriella">
+      <div class="prof-card">
         <div class="prof-card__photo-wrap">
           <img src="/assets/images/prof-gabriella.webp" alt="Gabriella Darbello Torres Lopes" class="prof-card__photo">
         </div>
@@ -1285,8 +1340,8 @@ img { display: block; max-width: 100%; }
 
     </div>
 
-    <div style="text-align:center;margin-top:48px;">
-      <p style="font-size:0.9rem;color:var(--text-muted);max-width:620px;margin:0 auto;line-height:1.75;">
+    <div style="text-align:center;margin-top:48px;position:relative;z-index:1;">
+      <p style="font-size:0.9rem;color:var(--text-muted);max-width:600px;margin:0 auto;line-height:1.8;">
         Juntas, unem ciência, experiência e inovação para oferecer um ensino atualizado, seguro e fundamentado em evidências — com foco real na transformação da vida dos pacientes.
       </p>
     </div>
@@ -1297,44 +1352,43 @@ img { display: block; max-width: 100%; }
      6 — BENEFÍCIOS
 ══════════════════════════════════════════════════ -->
 <section class="benefits">
-  <div class="benefits__bg"></div>
   <div class="lp-wrap">
     <div class="benefits__header">
-      <div class="sec-eyebrow sec-eyebrow--lime" style="justify-content:center;">Transformação profissional</div>
-      <h2 class="benefits__title">O que muda na sua <span>prática clínica</span></h2>
+      <div class="sec-eyebrow" style="justify-content:center;">Transformação profissional</div>
+      <h2 class="benefits__title">O que muda na sua <em>prática clínica</em></h2>
     </div>
     <div class="benefits__grid">
       <div class="benefit-card">
         <div class="benefit-card__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
         <div class="benefit-card__title">Novas possibilidades terapêuticas</div>
         <div class="benefit-card__desc">Amplie seu arsenal clínico com protocolos não invasivos e eficazes</div>
       </div>
       <div class="benefit-card">
         <div class="benefit-card__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
         <div class="benefit-card__title">Protocolos com previsibilidade</div>
         <div class="benefit-card__desc">Resultados mais consistentes e seguros para suas pacientes</div>
       </div>
       <div class="benefit-card">
         <div class="benefit-card__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
         <div class="benefit-card__title">Diferencial competitivo</div>
         <div class="benefit-card__desc">Destaque-se num mercado que valoriza inovação e especialização</div>
       </div>
       <div class="benefit-card">
         <div class="benefit-card__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
         <div class="benefit-card__title">Maior valor percebido</div>
         <div class="benefit-card__desc">Pacientes que reconhecem e valorizam uma abordagem diferenciada</div>
       </div>
       <div class="benefit-card">
         <div class="benefit-card__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
         </div>
         <div class="benefit-card__title">Expansão da atuação clínica</div>
         <div class="benefit-card__desc">Atenda condições que antes estavam fora do seu escopo</div>
@@ -1347,9 +1401,6 @@ img { display: block; max-width: 100%; }
      7 — CTA FINAL
 ══════════════════════════════════════════════════ -->
 <section class="final-cta">
-  <div class="orb final-cta__orb-1"></div>
-  <div class="final-cta__glow-line"></div>
-
   <div class="lp-wrap final-cta__inner">
     <div class="final-cta__eyebrow">
       <span></span> Próximo passo <span></span>
@@ -1370,15 +1421,15 @@ img { display: block; max-width: 100%; }
 
     <div class="final-cta__trust">
       <div class="final-cta__trust-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
         Acesso imediato após inscrição
       </div>
       <div class="final-cta__trust-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
         Certificado Allaser incluso
       </div>
       <div class="final-cta__trust-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
         Professoras com Doutorado USP
       </div>
     </div>
