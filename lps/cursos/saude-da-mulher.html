@@ -281,6 +281,8 @@ img { display: block; max-width: 100%; }
 .hero__mobile-img { display: none; }
 /* Subtítulo curto — oculto por padrão, visível só no mobile */
 .hero__sub--mobile { display: none; }
+/* CTA mobile-only — oculto por padrão */
+.hero__cta--mobile { display: none; }
 
 .hero__feature-grid {
   display: grid;
@@ -992,7 +994,7 @@ img { display: block; max-width: 100%; }
   .hero__inner {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     height: 100svh;
     padding: 40px 20px 14px;
     gap: 0;
@@ -1018,6 +1020,17 @@ img { display: block; max-width: 100%; }
 
   /* Título maior — quebra em 4 linhas como na referência */
   .hero__title { font-size: 2.6rem; margin-bottom: 10px; text-align: left; line-height: 1.0; }
+
+  /* CTA original oculto no mobile */
+  .hero__left .btn-cta { display: none; }
+
+  /* CTA mobile-only: empurrado para baixo com margin-top auto, acima do card */
+  .hero__cta--mobile {
+    display: inline-flex;
+    margin-top: auto;
+    margin-bottom: 10px;
+    align-self: flex-start;
+  }
 
   /* Subtítulo: versão longa oculta, versão curta mobile visível */
   .hero__sub         { display: none; }
@@ -1137,6 +1150,12 @@ img { display: block; max-width: 100%; }
     <img class="hero__mobile-img"
          src="/assets/images/hero-saude-mulher-mobile-v6.png"
          alt="Laserterapia na Saúde da Mulher">
+
+    <!-- CTA mobile-only: posicionado acima do card, empurrado para baixo -->
+    <a href="#" onclick="abrirModal(event)" class="btn-cta hero__cta--mobile">
+      Quero garantir minha vaga
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
 
     <!-- Direita: card ancorado no fundo da coluna -->
     <div class="hero__card-col">
