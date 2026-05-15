@@ -1041,20 +1041,20 @@ img { display: block; max-width: 100%; }
   .hero__card {
     width: 100%;
     border-radius: 0;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-    padding: 16px 20px 20px;
-    background: rgba(5,5,7,0.78);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    border: none;
+    padding: 14px 20px 18px;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
   }
+  .hero__card::before { display: none; }
   .hero__card-title   { margin-bottom: 12px; padding-bottom: 10px; font-size: 0.65rem; }
-  .hero__feature-grid { gap: 10px 14px; }
-  .hero__feature      { gap: 8px; }
-  .hero__feature-icon { width: 26px; height: 26px; border-radius: 7px; }
-  .hero__feature-label { font-size: 0.78rem; }
-  .hero__feature-desc  { font-size: 0.68rem; }
+  .hero__feature-grid { gap: 8px 14px; }
+  .hero__feature      { gap: 8px; align-items: center; }
+  .hero__feature-icon { width: 26px; height: 26px; border-radius: 7px; flex-shrink: 0; }
+  .hero__feature-label { font-size: 0.78rem; margin-bottom: 0; }
+  .hero__feature-desc  { display: none; }
 
   .lp-wrap { padding: 0 20px; }
   .pain      { padding: 72px 0; }
