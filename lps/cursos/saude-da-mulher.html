@@ -136,24 +136,28 @@ img { display: block; max-width: 100%; }
 ══════════════════════════════════════════════════════ */
 .hero {
   position: relative;
-  height: 800px;
+  height: 100vh;
+  min-height: 700px;
+  max-height: 920px;
   display: flex;
   align-items: stretch;
   overflow: hidden;
-  /* Overlay: escuro no lado esquerdo (texto), transparente no direito (imagem) */
   background:
-    linear-gradient(100deg,
-      rgba(5,5,7,0.97) 0%,
-      rgba(5,5,7,0.93) 30%,
-      rgba(5,5,7,0.60) 50%,
-      rgba(5,5,7,0.22) 72%,
-      rgba(5,5,7,0.10) 100%),
-    linear-gradient(180deg,
-      rgba(5,5,7,0.10) 0%,
-      transparent 25%,
-      transparent 55%,
-      rgba(5,5,7,0.80) 100%),
-    url('https://novo.allaser.com.br/assets/images/hero-saude-mulher-desktop-v4.png') center top / cover no-repeat;
+    url('/assets/images/hero-saude-mulher-desktop-v5.png') center top / cover no-repeat;
+}
+
+/* Overlay sutil só na esquerda para legibilidade do texto */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg,
+    rgba(5,5,7,0.82) 0%,
+    rgba(5,5,7,0.60) 30%,
+    rgba(5,5,7,0.15) 55%,
+    transparent 75%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero__inner {
@@ -161,11 +165,11 @@ img { display: block; max-width: 100%; }
   z-index: 2;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 460px;
-  gap: 0 60px;
-  height: 800px;
-  padding: 80px 32px 64px;
-  max-width: 1164px;
+  grid-template-columns: 42% 1fr;
+  gap: 0;
+  height: 100%;
+  padding: 72px 48px 0 64px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -175,6 +179,7 @@ img { display: block; max-width: 100%; }
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  padding-right: 24px;
 }
 
 /* coluna direita — card ancorado no fundo */
@@ -182,7 +187,8 @@ img { display: block; max-width: 100%; }
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 8px;
+  padding-bottom: 48px;
+  padding-right: 48px;
 }
 
 /* Badges */
@@ -218,9 +224,9 @@ img { display: block; max-width: 100%; }
 /* Headline */
 .hero__title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.7rem, 5.5vw, 4.4rem);
+  font-size: clamp(2.8rem, 4.2vw, 4.8rem);
   font-weight: 900;
-  line-height: 1.03;
+  line-height: 1.0;
   letter-spacing: -0.025em;
   color: #fff;
   margin-bottom: 26px;
@@ -266,13 +272,14 @@ img { display: block; max-width: 100%; }
   background: linear-gradient(90deg, transparent, rgba(174,191,60,0.5), transparent);
 }
 .hero__card-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
   font-weight: 700;
-  line-height: 1.25;
+  letter-spacing: 0.04em;
   color: var(--lime);
-  display: flex;
-  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 /* Mobile hero image — oculta por padrão, visível só no mobile */
@@ -285,7 +292,7 @@ img { display: block; max-width: 100%; }
 .hero__feature-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px 20px;
+  gap: 16px 24px;
   align-items: start;
 }
 .hero__feature-col {
@@ -977,6 +984,7 @@ img { display: block; max-width: 100%; }
     padding: 100px 28px 72px;
     gap: 0;
   }
+  .hero__left { padding: 0; }
   .hero__card-col { display: none; } /* card aparece só no desktop */
   .learn__modules { grid-template-columns: 1fr; }
   .diff__inner { grid-template-columns: 1fr; gap: 52px; }
@@ -984,123 +992,148 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 640px) {
-  /* Hero mobile — imagem como background full-width (esq. já é preto na imagem) */
+  /* Hero mobile — v5 como background, texto sobreposto esquerda, CTA abaixo da imagem.
+     Imagem: 1080×1920px (ratio 16:9 portrait = 1.7778).
+     hero__left min-height = 100vw * 1.7778 * 0.86 ≈ 152.9vw → CTA aparece em ~87% da imagem. */
   .hero {
     background:
-      var(--bg) url('https://novo.allaser.com.br/assets/images/hero-saude-mulher-mobile-v7.png') left top / 100% auto no-repeat;
+      var(--bg) url('/assets/images/hero-saude-mulher-mobile-v6.png') center top / 100% auto no-repeat;
     height: auto;
     min-height: 0;
     overflow: visible;
   }
+  /* Desativa gradiente — a v5 já tem escurecimento próprio à esquerda para legibilidade */
+  .hero::before { display: none; }
+
   .hero__inner {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     height: auto;
     min-height: 0;
-    padding: 36px 0 0 16px;
+    padding: 0 20px 0;
     gap: 0;
     align-items: flex-start;
     text-align: left;
   }
-  /* Tudo que é texto fica contido nos ~48% esquerdo (área preta da imagem) */
   .hero__left {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start; /* sobrescreve o center do base CSS */
     align-items: flex-start;
     flex-shrink: 0;
-    width: 48%;
-    padding-right: 6px; /* espaço para o border-radius do CTA não ser clipado */
+    width: 100%;
+    /* 142.2vw − 7.7vw (≈30px em 390px) = 134.5vw → CTA sobe ~30px */
+    min-height: 134.5vw;
   }
 
-  /* Badges — linha horizontal única */
+  /* Badges — wrap permitido para não transbordar em telas estreitas */
   .hero__badges {
-    flex-direction: column;
-    flex-wrap: nowrap;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 4px;
-    margin-bottom: 12px;
+    gap: 6px;
+    margin-bottom: 16px;
+    padding-top: 16px;
   }
-  .hero__badge { font-size: 0.52rem; padding: 4px 8px; gap: 4px; white-space: nowrap; }
+  .hero__badge { font-size: 0.58rem; padding: 5px 10px; gap: 5px; white-space: nowrap; }
 
-  /* Título — cabe na col. esq. sem extravazar */
-  .hero__title { font-size: 1.9rem; margin-bottom: 8px; text-align: left; line-height: 1.0; }
+  /* Título */
+  .hero__title { font-size: 2.6rem; margin-bottom: 14px; text-align: left; line-height: 1.0; }
 
-  /* CTA — cabe numa linha dentro da coluna */
-  .hero__left .btn-cta {
-    display: inline-flex;
-    font-size: 0.7rem;
-    padding: 11px 14px;
-    gap: 7px;
-    margin-top: 16px;
-    white-space: nowrap;
-  }
-  .hero__cta--mobile { display: none; }
-
-  /* Subtítulo: versão curta mobile visível */
-  .hero__sub         { display: none; }
-  .hero__sub--mobile {
+  /* Subtítulo — ~45% para deixar a ilustração visível à direita */
+  .hero__sub {
     display: block;
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    line-height: 1.45;
+    font-size: 0.85rem;
+    max-width: 45%;
     margin-bottom: 0;
-    max-width: 100%;
+    line-height: 1.65;
   }
-  .hero__sub--mobile em { font-style: normal; color: var(--lime); }
+  .hero__sub--mobile { display: none; }
 
-  /* Foto: oculta — usada apenas como background */
+  /* CTA inline oculto */
+  .hero__left .btn-cta { display: none; }
+
+  /* Imagem mobile — oculta (usada via CSS background) */
   .hero__mobile-img { display: none !important; }
 
-  /* Card — full width, posicionado próximo aos braços da modelo */
-  .hero__card-col {
+  /* CTA mobile — menor e mais acima */
+  .hero__cta--mobile {
     display: flex;
+    align-self: stretch;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 13px 24px;
+    margin-top: 16px;
+    border-radius: 99px;
     width: 100%;
-    margin-top: 180px;
-    position: static;
+    box-sizing: border-box;
+  }
+
+  /* Card — 94vw, centralizado via margin: auto */
+  .hero__card-col {
+    display: block;               /* sai do contexto flex para block simples */
+    flex-shrink: 0;
+    width: 100vw;                 /* viewport inteiro — referência inequívoca */
+    margin-left: -20px;           /* compensa o padding-left do hero__inner */
+    margin-top: 16px;
+    padding-right: 0;             /* sobrescreve padding-right: 48px do base */
+    padding-bottom: 32px;
   }
   .hero__card {
-    width: 100%;
-    border-radius: 14px;
-    border: 1px solid rgba(174,191,60,0.15);
-    padding: 10px 10px;
-    background: rgba(5,5,7,0.82);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+    width: 94%;
+    margin: 0 auto;              /* centraliza de forma confiável */
+    border-radius: 16px;
+    border: 1px solid rgba(174,191,60,0.22);
+    padding: 18px 14px;
+    background: rgba(5,5,7,0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.6);
   }
   .hero__card::before { display: none; }
-  .hero__card-title   { display: none; }
 
-  /* grade 6 colunas × 2 linhas, alturas iguais */
-  .hero__feature-col  { display: contents; }
+  /* Título do card — col 1 linha 1, ao lado do primeiro tópico */
+  .hero__card-title {
+    display: flex;
+    align-items: center;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--lime);
+    /* sem border-bottom nem grid-column span — ocupa só col 1 */
+  }
+
+  /* Grid 3 linhas × 2 colunas: título na linha 1 col 1, tópicos preenchem o restante */
+  .hero__feature-col { display: contents; }
   .hero__feature-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 70px 70px;
-    gap: 6px;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 12px;
+    align-items: start;
   }
-  /* posicionamento 100% explícito via grid-area (row-start/col-start/row-end/col-end) */
-  .hero__feature:nth-child(2) { grid-area: 1 / 1 / 2 / 3; }
-  .hero__feature:nth-child(3) { grid-area: 1 / 3 / 2 / 5; }
-  .hero__feature:nth-child(4) { grid-area: 1 / 5 / 2 / 7; }
-  .hero__feature--r2           { grid-area: 2 / 2 / 3 / 4; }
-  .hero__feature--r2 ~ .hero__feature--r2 { grid-area: 2 / 4 / 3 / 6; }
+  /* Reseta grid-area explícito do layout compacto anterior */
+  .hero__feature:nth-child(2) { grid-area: auto; }
+  .hero__feature:nth-child(3) { grid-area: auto; }
+  .hero__feature:nth-child(4) { grid-area: auto; }
+  .hero__feature--r2           { grid-area: auto; }
+  .hero__feature--r2 ~ .hero__feature--r2 { grid-area: auto; }
+
   .hero__feature {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 9px;
-    padding: 8px 7px;
-    overflow: hidden;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    overflow: visible;
     min-height: unset;
-    height: 100%;
+    height: auto;
   }
-  .hero__feature-icon  { width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0; }
-  .hero__feature-label { font-size: 0.64rem; line-height: 1.3; margin-bottom: 0; text-align: center; }
-  .hero__feature-desc  { display: none; }
+  .hero__feature-icon  { width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0; margin-top: 2px; }
+  .hero__feature-label { font-size: 0.76rem; font-weight: 700; line-height: 1.3; margin-bottom: 2px; text-align: left; }
+  .hero__feature-desc  { display: block; font-size: 0.65rem; color: var(--text-dim); line-height: 1.45; }
 
   .lp-wrap { padding: 0 20px; }
   .pain      { padding: 72px 0; }
@@ -1207,8 +1240,9 @@ img { display: block; max-width: 100%; }
     <div class="hero__card-col">
       <div class="hero__card">
         <div class="hero__feature-grid">
-          <!-- Linha 1: título | Plantão de dúvidas -->
+          <!-- R1C1: título -->
           <div class="hero__card-title">O que está incluído</div>
+          <!-- R1C2: Plantão de dúvidas -->
           <div class="hero__feature">
             <div class="hero__feature-icon">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
@@ -1218,7 +1252,7 @@ img { display: block; max-width: 100%; }
               <div class="hero__feature-desc">Suporte educacional especializado</div>
             </div>
           </div>
-          <!-- Linha 2: Aulas gravadas | Material complementar -->
+          <!-- R2C1: Aulas gravadas -->
           <div class="hero__feature">
             <div class="hero__feature-icon">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
@@ -1228,6 +1262,7 @@ img { display: block; max-width: 100%; }
               <div class="hero__feature-desc">Escolha como e quando assistir no seu ritmo</div>
             </div>
           </div>
+          <!-- R2C2: Material complementar -->
           <div class="hero__feature">
             <div class="hero__feature-icon">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -1237,8 +1272,8 @@ img { display: block; max-width: 100%; }
               <div class="hero__feature-desc">Protocolos, referências e científicas</div>
             </div>
           </div>
-          <!-- Linha 3: Encontros ao vivo | Certificado Allaser -->
-          <div class="hero__feature hero__feature--r2">
+          <!-- R3C1: Encontros ao vivo -->
+          <div class="hero__feature">
             <div class="hero__feature-icon">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
@@ -1247,6 +1282,7 @@ img { display: block; max-width: 100%; }
               <div class="hero__feature-desc">Aulas online com apoio e interação</div>
             </div>
           </div>
+          <!-- R3C2: Certificado Allaser -->
           <div class="hero__feature hero__feature--r2">
             <div class="hero__feature-icon">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
