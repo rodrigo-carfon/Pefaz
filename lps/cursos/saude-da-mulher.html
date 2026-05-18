@@ -988,38 +988,46 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 640px) {
-  /* ── Hero mobile: background cover, card e CTA absolutamente posicionados no fundo ── */
+  /* ── Hero mobile: fluxo vertical natural — sem position absolute ──
+     Ordem: badges → título → subtítulo → imagem (background crop) → CTA → card */
 
   .hero {
     background: var(--bg) url('/assets/images/hero-saude-mulher-mobile-v9.png') center -30px / cover no-repeat;
     position: relative;
     height: auto;
-    min-height: 100svh;
-    overflow: hidden;
+    min-height: 0;
+    overflow: visible;
   }
-  .hero::before { display: none; }
+  /* gradiente na parte inferior para o card ser legível sobre a imagem */
+  .hero::before {
+    display: block;
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      transparent 45%,
+      rgba(5,5,7,0.7) 65%,
+      rgba(5,5,7,0.97) 82%,
+      var(--bg) 100%);
+  }
 
-  /* hero__inner: apenas texto no topo, empurra altura mínima p/ dar espaço ao card+CTA */
   .hero__inner {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     height: auto;
-    min-height: 100svh;
-    padding: 0 20px;
-    padding-bottom: 200px; /* reserva espaço para card (~140px) + CTA (~60px) */
+    min-height: 0;
+    padding: 0 20px 40px;
     box-sizing: border-box;
     gap: 0;
   }
 
-  /* Texto no topo */
   .hero__left {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
-    min-height: 0;
+    /* espaço para a imagem respirar antes do CTA */
+    padding-bottom: 52vw;
   }
 
   .hero__badges {
@@ -1027,34 +1035,49 @@ img { display: block; max-width: 100%; }
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 6px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     padding-top: 16px;
   }
   .hero__badge { font-size: 0.58rem; padding: 5px 10px; gap: 5px; white-space: nowrap; }
 
   .hero__title { font-size: 2.4rem; margin-bottom: 12px; text-align: left; line-height: 1.0; }
 
-  .hero__sub {
+  /* subtítulo desktop oculto — usa versão curta mobile */
+  .hero__sub { display: none; }
+  .hero__sub--mobile {
     display: block;
-    font-size: 0.83rem;
-    max-width: 52%;
-    margin-bottom: 0;
+    font-size: 0.85rem;
     line-height: 1.6;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.9), 0 0 24px rgba(0,0,0,0.7);
+    color: rgba(255,255,255,0.82);
+    max-width: 85%;
+    margin-bottom: 0;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.9);
   }
-  .hero__sub--mobile { display: none; }
+  .hero__sub--mobile em { font-style: normal; color: var(--lime); font-weight: 600; }
 
+  /* CTA desktop oculto */
   .hero__left .btn-cta { display: none; }
   .hero__mobile-img { display: none !important; }
 
-  /* Card: absoluto na parte inferior da hero, acima do CTA */
+  /* CTA mobile: fluxo normal, após hero__left */
+  .hero__cta--mobile {
+    display: flex;
+    position: static;
+    justify-content: center;
+    font-size: 0.92rem;
+    padding: 14px 24px;
+    margin-bottom: 16px;
+    border-radius: 99px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  /* Card: fluxo normal, abaixo do CTA */
   .hero__card-col {
-    display: block;           /* sobrescreve display:none do breakpoint 960px */
-    position: absolute;
-    left: 16px;
-    right: 16px;
-    bottom: 128px;
-    width: auto;
+    display: block;
+    position: static;
+    width: 100%;
+    box-sizing: border-box;
     padding: 0;
   }
   .hero__card {
@@ -1063,7 +1086,7 @@ img { display: block; max-width: 100%; }
     border-radius: 16px;
     border: 1px solid rgba(174,191,60,0.22);
     padding: 18px 16px;
-    background: rgba(5,5,7,0.90);
+    background: rgba(5,5,7,0.95);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     box-shadow: 0 4px 40px rgba(0,0,0,0.6);
@@ -1102,21 +1125,6 @@ img { display: block; max-width: 100%; }
   .hero__feature-icon  { width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0; margin-top: 2px; }
   .hero__feature-label { font-size: 0.74rem; font-weight: 700; line-height: 1.3; margin-bottom: 2px; text-align: left; }
   .hero__feature-desc  { display: block; font-size: 0.63rem; color: var(--text-dim); line-height: 1.4; }
-
-  /* CTA: absoluto no fundo da hero */
-  .hero__cta--mobile {
-    position: absolute;
-    left: 16px;
-    right: 16px;
-    bottom: 64px;
-    width: auto;
-    display: flex;
-    justify-content: center;
-    font-size: 0.92rem;
-    padding: 14px 24px;
-    border-radius: 99px;
-    box-sizing: border-box;
-  }
 
   .lp-wrap { padding: 0 20px; }
   .pain      { padding: 72px 0; }
@@ -1210,7 +1218,7 @@ img { display: block; max-width: 100%; }
 
     <!-- Mobile-only: imagem hero exibida como bloco abaixo do CTA -->
     <img class="hero__mobile-img"
-         src="/assets/images/hero-saude-mulher-mobile-v7.png"
+         src="/assets/images/hero-saude-mulher-mobile-v9.png"
          alt="Laserterapia na Saúde da Mulher">
 
     <!-- CTA mobile-only: posicionado acima do card, empurrado para baixo -->
@@ -1504,7 +1512,7 @@ img { display: block; max-width: 100%; }
 
       <div class="prof-card">
         <div class="prof-card__photo-wrap">
-          <img src="https://novo.allaser.com.br/assets/images/prof-daiane2.webp" alt="Dra. Daiane Meneguzzo" class="prof-card__photo">
+          <img src="/assets/images/prof-daiane2.webp" alt="Dra. Daiane Meneguzzo" class="prof-card__photo">
         </div>
         <div class="prof-card__name">Dra. Daiane Meneguzzo</div>
         <div class="prof-card__role">Doutora pela USP · Laserterapia</div>
@@ -1521,7 +1529,7 @@ img { display: block; max-width: 100%; }
 
       <div class="prof-card">
         <div class="prof-card__photo-wrap">
-          <img src="https://novo.allaser.com.br/assets/images/prof-gabriella.webp" alt="Gabriella Darbello Torres Lopes" class="prof-card__photo">
+          <img src="/assets/images/prof-gabriella.webp" alt="Gabriella Darbello Torres Lopes" class="prof-card__photo">
         </div>
         <div class="prof-card__name">Gabriella Darbello Torres Lopes</div>
         <div class="prof-card__role">Enfermagem · Medicina · Laser</div>
