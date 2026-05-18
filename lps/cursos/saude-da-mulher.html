@@ -143,7 +143,7 @@ img { display: block; max-width: 100%; }
   align-items: stretch;
   overflow: hidden;
   background:
-    url('/assets/images/hero-saude-mulher-desktop-v5.png') center top / cover no-repeat;
+    url('/assets/images/hero-saude-mulher-desktop-v6.png') center top / cover no-repeat;
 }
 
 /* Overlay sutil só na esquerda para legibilidade do texto */
@@ -164,31 +164,29 @@ img { display: block; max-width: 100%; }
   position: relative;
   z-index: 2;
   width: 100%;
-  display: grid;
-  grid-template-columns: 42% 1fr;
-  gap: 0;
   height: 100%;
-  padding: 72px 48px 0 64px;
+  padding: 72px 64px 0;
   max-width: 1440px;
   margin: 0 auto;
 }
 
-/* coluna esquerda — texto centrado verticalmente */
+/* coluna esquerda — texto distribuído a partir do topo */
 .hero__left {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
-  padding-right: 24px;
+  height: 100%;
+  max-width: 580px;
+  padding-top: 48px;
 }
 
-/* coluna direita — card ancorado no fundo */
+/* card — centralizado horizontalmente sobre a mão/flor */
 .hero__card-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: 48px;
-  padding-right: 48px;
+  position: absolute;
+  bottom: 120px;
+  left: 57%;
+  width: 420px;
 }
 
 /* Badges */
@@ -253,16 +251,16 @@ img { display: block; max-width: 100%; }
   font-weight: 600;
 }
 
-/* Card lateral */
+/* Card lateral — elemento secundário, leve e flutuante */
 .hero__card {
-  padding: 36px 32px 40px;
+  padding: 18px 18px 20px;
   position: relative;
-  background: rgba(5,5,7,0.75);
-  border: 1px solid var(--border-lime);
-  border-radius: 24px;
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  box-shadow: 0 8px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(174,191,60,0.08);
+  background: rgba(5,5,7,0.38);
+  border: 1px solid rgba(174,191,60,0.12);
+  border-radius: 16px;
+  backdrop-filter: blur(64px);
+  -webkit-backdrop-filter: blur(64px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
 }
 /* Linha decorativa topo do card */
 .hero__card::before {
@@ -273,13 +271,13 @@ img { display: block; max-width: 100%; }
 }
 .hero__card-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--lime);
-  margin-bottom: 20px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 /* Mobile hero image — oculta por padrão, visível só no mobile */
@@ -292,22 +290,22 @@ img { display: block; max-width: 100%; }
 .hero__feature-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px 24px;
+  gap: 6px 20px;
   align-items: start;
 }
 .hero__feature-col {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 6px;
 }
 .hero__feature {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 10px;
 }
 .hero__feature-icon {
-  width: 32px; height: 32px;
-  border-radius: 9px;
+  width: 26px; height: 26px;
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -318,15 +316,15 @@ img { display: block; max-width: 100%; }
 }
 .hero__feature-label {
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   color: #fff;
   line-height: 1.3;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
 }
 .hero__feature-desc {
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   color: var(--text-dim);
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
 /* ══════════════════════════════════════════════════════
@@ -978,13 +976,11 @@ img { display: block; max-width: 100%; }
 @media (max-width: 960px) {
   .hero { height: auto; min-height: 100svh; }
   .hero__inner {
-    grid-template-columns: 1fr;
     height: auto;
     min-height: 100svh;
     padding: 100px 28px 72px;
-    gap: 0;
   }
-  .hero__left { padding: 0; }
+  .hero__left { max-width: 100%; }
   .hero__card-col { display: none; } /* card aparece só no desktop */
   .learn__modules { grid-template-columns: 1fr; }
   .diff__inner { grid-template-columns: 1fr; gap: 52px; }
@@ -992,42 +988,40 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 640px) {
-  /* Hero mobile — v5 como background, texto sobreposto esquerda, CTA abaixo da imagem.
-     Imagem: 1080×1920px (ratio 16:9 portrait = 1.7778).
-     hero__left min-height = 100vw * 1.7778 * 0.86 ≈ 152.9vw → CTA aparece em ~87% da imagem. */
+  /* ── Hero mobile: background cover, card e CTA absolutamente posicionados no fundo ── */
+
   .hero {
-    background:
-      var(--bg) url('/assets/images/hero-saude-mulher-mobile-v9.png') center top / 100% auto no-repeat;
+    background: var(--bg) url('/assets/images/hero-saude-mulher-mobile-v9.png') center -30px / cover no-repeat;
+    position: relative;
     height: auto;
-    min-height: 0;
-    overflow: visible;
+    min-height: 100svh;
+    overflow: hidden;
   }
-  /* Desativa gradiente — a v5 já tem escurecimento próprio à esquerda para legibilidade */
   .hero::before { display: none; }
 
+  /* hero__inner: apenas texto no topo, empurra altura mínima p/ dar espaço ao card+CTA */
   .hero__inner {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    height: auto;
-    min-height: 0;
-    padding: 0 20px 0;
-    gap: 0;
     align-items: flex-start;
-    text-align: left;
+    height: auto;
+    min-height: 100svh;
+    padding: 0 20px;
+    padding-bottom: 200px; /* reserva espaço para card (~140px) + CTA (~60px) */
+    box-sizing: border-box;
+    gap: 0;
   }
+
+  /* Texto no topo */
   .hero__left {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* sobrescreve o center do base CSS */
+    justify-content: flex-start;
     align-items: flex-start;
-    flex-shrink: 0;
     width: 100%;
-    /* 126.8vw − 7.7vw (≈30px em 390px) = 119.1vw → CTA sobe mais 30px */
-    min-height: 119.1vw;
+    min-height: 0;
   }
 
-  /* Badges — wrap permitido para não transbordar em telas estreitas */
   .hero__badges {
     flex-direction: row;
     flex-wrap: wrap;
@@ -1038,82 +1032,62 @@ img { display: block; max-width: 100%; }
   }
   .hero__badge { font-size: 0.58rem; padding: 5px 10px; gap: 5px; white-space: nowrap; }
 
-  /* Título */
-  .hero__title { font-size: 2.6rem; margin-bottom: 14px; text-align: left; line-height: 1.0; }
+  .hero__title { font-size: 2.4rem; margin-bottom: 12px; text-align: left; line-height: 1.0; }
 
-  /* Subtítulo — ~45% para deixar a ilustração visível à direita */
   .hero__sub {
     display: block;
-    font-size: 0.85rem;
-    max-width: 45%;
+    font-size: 0.83rem;
+    max-width: 52%;
     margin-bottom: 0;
-    line-height: 1.65;
+    line-height: 1.6;
     text-shadow: 0 1px 6px rgba(0,0,0,0.9), 0 0 24px rgba(0,0,0,0.7);
   }
   .hero__sub--mobile { display: none; }
 
-  /* CTA inline oculto */
   .hero__left .btn-cta { display: none; }
-
-  /* Imagem mobile — oculta (usada via CSS background) */
   .hero__mobile-img { display: none !important; }
 
-  /* CTA mobile — menor e mais acima */
-  .hero__cta--mobile {
-    display: flex;
-    align-self: stretch;
-    justify-content: center;
-    font-size: 0.9rem;
-    padding: 13px 24px;
-    margin-top: 16px;
-    border-radius: 99px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  /* Card — 94vw, centralizado via margin: auto */
+  /* Card: absoluto na parte inferior da hero, acima do CTA */
   .hero__card-col {
-    display: block;               /* sai do contexto flex para block simples */
-    flex-shrink: 0;
-    width: 100vw;                 /* viewport inteiro — referência inequívoca */
-    margin-left: -20px;           /* compensa o padding-left do hero__inner */
-    margin-top: 16px;
-    padding-right: 0;             /* sobrescreve padding-right: 48px do base */
-    padding-bottom: 32px;
+    display: block;           /* sobrescreve display:none do breakpoint 960px */
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 128px;
+    width: auto;
+    padding: 0;
   }
   .hero__card {
-    width: 94%;
-    margin: 0 auto;              /* centraliza de forma confiável */
+    width: 100%;
+    box-sizing: border-box;
     border-radius: 16px;
     border: 1px solid rgba(174,191,60,0.22);
-    padding: 18px 14px;
-    background: rgba(5,5,7,0.96);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    padding: 18px 16px;
+    background: rgba(5,5,7,0.90);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     box-shadow: 0 4px 40px rgba(0,0,0,0.6);
   }
   .hero__card::before { display: none; }
 
-  /* Título do card — col 1 linha 1, ao lado do primeiro tópico */
   .hero__card-title {
-    display: flex;
-    align-items: center;
-    font-size: 0.76rem;
+    display: block;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.05em;
     color: var(--lime);
-    /* sem border-bottom nem grid-column span — ocupa só col 1 */
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
 
-  /* Grid 3 linhas × 2 colunas: título na linha 1 col 1, tópicos preenchem o restante */
   .hero__feature-col { display: contents; }
   .hero__feature-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px 12px;
+    gap: 12px 10px;
     align-items: start;
   }
-  /* Reseta grid-area explícito do layout compacto anterior */
   .hero__feature:nth-child(2) { grid-area: auto; }
   .hero__feature:nth-child(3) { grid-area: auto; }
   .hero__feature:nth-child(4) { grid-area: auto; }
@@ -1121,20 +1095,28 @@ img { display: block; max-width: 100%; }
   .hero__feature--r2 ~ .hero__feature--r2 { grid-area: auto; }
 
   .hero__feature {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 8px;
-    background: none;
-    border-radius: 0;
-    padding: 0;
-    overflow: visible;
-    min-height: unset;
-    height: auto;
+    flex-direction: row; align-items: flex-start; justify-content: flex-start;
+    gap: 8px; background: none; border-radius: 0; padding: 0;
+    overflow: visible; min-height: unset; height: auto;
   }
   .hero__feature-icon  { width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0; margin-top: 2px; }
-  .hero__feature-label { font-size: 0.76rem; font-weight: 700; line-height: 1.3; margin-bottom: 2px; text-align: left; }
-  .hero__feature-desc  { display: block; font-size: 0.65rem; color: var(--text-dim); line-height: 1.45; }
+  .hero__feature-label { font-size: 0.74rem; font-weight: 700; line-height: 1.3; margin-bottom: 2px; text-align: left; }
+  .hero__feature-desc  { display: block; font-size: 0.63rem; color: var(--text-dim); line-height: 1.4; }
+
+  /* CTA: absoluto no fundo da hero */
+  .hero__cta--mobile {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 64px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    font-size: 0.92rem;
+    padding: 14px 24px;
+    border-radius: 99px;
+    box-sizing: border-box;
+  }
 
   .lp-wrap { padding: 0 20px; }
   .pain      { padding: 72px 0; }
