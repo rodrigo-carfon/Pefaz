@@ -233,15 +233,17 @@
     .hero-ctas {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 16px;
       flex-wrap: wrap;
+      width: 100%;
     }
 
     .btn-primary {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 16px 32px;
+      padding: 18px 56px;
       background: var(--lime);
       color: var(--dark-900);
       font-family: 'Outfit', sans-serif;
@@ -1332,9 +1334,6 @@
             Garantir minha vaga
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
-          <button class="btn-secondary" onclick="document.getElementById('temas').scrollIntoView({behavior:'smooth'})">
-            Ver conteúdo programático
-          </button>
         </div>
       </div>
 
@@ -1629,23 +1628,6 @@
         <div class="form-group">
           <label for="tel">WhatsApp</label>
           <input type="tel" id="tel" name="telefone" placeholder="(XX) XXXXX-XXXX" required autocomplete="tel">
-        </div>
-
-        <div class="form-group">
-          <label for="profissao">Profissão</label>
-          <select id="profissao" name="profissao" required>
-            <option value="" disabled selected>Selecione sua área</option>
-            <option>Odontologia</option>
-            <option>Fisioterapia</option>
-            <option>Enfermagem</option>
-            <option>Medicina</option>
-            <option>Fonoaudiologia</option>
-            <option>Biomedicina</option>
-            <option>Nutrição</option>
-            <option>Farmácia</option>
-            <option>Psicologia</option>
-            <option>Outra</option>
-          </select>
         </div>
 
         <button type="submit" class="btn-form" id="submitBtn">
