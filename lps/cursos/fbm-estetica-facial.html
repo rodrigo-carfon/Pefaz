@@ -192,13 +192,26 @@ img { display: block; max-width: 100%; }
   background: linear-gradient(90deg, transparent, var(--lime), transparent);
   border-radius: 0 0 3px 3px;
 }
-.hero-card__label {
-  font-size: 0.68rem;
+.hero-card__title-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4px 2px;
+}
+.hero-card__title-cell span {
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--lime);
-  margin-bottom: 18px;
+  margin-bottom: 6px;
+}
+.hero-card__title-cell strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.2;
 }
 .hero-card__items { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .hero-card__item { display: flex; align-items: flex-start; gap: 10px; }
@@ -409,6 +422,11 @@ img { display: block; max-width: 100%; }
 }
 
 .diff__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.diff__cards .diff-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - 8px);
+}
 .diff-card {
   background: var(--bg-card);
   border: 1px solid var(--lime-border);
@@ -524,7 +542,8 @@ img { display: block; max-width: 100%; }
 
 .benefits__header {
   max-width: 620px;
-  margin-bottom: 60px;
+  margin: 0 auto 60px;
+  text-align: center;
 }
 .benefits__header h2 {
   font-family: 'Playfair Display', serif;
@@ -536,7 +555,8 @@ img { display: block; max-width: 100%; }
 }
 .benefits__header p { font-size: 1rem; color: var(--text-muted); line-height: 1.7; }
 
-.benefits__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.benefits__grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.benefit-card { width: calc(33.333% - 14px); min-width: 220px; }
 .benefit-card {
   background: var(--bg-card);
   border: 1px solid var(--lime-border);
@@ -766,11 +786,11 @@ img { display: block; max-width: 100%; }
         rgba(5,5,7,0.55) 30%,
         rgba(5,5,7,0.78) 70%,
         rgba(5,5,7,0.97) 100%),
-      url('/assets/images/fundo-lp-curso-facial2.png') center center / cover no-repeat;
+      url('/assets/images/fundo-lp-curso-facial-mobile.png') center center / cover no-repeat;
   }
   .hero__inner { grid-template-columns: 1fr; }
-  .hero__card-col { display: none; }
-  .hero__text-col { padding: 100px 0 80px; }
+  .hero__card-col { padding: 0 0 48px; align-items: stretch; }
+  .hero__text-col { padding: 100px 0 32px; }
   .pain__grid { grid-template-columns: 1fr 1fr; }
   .module-card { grid-template-columns: 1fr; gap: 24px; }
   .module-num { font-size: 2.5rem; margin-bottom: 4px; }
@@ -784,16 +804,22 @@ img { display: block; max-width: 100%; }
 @media (max-width: 640px) {
   .lp-wrap, .lp-wrap--sm { padding: 0 20px; }
   .hero {
-    min-height: 100svh;
     background:
       linear-gradient(180deg,
-        rgba(5,5,7,0.60) 0%,
-        rgba(5,5,7,0.45) 25%,
-        rgba(5,5,7,0.78) 65%,
-        rgba(5,5,7,1) 100%),
-      url('/assets/images/fundo-lp-curso-facial2.png') top center / cover no-repeat;
+        rgba(5,5,7,0.92) 0%,
+        rgba(5,5,7,0.82) 40%,
+        rgba(5,5,7,0.60) 65%,
+        rgba(5,5,7,0.90) 100%),
+      url('/assets/images/fundo-lp-curso-facial-mobile.png') center center / cover no-repeat;
   }
-  .hero__text-col { padding: 70px 0 56px; }
+  .hero__text-col { padding: 32px 0 28px; }
+  .hero__card-col { padding: 0 0 40px; }
+  .hero-card { padding: 22px 18px; }
+  .hero-card__items { gap: 10px; }
+  .hero-card__icon { width: 28px; height: 28px; border-radius: 8px; }
+  .hero-card__icon svg { width: 13px; height: 13px; }
+  .hero-card__text strong { font-size: 0.8rem; }
+  .hero-card__text span { font-size: 0.70rem; }
   .hero__title { font-size: 2.1rem; }
   .hero__trust { gap: 12px; }
   .btn-cta--lg { font-size: 1rem; padding: 18px 32px; }
@@ -807,8 +833,6 @@ img { display: block; max-width: 100%; }
   .benefits__grid { grid-template-columns: 1fr; }
   .cta-final__box h2 { font-size: 1.9rem; }
   .lp-footer__inner { flex-direction: column; text-align: center; }
-  .sticky-cta { display: block; }
-  body { padding-bottom: 80px; }
   .modal-box { padding: 36px 24px; }
 }
 </style>
@@ -849,8 +873,11 @@ img { display: block; max-width: 100%; }
 
       <div class="hero__card-col">
         <div class="hero-card">
-          <div class="hero-card__label">O que está incluído</div>
           <div class="hero-card__items">
+            <div class="hero-card__title-cell">
+              <span>O que está incluído</span>
+              <strong>Conteúdo do minicurso</strong>
+            </div>
             <div class="hero-card__item">
               <div class="hero-card__icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
@@ -876,15 +903,6 @@ img { display: block; max-width: 100%; }
               <div class="hero-card__text">
                 <strong>Protocolos práticos</strong>
                 <span>Fluxo clínico, indicações, contraindicações e protocolização</span>
-              </div>
-            </div>
-            <div class="hero-card__item">
-              <div class="hero-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <div class="hero-card__text">
-                <strong>Acesso vitalício</strong>
-                <span>Assista quando e quantas vezes quiser</span>
               </div>
             </div>
           </div>
@@ -1029,13 +1047,6 @@ img { display: block; max-width: 100%; }
           <h4>Duas especialistas</h4>
           <p>Perspectivas complementares: biofotônica e laser aplicado à saúde.</p>
         </div>
-        <div class="diff-card">
-          <div class="diff-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <h4>Acesso vitalício</h4>
-          <p>Conteúdo disponível para sempre, assista no seu ritmo e revise quando precisar.</p>
-        </div>
       </div>
     </div>
   </div>
@@ -1144,13 +1155,6 @@ img { display: block; max-width: 100%; }
       </div>
       <div class="benefit-card">
         <div class="benefit-card__icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <h4>Acesso vitalício</h4>
-        <p>Assista no seu tempo, revise os módulos e use como referência na prática clínica.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-card__icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
         <h4>Multiprofissional</h4>
@@ -1180,10 +1184,6 @@ img { display: block; max-width: 100%; }
           <div class="cta-trust-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             Acesso imediato
-          </div>
-          <div class="cta-trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Acesso vitalício
           </div>
         </div>
       </div>
