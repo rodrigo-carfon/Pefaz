@@ -19,6 +19,7 @@ define('KOMMO_SUBDOMAIN',   'allasercursos');
 define('KOMMO_PIPELINE_ID', 13501624);         // pipeline ROBO — fixo
 define('KOMMO_STATUS_ID',   104388432);        // Entrada LP MASTERCLASS
 define('KOMMO_USER_ID',     14365171);         // responsável padrão
+define('SHEETS_URL',        'https://script.google.com/macros/s/AKfycbxTvi1VNUSSvAUK-GTyo4rhd1X9wfunvEUuMVPdI1JesN6FvCTFobWNFuoxIxIq0DqWCQ/exec');
 // ─────────────────────────────────────────────────────
 
 $nome     = trim($_POST['nome']     ?? '');
@@ -49,9 +50,27 @@ if (strlen($digits) === 11) {
     exit;
 }
 
-// Tag combinada: "Masterclass — Nome da Masterclass" (ou só "Masterclass" se lp_nome não chegar)
+// ── 1. Google Sheets ──────────────────────────────────
+$sh = curl_init(SHEETS_URL);
+curl_setopt_array($sh, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POST           => true,
+    CURLOPT_POSTFIELDS     => http_build_query([
+        'nome'      => $nome,
+        'email'     => $email,
+        'telefone'  => $telefone_fmt,
+        'tipo'      => 'Masterclass',
+        'pagina'    => $lp_nome,
+    ]),
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_TIMEOUT        => 10,
+]);
+curl_exec($sh);
+curl_close($sh);
+// ─────────────────────────────────────────────────────
+
+// ── 2. Kommo CRM ──────────────────────────────────────
 $tag_nome = $lp_nome ? 'Masterclass — ' . $lp_nome : 'Masterclass';
-$tags = [['name' => $tag_nome]];
 
 $payload = [[
     'name'        => $nome,
@@ -59,7 +78,7 @@ $payload = [[
     'status_id'   => KOMMO_STATUS_ID,
     'responsible_user_id' => KOMMO_USER_ID,
     '_embedded'   => [
-        'tags'     => $tags,
+        'tags'     => [['name' => $tag_nome]],
         'contacts' => [[
             'name' => $nome,
             'custom_fields_values' => [
@@ -90,6 +109,7 @@ curl_setopt_array($ch, [
 $response  = curl_exec($ch);
 $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
+// ─────────────────────────────────────────────────────
 
 if ($http_code === 200 || $http_code === 201) {
     echo json_encode(['ok' => true]);
