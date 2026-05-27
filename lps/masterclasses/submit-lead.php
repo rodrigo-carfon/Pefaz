@@ -21,12 +21,10 @@ define('KOMMO_STATUS_ID',   104388432);        // Entrada LP MASTERCLASS
 define('KOMMO_USER_ID',     14365171);         // responsável padrão
 // ─────────────────────────────────────────────────────
 
-$body = json_decode(file_get_contents('php://input'), true);
-
-$nome     = trim($body['nome']     ?? '');
-$email    = trim($body['email']    ?? '');
-$telefone = trim($body['telefone'] ?? '');
-$lp_nome  = trim($body['lp_nome']  ?? '');
+$nome     = trim($_POST['nome']     ?? '');
+$email    = trim($_POST['email']    ?? '');
+$telefone = trim($_POST['telefone'] ?? '');
+$lp_nome  = trim($_POST['lp_nome']  ?? '');
 
 if (!$nome || !$email || !$telefone) {
     http_response_code(400);
