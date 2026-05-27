@@ -745,16 +745,18 @@
     .section-benefits .section-sub { color: rgba(255,255,255,0.52); }
 
     .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 24px;
       position: relative;
       z-index: 1;
     }
+    .benefit-item { width: calc(33.333% - 16px); }
 
     .benefit-item {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 16px;
       padding: 28px 24px;
       background: rgba(255,255,255,0.03);
@@ -1382,7 +1384,8 @@
 
       .professor-photo-wrap { max-width: 320px; }
 
-      .benefits-grid { grid-template-columns: 1fr; }
+      .benefits-grid { flex-direction: column; }
+      .benefit-item { width: 100%; }
 
       .cta-box { padding: 52px 32px; }
     }
@@ -1465,7 +1468,7 @@
             <div class="hero-point__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
-            <span>Protocolos clínicos seguros</span>
+            <span>Possibilidades Clínicas</span>
           </div>
           <div class="hero-point">
             <div class="hero-point__icon">
@@ -1521,8 +1524,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
             <div class="hm-card__body">
-              <strong>Protocolos clínicos seguros</strong>
-              <span>Abordagens validadas para mais segurança na prática.</span>
+              <strong>Possibilidades Clínicas</strong>
+              <span>Áreas de atuação da FBM na oncologia.</span>
             </div>
           </div>
           <div class="hm-card">
@@ -1558,7 +1561,7 @@
       <span class="eyebrow">Conteúdo programático</span>
       <h2 class="section-title">O que será abordado</h2>
       <p class="section-sub">
-        Nove temas cuidadosamente selecionados para oferecer uma visão completa,
+        Seis temas cuidadosamente selecionados para oferecer uma visão completa,
         segura e atualizada do uso da fotobiomodulação no contexto oncológico.
       </p>
 
@@ -1566,61 +1569,40 @@
         <div class="topic-card">
           <span class="topic-num">01</span>
           <div class="topic-content">
-            <strong>Mucosite Oral</strong>
-            <span>Prevenção e tratamento com FBM durante a terapia oncológica</span>
+            <strong>Áreas de Atuação da FBM na Oncologia</strong>
+            <span>Mapeamento das principais indicações clínicas da fotobiomodulação no contexto oncológico</span>
           </div>
         </div>
         <div class="topic-card">
           <span class="topic-num">02</span>
           <div class="topic-content">
-            <strong>Trismo</strong>
-            <span>Abordagem fotobiomoduladora nas limitações de abertura bucal pós-tratamento</span>
+            <strong>FBM nos Efeitos Colaterais do Tratamento Oncológico</strong>
+            <span>Abordagem terapêutica para as principais complicações decorrentes da quimioterapia e radioterapia</span>
           </div>
         </div>
         <div class="topic-card">
           <span class="topic-num">03</span>
           <div class="topic-content">
-            <strong>Edema</strong>
-            <span>Manejo e controle do edema linfático e inflamatório no paciente oncológico</span>
+            <strong>Recursos e Modalidades Terapêuticas</strong>
+            <span>Equipamentos, parâmetros e escolha da modalidade ideal para cada cenário clínico</span>
           </div>
         </div>
         <div class="topic-card">
           <span class="topic-num">04</span>
-          <div class="topic-content">
-            <strong>Dor Neuropática</strong>
-            <span>Evidências e aplicações clínicas da FBM no controle da dor neuropática</span>
-          </div>
-        </div>
-        <div class="topic-card">
-          <span class="topic-num">05</span>
-          <div class="topic-content">
-            <strong>Alterações Intestinais</strong>
-            <span>Possibilidades terapêuticas frente às complicações gastrointestinais do tratamento</span>
-          </div>
-        </div>
-        <div class="topic-card">
-          <span class="topic-num">06</span>
-          <div class="topic-content">
-            <strong>Protocolos Clínicos</strong>
-            <span>Parâmetros, doses e frequência de aplicação baseados em evidências científicas</span>
-          </div>
-        </div>
-        <div class="topic-card">
-          <span class="topic-num">07</span>
           <div class="topic-content">
             <strong>Contraindicações</strong>
             <span>Limites éticos e clínicos — quando não utilizar a fotobiomodulação</span>
           </div>
         </div>
         <div class="topic-card">
-          <span class="topic-num">08</span>
+          <span class="topic-num">05</span>
           <div class="topic-content">
             <strong>ILIB na Oncologia</strong>
             <span>Irradiação a laser intravascular de baixa intensidade: indicações e cuidados</span>
           </div>
         </div>
         <div class="topic-card">
-          <span class="topic-num">09</span>
+          <span class="topic-num">06</span>
           <div class="topic-content">
             <strong>Evidências Científicas</strong>
             <span>Análise crítica da literatura atual e perspectivas para a prática baseada em evidências</span>
@@ -1723,15 +1705,6 @@
       </p>
 
       <div class="benefits-grid">
-        <div class="benefit-item">
-          <div class="benefit-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
-          </div>
-          <div class="benefit-text">
-            <strong>Prática baseada em evidências</strong>
-            <p>Aprenda a analisar criticamente a literatura científica e aplicar protocolos com embasamento rigoroso.</p>
-          </div>
-        </div>
         <div class="benefit-item">
           <div class="benefit-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
