@@ -104,8 +104,9 @@ ${FONTS}
 <link rel="stylesheet" href="/assets/shared.css">
 <style>
 .post-hero {
-  background: #0a0a0c;
-  padding: 80px 0 56px;
+  background: #f8f8f6;
+  border-bottom: 1px solid #e8e8e4;
+  padding: 64px 0 48px;
 }
 .post-hero__inner {
   max-width: 760px;
@@ -121,21 +122,21 @@ ${FONTS}
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  background: rgba(174,191,60,0.12);
-  color: #aebf3c;
-  border: 1px solid rgba(174,191,60,0.25);
+  background: rgba(174,191,60,0.15);
+  color: #7a8f1c;
+  border: 1px solid rgba(174,191,60,0.30);
 }
 .post-hero__title {
   font-size: clamp(1.8rem, 4vw, 2.8rem);
   font-weight: 800;
   line-height: 1.15;
-  color: #f4f3ee;
+  color: #111;
   margin-bottom: 20px;
 }
-.post-hero__meta { font-size: 0.85rem; color: rgba(244,243,238,0.40); }
+.post-hero__meta { font-size: 0.85rem; color: #999; }
 .post-featured-wrap {
   width: 100%;
-  background: #0a0a0c;
+  background: #f0f0ec;
   display: flex;
   justify-content: center;
 }
@@ -271,8 +272,9 @@ ${FONTS}
 <style>
 /* ── Blog hero ───────────────────────────────── */
 .blog-hero {
-  background: #0a0a0c;
-  padding: 80px 0 56px;
+  background: #f8f8f6;
+  border-bottom: 1px solid #e8e8e4;
+  padding: 72px 0 56px;
   text-align: center;
 }
 .blog-hero__inner { max-width: 640px; margin: 0 auto; padding: 0 32px; }
@@ -281,11 +283,11 @@ ${FONTS}
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #aebf3c;
+  color: #7a8f1c;
   margin-bottom: 16px;
 }
-.blog-hero__title { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: #f4f3ee; line-height: 1.15; margin-bottom: 16px; }
-.blog-hero__sub { font-size: 1rem; color: rgba(244,243,238,0.50); line-height: 1.7; }
+.blog-hero__title { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: #111; line-height: 1.15; margin-bottom: 16px; }
+.blog-hero__sub { font-size: 1rem; color: #666; line-height: 1.7; }
 
 /* ── Blog main ───────────────────────────────── */
 .blog-main { padding: 64px 0 100px; background: #f8f8f6; }
