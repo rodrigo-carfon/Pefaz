@@ -42,6 +42,9 @@
         <a href="/cursos.html" class="nav__link" data-page="cursos">Cursos</a>
       </div>
       <div class="nav__item">
+        <a href="/sobre.html" class="nav__link" data-page="sobre">Quem Somos</a>
+      </div>
+      <div class="nav__item">
         <a href="/encontre.html" class="nav__link" data-page="encontre">Encontre um Profissional</a>
       </div>
     </nav>
@@ -75,6 +78,9 @@
       </div>
       <div class="mnav__item">
         <a href="/cursos.html" class="mnav__link" data-page="cursos">Cursos</a>
+      </div>
+      <div class="mnav__item">
+        <a href="/sobre.html" class="mnav__link" data-page="sobre">Quem Somos</a>
       </div>
       <div class="mnav__item">
         <a href="/encontre.html" class="mnav__link" data-page="encontre">Encontre um Profissional</a>
@@ -132,7 +138,7 @@
         <h4 class="footer__col-title">Navegação</h4>
         <ul class="footer__links">
           <li><a href="/index.html" class="footer__link">Home</a></li>
-          <li><a href="https://allaser.com.br/sobre/" class="footer__link">Quem Somos</a></li>
+          <li><a href="/sobre.html" class="footer__link">Quem Somos</a></li>
           <li><a href="/cursos.html" class="footer__link">Cursos</a></li>
           <li><a href="https://allaser.com.br/professores-allaser/" class="footer__link">Professores</a></li>
           <li><a href="https://allaser.com.br/?page_id=85" class="footer__link">Blog</a></li>

@@ -890,7 +890,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script>
-var ODOO_URL = 'https://allasercursos.odoo.com/shop/PLACEHOLDER'; // TODO: atualizar com URL real
+var ODOO_URL = 'https://allasercursos.odoo.com/shop/mini-curso-laser-e-led-na-estetica-facial-on-line-116';
 
 function abrirModal(e) {
   if (e) e.preventDefault();
@@ -907,7 +907,9 @@ function fecharModalFora(e) {
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') fecharModal(); });
 
 document.getElementById('lmFone').addEventListener('input', function(e) {
-  var v = e.target.value.replace(/\D/g, '').substring(0, 11);
+  var v = e.target.value.replace(/\D/g, '');
+  if (v.length > 11 && v.startsWith('55')) v = v.substring(2);
+  v = v.substring(0, 11);
   if (v.length >= 7) v = v.replace(/^(\d{2})(\d{5})(\d{0,4})/, '$1 $2-$3');
   else if (v.length >= 3) v = v.replace(/^(\d{2})(\d{0,5})/, '$1 $2');
   e.target.value = v;
