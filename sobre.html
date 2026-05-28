@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quem Somos — Allaser</title>
+<meta name="description" content="Conheça a Allaser: portal de excelência em informação sobre laser na saúde. Nossa missão, valores e a trajetória da fundadora Dra. Daiane Meneguzzo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/shared.css">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   Quem Somos — Allaser
+═══════════════════════════════════════════════════════ */
+
+/* ── Hero ──────────────────────────────────────────── */
+.sobre-hero {
+  background: var(--dark-900);
+  padding: 100px 0 80px;
+  text-align: center;
+}
+.sobre-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border: 1.5px solid rgba(201,220,68,0.20);
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lime);
+  background: rgba(201,220,68,0.06);
+  margin-bottom: 24px;
+}
+.sobre-hero__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.sobre-hero__sub {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.sobre-hero__sub strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+/* ── Missão / Visão / Valores ──────────────────────── */
+.sobre-mvv {
+  padding: 80px 0;
+  background: var(--white);
+}
+.sobre-mvv__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+.mvv-card {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  text-align: center;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.mvv-card:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  border-color: var(--lime);
+}
+.mvv-card__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--lime-subtle);
+  border: 1px solid rgba(201,220,68,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+.mvv-card__icon svg { width: 24px; height: 24px; stroke: var(--lime-dark); }
+.mvv-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark-800);
+  margin-bottom: 12px;
+}
+.mvv-card p {
+  font-size: 0.9rem;
+  color: var(--gray-500);
+  line-height: 1.65;
+}
+
+/* ── Fundadora ─────────────────────────────────────── */
+.sobre-fundadora {
+  padding: 80px 0;
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-100);
+}
+.fundadora__layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 64px;
+  align-items: start;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+.fundadora__photo-wrap {
+  position: relative;
+}
+.fundadora__photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+}
+.fundadora__photo-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--lime);
+  border-radius: var(--radius-lg);
+  z-index: -1;
+}
+.fundadora__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lime-dark);
+  margin-bottom: 12px;
+}
+.fundadora__name {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--dark-800);
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+.fundadora__title {
+  font-size: 0.92rem;
+  color: var(--lime-dark);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.fundadora__bio {
+  font-size: 0.95rem;
+  color: var(--gray-600);
+  line-height: 1.75;
+  margin-bottom: 28px;
+}
+.fundadora__credentials {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fundadora__cred {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+.fundadora__cred svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--lime-dark);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── CTA Final ─────────────────────────────────────── */
+.sobre-cta {
+  padding: 80px 0;
+  background: var(--dark-900);
+  text-align: center;
+}
+.sobre-cta__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.sobre-cta__title span { color: var(--lime); }
+.sobre-cta__sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 36px;
+}
+.sobre-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: var(--lime);
+  color: var(--dark-900);
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  transition: all 0.25s var(--ease);
+  box-shadow: 0 4px 20px rgba(201,220,68,0.3);
+}
+.sobre-cta__btn:hover {
+  background: var(--lime-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(201,220,68,0.4);
+}
+.sobre-cta__btn svg { width: 18px; height: 18px; }
+
+/* ── Wrap ──────────────────────────────────────────── */
+.sobre-wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+/* ── Responsivo ────────────────────────────────────── */
+@media (max-width: 960px) {
+  .sobre-mvv__grid { grid-template-columns: 1fr; max-width: 480px; }
+  .fundadora__layout { grid-template-columns: 1fr; gap: 40px; max-width: 600px; }
+  .fundadora__photo-wrap { max-width: 280px; margin: 0 auto; }
+  .fundadora__photo-wrap::after { bottom: -6px; right: -6px; }
+}
+
+@media (max-width: 640px) {
+  .sobre-wrap { padding: 0 20px; }
+  .sobre-hero { padding: 80px 0 60px; }
+  .sobre-hero__title { font-size: 2rem; }
+  .sobre-mvv, .sobre-fundadora { padding: 60px 0; }
+  .sobre-cta { padding: 60px 0; }
+  .fundadora__photo-wrap { max-width: 240px; }
+}
+</style>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTHL2SP9');</script>
+<!-- End Google Tag Manager -->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '885615589651085');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=885615589651085&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTHL2SP9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Cabeçalho injetado por components.js -->
+<div id="site-header"></div>
+
+<main id="main-content">
+
+<!-- ── HERO ──────────────────────────────────────────── -->
+<section class="sobre-hero">
+  <div class="sobre-wrap">
+    <span class="sobre-hero__eyebrow">Sobre a Allaser</span>
+    <h1 class="sobre-hero__title">Quem Somos</h1>
+    <p class="sobre-hero__sub">
+      A Allaser é um <strong>portal de excelência em informação sobre Laser</strong> na saúde —
+      um grupo de profissionais capacitados que promovem cursos didáticos e de
+      <strong>alto nível científico</strong> sobre as aplicações do laser nas diversas áreas da saúde.
+    </p>
+  </div>
+</section>
+
+<!-- ── MISSÃO / VISÃO / VALORES ──────────────────────── -->
+<section class="sobre-mvv">
+  <div class="sobre-wrap">
+    <div class="sobre-mvv__grid">
+      <div class="mvv-card">
+        <div class="mvv-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        </div>
+        <h3>Missão</h3>
+        <p>Promover saúde através da tecnologia laser, disseminar conhecimento por meio de estudo, prática clínica e pesquisa, e contribuir para o alívio do sofrimento dos pacientes.</p>
+      </div>
+      <div class="mvv-card">
+        <div class="mvv-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>Visão</h3>
+        <p>Ser a maior e melhor fonte de divulgação dos benefícios do Laser à saúde, conectando profissionais e pacientes ao que há de mais avançado na área.</p>
+      </div>
+      <div class="mvv-card">
+        <div class="mvv-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Valores</h3>
+        <p>Profissionalismo e responsabilidade, trabalho em equipe, ética, embasamento científico e o compromisso de gerar benefícios mútuos para profissionais e pacientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FUNDADORA ─────────────────────────────────────── -->
+<section class="sobre-fundadora">
+  <div class="sobre-wrap">
+    <div class="fundadora__layout">
+      <div class="fundadora__photo-wrap">
+        <img class="fundadora__photo"
+          src="/assets/images/prof-daiane2.webp"
+          alt="Profa. Dra. Daiane Thais Meneguzzo">
+      </div>
+      <div>
+        <div class="fundadora__eyebrow">Fundadora</div>
+        <h2 class="fundadora__name">Profa. Dra. Daiane Thais Meneguzzo</h2>
+        <p class="fundadora__title">Odontóloga · Doutora em Laser pela USP</p>
+        <p class="fundadora__bio">
+          Sua trajetória é guiada por uma paixão inabalável pela saúde e inovação. Com Mestrado e Doutorado em Laser pela USP, é pioneira na laserterapia no Brasil. Ministra cursos sobre laser nas diversas áreas da saúde, é palestrante internacional e autora de 22 capítulos sobre laser e diversos artigos científicos. Atua em consultório particular em Odontologia a Laser, Odontologia e Laserterapia Oncológica e Laserpuntura.
+        </p>
+        <div class="fundadora__credentials">
+          <div class="fundadora__cred">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Doutora em Ciências — Centro de Lasers e Aplicações (IPEN/USP)
+          </div>
+          <div class="fundadora__cred">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Mestre e Especialista em Dentística — USP-SP
+          </div>
+          <div class="fundadora__cred">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Habilitada em Laserterapia pelo CFO
+          </div>
+          <div class="fundadora__cred">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Coordenadora dos cursos de Habilitação em Laser — São Leopoldo Mandic
+          </div>
+          <div class="fundadora__cred">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Palestrante internacional e autora de 22 capítulos sobre laser
+          </div>
+          <div class="fundadora__cred">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Pós-Graduada em Acupuntura Tradicional Chinesa (ABA/IBRAHO)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ─────────────────────────────────────── -->
+<section class="sobre-cta">
+  <div class="sobre-wrap">
+    <h2 class="sobre-cta__title">Juntos levamos <span>luz</span> para o mundo</h2>
+    <p class="sobre-cta__sub">Conheça nossos cursos e formações em laserterapia para profissionais da saúde.</p>
+    <a class="sobre-cta__btn" href="/cursos.html">
+      Conheça nossos cursos
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- Rodapé injetado por components.js -->
+<div id="site-footer"></div>
+
+<!-- Scripts compartilhados -->
+<script src="/assets/components.js"></script>
+<script src="/assets/shared.js"></script>
+
+<!-- Define a página ativa no menu -->
+<script>
+  setActiveNav('sobre');
+</script>
+
+</body>
+</html>

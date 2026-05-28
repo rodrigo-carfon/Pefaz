@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Allaser</title>
+<meta name="description" content="Artigos sobre laserterapia, fotobiomodulação e aplicações clínicas para profissionais de saúde.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/shared.css">
+<style>
+/* ── Blog hero ───────────────────────────────── */
+.blog-hero {
+  background: #0a0a0c;
+  padding: 80px 0 56px;
+  text-align: center;
+}
+.blog-hero__inner { max-width: 640px; margin: 0 auto; padding: 0 32px; }
+.blog-hero__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aebf3c;
+  margin-bottom: 16px;
+}
+.blog-hero__title { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: #f4f3ee; line-height: 1.15; margin-bottom: 16px; }
+.blog-hero__sub { font-size: 1rem; color: rgba(244,243,238,0.50); line-height: 1.7; }
+
+/* ── Blog main ───────────────────────────────── */
+.blog-main { padding: 64px 0 100px; background: #f8f8f6; }
+.blog-wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+/* ── Filters ─────────────────────────────────── */
+.blog-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 48px; }
+.blog-filter {
+  padding: 8px 20px;
+  border-radius: 99px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: white;
+  border: 1.5px solid #e0e0dc;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.blog-filter:hover, .blog-filter.active {
+  background: #aebf3c;
+  border-color: #aebf3c;
+  color: #0a0a0a;
+}
+
+/* ── Cards ───────────────────────────────────── */
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.blog-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #ebebeb;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.blog-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); transform: translateY(-2px); }
+.blog-card.hidden { display: none; }
+.blog-card__img-wrap {
+  display: block;
+  background: #e8e8e4;
+  overflow: hidden;
+}
+.blog-card__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.35s;
+}
+.blog-card__img-wrap:hover .blog-card__img { transform: scale(1.02); }
+.blog-card__img-placeholder { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #e8e8e4 0%, #d8d8d0 100%); }
+.blog-card__body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+.blog-card__cats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.blog-card__cat {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7a8f1c;
+  background: rgba(174,191,60,0.10);
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+.blog-card__title { font-size: 1rem; font-weight: 700; line-height: 1.35; margin-bottom: 10px; }
+.blog-card__title a { color: #1a1a1a; text-decoration: none; }
+.blog-card__title a:hover { color: #7a8f1c; }
+.blog-card__excerpt { font-size: 0.84rem; color: #666; line-height: 1.65; margin-bottom: 20px; flex: 1; }
+.blog-card__foot { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+.blog-card__date { font-size: 0.76rem; color: #aaa; }
+.blog-card__read { font-size: 0.82rem; font-weight: 600; color: #aebf3c; text-decoration: none; }
+.blog-card__read:hover { text-decoration: underline; }
+
+@media (max-width: 960px) { .blog-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) {
+  .blog-grid { grid-template-columns: 1fr; }
+  .blog-wrap, .blog-hero__inner { padding: 0 20px; }
+  .blog-hero { padding: 60px 0 40px; }
+  .blog-main { padding: 48px 0 72px; }
+}
+</style>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTHL2SP9');</script>
+<!-- End Google Tag Manager -->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '885615589651085');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=885615589651085&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTHL2SP9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="site-header"></div>
+<main id="main-content">
+  <div class="blog-hero">
+    <div class="blog-hero__inner">
+      <div class="blog-hero__eyebrow">Blog</div>
+      <h1 class="blog-hero__title">Conhecimento em Laserterapia</h1>
+      <p class="blog-hero__sub">Artigos científicos e práticos sobre fotobiomodulação, laserterapia e suas aplicações clínicas.</p>
+    </div>
+  </div>
+  <section class="blog-main">
+    <div class="blog-wrap">
+      <div class="blog-filters">
+    <button class="blog-filter active" data-cat="all">Todos</button>
+    <button class="blog-filter" data-cat="5623">Laserterapia</button>
+      </div>
+      <div class="blog-grid" id="blogGrid">
+
+  <article class="blog-card" data-cats="5623">
+    <a href="/blog/eficacia-clinica-da-laserterapia-na-cicatrizacao-de-laceracoes-perineais.html" class="blog-card__img-wrap">
+      <img src="https://allaser.com.br/wp-content/uploads/2023/10/Blog_pos_parto.png" alt="Eficácia Clínica da Laserterapia na Cicatrização de Lacerações Perineais" class="blog-card__img" loading="lazy">
+    </a>
+    <div class="blog-card__body">
+      <div class="blog-card__cats"><span class="blog-card__cat">Laserterapia</span></div>
+      <h2 class="blog-card__title"><a href="/blog/eficacia-clinica-da-laserterapia-na-cicatrizacao-de-laceracoes-perineais.html">Eficácia Clínica da Laserterapia na Cicatrização de Lacerações Perineais</a></h2>
+      <p class="blog-card__excerpt">A cicatrização de lacerações perineais após o parto é uma preocupação comum paramuitas mulheres e profissionais de saúde obstétrica. Essas feridas pod…</p>
+      <div class="blog-card__foot">
+        <span class="blog-card__date">27 de outubro de 2023</span>
+        <a href="/blog/eficacia-clinica-da-laserterapia-na-cicatrizacao-de-laceracoes-perineais.html" class="blog-card__read">Ler mais →</a>
+      </div>
+    </div>
+  </article>
+  <article class="blog-card" data-cats="5623">
+    <a href="/blog/laserpuntura-e-auriculoterapia-francesa-uma-alianca-contra-a-retencao-de-liquidos.html" class="blog-card__img-wrap">
+      <div class="blog-card__img-placeholder"></div>
+    </a>
+    <div class="blog-card__body">
+      <div class="blog-card__cats"><span class="blog-card__cat">Laserterapia</span></div>
+      <h2 class="blog-card__title"><a href="/blog/laserpuntura-e-auriculoterapia-francesa-uma-alianca-contra-a-retencao-de-liquidos.html">Laserpuntura e Auriculoterapia Francesa: Uma Aliança Contra a Retenção de Líquidos</a></h2>
+      <p class="blog-card__excerpt">A retenção de líquidos, também conhecida como edema, é um problema que afeta muitas pessoas. Ela ocorre quando o corpo retém excesso de líquidos, resu…</p>
+      <div class="blog-card__foot">
+        <span class="blog-card__date">11 de outubro de 2023</span>
+        <a href="/blog/laserpuntura-e-auriculoterapia-francesa-uma-alianca-contra-a-retencao-de-liquidos.html" class="blog-card__read">Ler mais →</a>
+      </div>
+    </div>
+  </article>
+  <article class="blog-card" data-cats="5623">
+    <a href="/blog/descobrindo-a-excelencia-em-saude-com-a-allaser-seu-portal-para-o-universo-da-laserterapia-e-fotobiomodulacao.html" class="blog-card__img-wrap">
+      <img src="https://allaser.com.br/wp-content/uploads/2023/09/Banner_blog_vendas.png" alt="Descobrindo a Excelência em Saúde com a Allaser: Seu Portal para o Universo da Laserterapia e Fotobiomodulação" class="blog-card__img" loading="lazy">
+    </a>
+    <div class="blog-card__body">
+      <div class="blog-card__cats"><span class="blog-card__cat">Laserterapia</span></div>
+      <h2 class="blog-card__title"><a href="/blog/descobrindo-a-excelencia-em-saude-com-a-allaser-seu-portal-para-o-universo-da-laserterapia-e-fotobiomodulacao.html">Descobrindo a Excelência em Saúde com a Allaser: Seu Portal para o Universo da Laserterapia e Fotobiomodulação</a></h2>
+      <p class="blog-card__excerpt">A Allaser é uma empresa, com mais de 10 anos de mercado, dedicada a proporcionar conhecimento e treinamento de qualidade para profissionais da área da…</p>
+      <div class="blog-card__foot">
+        <span class="blog-card__date">27 de setembro de 2023</span>
+        <a href="/blog/descobrindo-a-excelencia-em-saude-com-a-allaser-seu-portal-para-o-universo-da-laserterapia-e-fotobiomodulacao.html" class="blog-card__read">Ler mais →</a>
+      </div>
+    </div>
+  </article>
+  <article class="blog-card" data-cats="5623">
+    <a href="/blog/fotobiomodulacao-estimulacao-cerebral-abordagem-promissora-medicina.html" class="blog-card__img-wrap">
+      <img src="https://allaser.com.br/wp-content/uploads/2023/09/capa-blog_post-2.png" alt="Fotobiomodulação e Estimulação Cerebral: Uma Abordagem Promissora na Medicina" class="blog-card__img" loading="lazy">
+    </a>
+    <div class="blog-card__body">
+      <div class="blog-card__cats"><span class="blog-card__cat">Laserterapia</span></div>
+      <h2 class="blog-card__title"><a href="/blog/fotobiomodulacao-estimulacao-cerebral-abordagem-promissora-medicina.html">Fotobiomodulação e Estimulação Cerebral: Uma Abordagem Promissora na Medicina</a></h2>
+      <p class="blog-card__excerpt">A medicina moderna está constantemente evoluindo, e novas técnicas terapêuticas estão surgindo para melhorar a qualidade de vida dos pacientes. Uma de…</p>
+      <div class="blog-card__foot">
+        <span class="blog-card__date">15 de setembro de 2023</span>
+        <a href="/blog/fotobiomodulacao-estimulacao-cerebral-abordagem-promissora-medicina.html" class="blog-card__read">Ler mais →</a>
+      </div>
+    </div>
+  </article>
+  <article class="blog-card" data-cats="5623">
+    <a href="/blog/fotobiomodulacao-voce-precisa-conhecer-melhor.html" class="blog-card__img-wrap">
+      <img src="https://allaser.com.br/wp-content/uploads/2022/07/blog-foto-biomodulacaoPost.jpg" alt="FOTOBIOMODULAÇÃO: VOCÊ PRECISA CONHECER MELHOR!" class="blog-card__img" loading="lazy">
+    </a>
+    <div class="blog-card__body">
+      <div class="blog-card__cats"><span class="blog-card__cat">Laserterapia</span></div>
+      <h2 class="blog-card__title"><a href="/blog/fotobiomodulacao-voce-precisa-conhecer-melhor.html">FOTOBIOMODULAÇÃO: VOCÊ PRECISA CONHECER MELHOR!</a></h2>
+      <p class="blog-card__excerpt">A Laserterapia ou Fotobiomodulação (FBM), como é recentemente chamada, é uma terapia que vem sendo cada vez mais aplicada no Brasil. Seus benefícios c…</p>
+      <div class="blog-card__foot">
+        <span class="blog-card__date">10 de maio de 2022</span>
+        <a href="/blog/fotobiomodulacao-voce-precisa-conhecer-melhor.html" class="blog-card__read">Ler mais →</a>
+      </div>
+    </div>
+  </article>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="/assets/components.js"></script>
+<script src="/assets/shared.js"></script>
+<script>
+setActiveNav('blog');
+document.querySelectorAll('.blog-filter').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.blog-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var cat = btn.dataset.cat;
+    document.querySelectorAll('.blog-card').forEach(function(card) {
+      if (cat === 'all') {
+        card.classList.remove('hidden');
+      } else {
+        var cats = card.dataset.cats.split(',');
+        card.classList.toggle('hidden', !cats.includes(cat));
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
