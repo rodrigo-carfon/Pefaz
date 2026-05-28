@@ -104,8 +104,8 @@ ${FONTS}
 <link rel="stylesheet" href="/assets/shared.css">
 <style>
 .post-hero {
-  background: #f8f8f6;
-  border-bottom: 1px solid #e8e8e4;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
   padding: 64px 0 48px;
 }
 .post-hero__inner {
@@ -118,22 +118,25 @@ ${FONTS}
   display: inline-block;
   padding: 4px 12px;
   border-radius: 99px;
-  font-size: 0.72rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  background: rgba(174,191,60,0.15);
-  color: #7a8f1c;
-  border: 1px solid rgba(174,191,60,0.30);
+  background: rgba(154,170,26,0.10);
+  color: #9aaa1a;
+  border: 1px solid rgba(154,170,26,0.25);
 }
 .post-hero__title {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(26px, 4vw, 44px);
   font-weight: 800;
-  line-height: 1.15;
-  color: #111;
-  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+  margin-bottom: 16px;
 }
-.post-hero__meta { font-size: 0.85rem; color: #999; }
+.post-hero__meta { font-size: 0.82rem; color: #8e8e8e; }
 .post-featured-wrap {
   width: 100%;
   background: #f0f0ec;
@@ -226,7 +229,16 @@ ${GTM_BODY}
 /* ─── Blog index ─────────────────────────────────────── */
 function generateBlogIndex(posts, catMap) {
   const usedCatIds = [...new Set(posts.flatMap(p => p.categories))];
-  const usedCats   = usedCatIds.map(id => catMap[id]).filter(Boolean);
+  const CAT_ORDER = { 'laserterapia': 0 };
+  const usedCats   = usedCatIds.map(id => catMap[id]).filter(Boolean)
+    .sort((a, b) => {
+      if (a.slug === 'outros') return 1;
+      if (b.slug === 'outros') return -1;
+      const pa = CAT_ORDER[a.slug] ?? 99;
+      const pb = CAT_ORDER[b.slug] ?? 99;
+      if (pa !== pb) return pa - pb;
+      return a.name.localeCompare(b.name, 'pt-BR');
+    });
 
   const catFilters = [
     `<button class="blog-filter active" data-cat="all">Todos</button>`,
@@ -272,22 +284,43 @@ ${FONTS}
 <style>
 /* ── Blog hero ───────────────────────────────── */
 .blog-hero {
-  background: #f8f8f6;
-  border-bottom: 1px solid #e8e8e4;
-  padding: 72px 0 56px;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 72px 24px 56px;
   text-align: center;
 }
-.blog-hero__inner { max-width: 640px; margin: 0 auto; padding: 0 32px; }
+.blog-hero__inner { max-width: 640px; margin: 0 auto; }
 .blog-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Outfit', sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #7a8f1c;
+  color: #9aaa1a;
+  margin-bottom: 20px;
+}
+.blog-hero__eyebrow::before,
+.blog-hero__eyebrow::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1.5px;
+  background: #9aaa1a;
+  opacity: 0.4;
+}
+.blog-hero__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
   margin-bottom: 16px;
 }
-.blog-hero__title { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: #111; line-height: 1.15; margin-bottom: 16px; }
-.blog-hero__sub { font-size: 1rem; color: #666; line-height: 1.7; }
+.blog-hero__sub { font-size: 1rem; color: #8e8e8e; line-height: 1.6; max-width: 520px; margin: 0 auto; }
 
 /* ── Blog main ───────────────────────────────── */
 .blog-main { padding: 64px 0 100px; background: #f8f8f6; }
