@@ -26,3 +26,22 @@ jobs:
             **/node_modules/**
             .github/**
             CLAUDE.md
+
+  deploy-lps:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Deploy LPs para public_html
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: pro105.dnspro.com.br
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: lps/
+          server-dir: /public_html/lps/
+          exclude: |
+            **/.git*
+            **/.git*/**
