@@ -45,6 +45,13 @@ function getCats(post, catMap) {
   return (post.categories || []).map(id => catMap[id]).filter(Boolean);
 }
 
+// Remove 'outros' de posts que já têm outras categorias
+function getEffectiveCats(post, catMap) {
+  const cats = getCats(post, catMap);
+  if (cats.length > 1) return cats.filter(c => c.slug !== 'outros');
+  return cats;
+}
+
 function formatDate(dateStr) {
   return new Date(dateStr).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
 }
@@ -143,7 +150,7 @@ function generatePostPage(post, catMap, allPosts) {
   const content   = post.content.rendered;
   const excerpt   = stripHtml(post.excerpt.rendered).substring(0, 160);
   const img       = getFeaturedImage(post);
-  const cats      = getCats(post, catMap);
+  const cats      = getEffectiveCats(post, catMap);
   const date      = formatDate(post.date);
   const catBadges = cats.map(c => `<span class="post-cat">${c.name}</span>`).join('');
   const related   = getRelated(post, allPosts, catMap, 4);
@@ -341,7 +348,7 @@ ${relatedHTML}
 
 /* ─── Blog index ─────────────────────────────────────── */
 function generateBlogIndex(posts, catMap) {
-  const usedCatIds = [...new Set(posts.flatMap(p => p.categories))];
+  const usedCatIds = [...new Set(posts.flatMap(p => getEffectiveCats(p, catMap).map(c => c.id)))];
   const CAT_ORDER  = { 'laserterapia': 0 };
   const usedCats   = usedCatIds.map(id => catMap[id]).filter(Boolean)
     .sort((a, b) => {
@@ -360,10 +367,10 @@ function generateBlogIndex(posts, catMap) {
 
   const cards = posts.map(post => {
     const img       = getFeaturedImage(post);
-    const cats      = getCats(post, catMap);
+    const cats      = getEffectiveCats(post, catMap);
     const date      = formatDate(post.date);
     const excerpt   = stripHtml(post.excerpt.rendered).substring(0, 150);
-    const catIds    = post.categories.join(',');
+    const catIds    = cats.map(c => String(c.id)).join(',');
     const catBadges = cats.map(c => `<span class="blog-card__cat">${c.name}</span>`).join('');
 
     return `
@@ -439,7 +446,7 @@ ${FONTS}
 .blog-layout { display: grid; grid-template-columns: 1fr 300px; gap: 48px; align-items: start; }
 
 /* ── Filters ─────────────────────────────────── */
-.blog-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+.blog-filters { display: grid; grid-template-columns: repeat(5, max-content); gap: 10px; margin-bottom: 36px; }
 .blog-filter {
   padding: 8px 20px;
   border-radius: 99px;
