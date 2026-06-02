@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre o Laser — Allaser</title>
+<meta name="description" content="A história do laser, seus efeitos na reparação tecidual, analgesia e inflamação, contraindicações, tipos de laser e equipamentos. Conhecimento científico em laserterapia pela Allaser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/shared.css">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   Sobre o Laser — Allaser
+═══════════════════════════════════════════════════════ */
+
+.sl-wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+/* ── Hero ──────────────────────────────────────────── */
+.sl-hero {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-100);
+  padding: 72px 0 56px;
+  text-align: center;
+}
+.sl-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lime-dark);
+  margin-bottom: 20px;
+}
+.sl-hero__eyebrow::before,
+.sl-hero__eyebrow::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1.5px;
+  background: var(--lime-dark);
+  opacity: 0.4;
+}
+.sl-hero__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 800;
+  color: var(--dark-800);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin: 0 auto 16px;
+  max-width: 760px;
+}
+.sl-hero__title span { color: var(--lime-dark); }
+.sl-hero__sub {
+  font-size: 1rem;
+  color: var(--gray-400);
+  line-height: 1.65;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.sl-hero__sub strong { color: var(--dark-600); font-weight: 600; }
+
+/* ── Sub-nav de âncoras (sticky) ───────────────────── */
+.sl-subnav {
+  position: sticky;
+  top: 68px;
+  z-index: 40;
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--gray-100);
+}
+.sl-subnav__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+.sl-subnav__inner::-webkit-scrollbar { display: none; }
+.sl-subnav__link {
+  flex-shrink: 0;
+  padding: 14px 16px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.sl-subnav__link:hover { color: var(--dark-800); }
+.sl-subnav__link.is-active {
+  color: var(--lime-dark);
+  border-bottom-color: var(--lime);
+}
+/* dropdown "ir para seção" — só aparece no mobile */
+.sl-jump-wrap { display: none; }
+.sl-jump-wrap {
+  position: relative;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+.sl-jump {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  padding: 13px 44px 13px 44px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--dark-800);
+  background: var(--white);
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.sl-jump:focus { outline: none; border-color: var(--lime); }
+.sl-jump__pin {
+  position: absolute;
+  left: 36px; top: 50%; transform: translateY(-50%);
+  width: 17px; height: 17px;
+  color: var(--lime-dark);
+  pointer-events: none;
+}
+.sl-jump__chevron {
+  position: absolute;
+  right: 36px; top: 50%; transform: translateY(-50%);
+  width: 16px; height: 16px;
+  color: var(--gray-400);
+  pointer-events: none;
+}
+
+/* ── Seção genérica ────────────────────────────────── */
+.sl-section { padding: 80px 0; }
+.sl-section--alt { background: var(--gray-50); border-top: 1px solid var(--gray-100); border-bottom: 1px solid var(--gray-100); }
+
+.sl-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lime-dark);
+  margin-bottom: 12px;
+}
+.sl-heading {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+  font-weight: 800;
+  color: var(--dark-800);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.sl-text { font-size: 0.97rem; color: var(--gray-600); line-height: 1.8; }
+.sl-text + .sl-text { margin-top: 18px; }
+.sl-text strong { color: var(--dark-700); font-weight: 600; }
+
+/* ── Linha de mídia (imagem + texto) ───────────────── */
+.sl-media {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 56px;
+  align-items: center;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+.sl-media--rev .sl-media__figure { order: 2; }
+.sl-media__figure { position: relative; }
+.sl-media__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  background: var(--white);
+}
+.sl-media__figure::after {
+  content: '';
+  position: absolute;
+  bottom: -8px; right: -8px;
+  width: 100%; height: 100%;
+  border: 2px solid var(--lime);
+  border-radius: var(--radius-lg);
+  z-index: -1;
+}
+.sl-media--rev .sl-media__figure::after { right: auto; left: -8px; }
+.sl-media__cap {
+  font-size: 0.78rem;
+  color: var(--gray-400);
+  text-align: center;
+  margin-top: 18px;
+  font-style: italic;
+}
+
+/* ── Lista de benefícios (check lime) ──────────────── */
+.sl-list { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.sl-list li {
+  position: relative;
+  padding-left: 32px;
+  font-size: 0.92rem;
+  color: var(--gray-600);
+  line-height: 1.55;
+}
+.sl-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 1px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--lime-subtle);
+  border: 1px solid rgba(201,220,68,0.35);
+}
+.sl-list li::after {
+  content: '';
+  position: absolute;
+  left: 6px; top: 7px;
+  width: 7px; height: 4px;
+  border-left: 2px solid var(--lime-dark);
+  border-bottom: 2px solid var(--lime-dark);
+  transform: rotate(-45deg);
+}
+
+/* ── Box de referências ────────────────────────────── */
+.sl-refs {
+  margin-top: 22px;
+  padding: 14px 18px;
+  background: var(--lime-subtle);
+  border-left: 3px solid var(--lime);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+.sl-refs strong { color: var(--dark-700); }
+
+/* ── Contraindicações (Q&A + warning) ──────────────── */
+.sl-warn {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  max-width: 1060px;
+  margin: 0 auto 40px;
+  padding: 22px 24px;
+  background: #fff;
+  border: 1px solid rgba(201,220,68,0.4);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+}
+.sl-warn__icon {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--lime-subtle);
+  display: flex; align-items: center; justify-content: center;
+}
+.sl-warn__icon svg { width: 22px; height: 22px; stroke: var(--lime-dark); }
+.sl-warn__text { font-size: 0.95rem; color: var(--gray-600); line-height: 1.7; }
+.sl-warn__text strong { color: var(--dark-800); }
+
+.sl-qa { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.sl-qa__col { display: flex; flex-direction: column; gap: 18px; }
+.sl-qa__item {
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+}
+.sl-qa__q {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark-800);
+  margin-bottom: 10px;
+}
+.sl-qa__a { font-size: 0.9rem; color: var(--gray-600); line-height: 1.7; }
+.sl-contra-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.sl-contra-list li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  line-height: 1.5;
+}
+.sl-contra-list li::before {
+  content: '';
+  position: absolute;
+  left: 4px; top: 7px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--lime-dark);
+}
+
+/* ── Cards (tipos de laser) ────────────────────────── */
+.sl-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1060px; margin: 40px auto 0; }
+.sl-card {
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-lg);
+  padding: 32px 26px;
+  transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+}
+.sl-section--alt .sl-card { background: var(--white); }
+.sl-card:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.07); border-color: var(--lime); transform: translateY(-2px); }
+.sl-card__icon {
+  width: 50px; height: 50px;
+  border-radius: var(--radius-md);
+  background: var(--lime-subtle);
+  border: 1px solid rgba(201,220,68,0.18);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.sl-card__icon svg { width: 24px; height: 24px; stroke: var(--lime-dark); }
+.sl-card__tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lime-dark);
+  margin-bottom: 8px;
+}
+.sl-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--dark-800);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+.sl-card p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.7; }
+
+/* ── Equipamentos (2 cards) ────────────────────────── */
+.sl-equip { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1060px; margin: 40px auto 0; }
+.sl-equip__card {
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-lg);
+  padding: 32px 30px;
+}
+.sl-equip__head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.sl-equip__icon {
+  width: 46px; height: 46px;
+  border-radius: var(--radius-md);
+  background: var(--lime-subtle);
+  border: 1px solid rgba(201,220,68,0.18);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.sl-equip__icon svg { width: 22px; height: 22px; stroke: var(--lime-dark); }
+.sl-equip__card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dark-800);
+}
+.sl-equip__card p { font-size: 0.9rem; color: var(--gray-600); line-height: 1.75; }
+
+/* ── CTA final ─────────────────────────────────────── */
+.sl-cta {
+  padding: 80px 0;
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-100);
+  text-align: center;
+}
+.sl-cta__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(24px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--dark-800);
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.sl-cta__title span { color: var(--lime-dark); }
+.sl-cta__sub {
+  font-size: 1rem;
+  color: var(--gray-400);
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto 36px;
+}
+.sl-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: var(--lime);
+  color: var(--dark-800);
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  transition: all 0.25s var(--ease);
+  box-shadow: 0 4px 20px rgba(201,220,68,0.3);
+}
+.sl-cta__btn:hover {
+  background: var(--lime-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(201,220,68,0.4);
+}
+.sl-cta__btn svg { width: 18px; height: 18px; }
+
+/* ── Responsivo ────────────────────────────────────── */
+@media (max-width: 920px) {
+  .sl-media { grid-template-columns: 1fr; gap: 36px; max-width: 560px; }
+  .sl-media--rev .sl-media__figure { order: 0; }
+  .sl-media__figure { max-width: 380px; margin: 0 auto; }
+  .sl-cards { grid-template-columns: 1fr; max-width: 460px; }
+  .sl-qa { grid-template-columns: 1fr; }
+  .sl-equip { grid-template-columns: 1fr; max-width: 520px; }
+}
+@media (max-width: 900px) {
+  /* header tem 60px no mobile (topbar oculta) */
+  .sl-subnav { top: 60px; }
+  /* troca abas roláveis por dropdown intuitivo */
+  .sl-subnav__inner { display: none; }
+  .sl-jump-wrap { display: block; }
+}
+@media (max-width: 640px) {
+  .sl-wrap { padding: 0 20px; }
+  .sl-hero { padding: 64px 0 44px; }
+  .sl-section { padding: 56px 0; }
+  .sl-cta { padding: 60px 0; }
+}
+</style>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTHL2SP9');</script>
+<!-- End Google Tag Manager -->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '885615589651085');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=885615589651085&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTHL2SP9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Cabeçalho injetado por components.js -->
+<div id="site-header"></div>
+
+<main id="main-content">
+
+<!-- ── HERO ──────────────────────────────────────────── -->
+<section class="sl-hero">
+  <div class="sl-wrap">
+    <span class="sl-hero__eyebrow">Conhecimento</span>
+    <h1 class="sl-hero__title">Sobre o <span>Laser</span></h1>
+    <p class="sl-hero__sub">
+      Da terapia solar dos egípcios à <strong>bioestimulação celular</strong> moderna: entenda a
+      história do laser, seus efeitos terapêuticos, contraindicações e os tipos de equipamentos
+      usados na laserterapia.
+    </p>
+  </div>
+</section>
+
+<!-- ── SUB-NAV DE ÂNCORAS ────────────────────────────── -->
+<nav class="sl-subnav" aria-label="Seções da página">
+  <!-- Desktop: abas -->
+  <div class="sl-subnav__inner" id="slSubnav">
+    <a href="#historia" class="sl-subnav__link">História</a>
+    <a href="#reparacao" class="sl-subnav__link">Reparação</a>
+    <a href="#analgesico" class="sl-subnav__link">Analgesia</a>
+    <a href="#antiinflamatorio" class="sl-subnav__link">Anti-inflamatório</a>
+    <a href="#contraindicacoes" class="sl-subnav__link">Contraindicações</a>
+    <a href="#tiposdelaser" class="sl-subnav__link">Tipos de Laser</a>
+    <a href="#equipamentos" class="sl-subnav__link">Equipamentos</a>
+  </div>
+  <!-- Mobile: dropdown "ir para seção" -->
+  <div class="sl-jump-wrap">
+    <svg class="sl-jump__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <select class="sl-jump" id="slJump" aria-label="Ir para seção">
+      <option value="#historia">História</option>
+      <option value="#reparacao">Reparação</option>
+      <option value="#analgesico">Analgesia</option>
+      <option value="#antiinflamatorio">Anti-inflamatório</option>
+      <option value="#contraindicacoes">Contraindicações</option>
+      <option value="#tiposdelaser">Tipos de Laser</option>
+      <option value="#equipamentos">Equipamentos</option>
+    </select>
+    <svg class="sl-jump__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+  </div>
+</nav>
+
+<!-- ── HISTÓRIA ──────────────────────────────────────── -->
+<section class="sl-section" id="historia">
+  <div class="sl-wrap">
+    <div class="sl-media">
+      <figure class="sl-media__figure">
+        <img class="sl-media__img" src="/assets/images/laser-historia-maiman.jpg"
+          alt="Theodore Harold Maiman segurando o primeiro laser de rubi">
+        <figcaption class="sl-media__cap">Theodore H. Maiman e o primeiro laser de rubi, 1960</figcaption>
+      </figure>
+      <div>
+        <div class="sl-eyebrow">História do Laser</div>
+        <h2 class="sl-heading">A luz como instrumento de cura</h2>
+        <p class="sl-text">
+          A terapia com luz, ou fototerapia, é um dos métodos terapêuticos mais antigos usados pelo
+          homem — historicamente como terapia solar pelos egípcios (Helioterapia) e, mais tarde, como
+          terapia com luz ultravioleta, pela qual <strong>Nils Finsen ganhou o Prêmio Nobel em 1904</strong>.
+        </p>
+        <p class="sl-text">
+          Mas a luz realmente passou a ser um efetivo instrumento médico quando o físico americano
+          <strong>Theodore Harold Maiman</strong> (1927–2007) desenvolveu o primeiro equipamento LASER
+          (<em>Light Amplification by Stimulated Emission of Radiation</em>). Em 16 de maio de 1960, o
+          primeiro laser de rubi foi criado no Hughes Research Laboratories, em Malibu, Califórnia.
+          Na época, Maiman dizia: <em>"O laser é uma solução procurando problema"</em>.
+        </p>
+        <p class="sl-text">
+          Em 1967, <strong>Endre Mester</strong>, da Hungria, quis testar se a radiação laser poderia
+          causar câncer em camundongos. Para sua surpresa, ao invés de desenvolver câncer, o pelo dos
+          animais tratados cresceu e regenerou-se mais rápido. Esta foi a primeira demonstração da
+          <strong>"bioestimulação laser"</strong>. Atualmente, a terapia com laser de baixa potência
+          (TLBP) é praticada por profissionais da saúde que buscam efeitos anti-inflamatórios,
+          analgésicos e de regeneração tecidual.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EFEITO NA REPARAÇÃO ───────────────────────────── -->
+<section class="sl-section sl-section--alt" id="reparacao">
+  <div class="sl-wrap">
+    <div class="sl-media sl-media--rev">
+      <figure class="sl-media__figure">
+        <img class="sl-media__img" src="/assets/images/laser-efeito-reparacao.png"
+          alt="Esquema do efeito do laser na reparação tecidual">
+      </figure>
+      <div>
+        <div class="sl-eyebrow">Efeito na Reparação</div>
+        <h2 class="sl-heading">Regeneração e remodelamento tecidual</h2>
+        <p class="sl-text">Efeitos do laser de baixa potência na reparação:</p>
+        <ul class="sl-list">
+          <li>Aumento do aporte de trifosfato de adenosina (ATP)</li>
+          <li>Aumento da permeabilidade da membrana celular, facilitando o remodelamento de colágeno</li>
+          <li>Aumento da resistência tênsil</li>
+          <li>Aumento da angiogênese</li>
+        </ul>
+        <p class="sl-text">
+          O laser modula a atividade das células envolvidas na reparação tecidual — macrófagos,
+          fibroblastos, queratinócitos, mastócitos e células endoteliais. O estímulo dessas células
+          faz com que o tecido lesionado <strong>reestabeleça seu equilíbrio</strong>, recuperando
+          forma e função.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EFEITO ANALGÉSICO ─────────────────────────────── -->
+<section class="sl-section" id="analgesico">
+  <div class="sl-wrap">
+    <div class="sl-media">
+      <figure class="sl-media__figure">
+        <img class="sl-media__img" src="/assets/images/laser-efeito-analgesico.jpg"
+          alt="Aplicação do laser para alívio da dor">
+      </figure>
+      <div>
+        <div class="sl-eyebrow">Efeito Analgésico</div>
+        <h2 class="sl-heading">Alívio da dor sem fármacos</h2>
+        <p class="sl-text">Efeito analgésico do laser de baixa potência:</p>
+        <ul class="sl-list">
+          <li>Aumento nos níveis de β-endorfina</li>
+          <li>Aumento da excreção urinária de glicocorticóides, inibidores da β-endorfina</li>
+          <li>Aumento da excreção urinária de catabólitos da serotonina</li>
+          <li>Alteração do equilíbrio adrenalina-noradrenalina</li>
+          <li>Aumento na produção de ATP, promovendo relaxamento muscular</li>
+          <li>Aumento da microcirculação local e do aporte de oxigênio</li>
+          <li>Aumento do fluxo linfático e redução do edema</li>
+        </ul>
+        <p class="sl-text">
+          A literatura sugere que <strong>não há um mecanismo único</strong> para a ação analgésica do
+          laser. O efeito depende de fatores como a variabilidade da percepção da dor, sua duração e
+          frequência (aguda, crônica, recorrente) e sua origem (nociceptiva, neuropática, reflexa,
+          referida, visceral ou psicossomática).
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EFEITO ANTI-INFLAMATÓRIO ──────────────────────── -->
+<section class="sl-section sl-section--alt" id="antiinflamatorio">
+  <div class="sl-wrap">
+    <div class="sl-media sl-media--rev">
+      <figure class="sl-media__figure">
+        <img class="sl-media__img" src="/assets/images/laser-efeito-antiinflamatorio.jpg"
+          alt="Ilustração do efeito anti-inflamatório do laser">
+      </figure>
+      <div>
+        <div class="sl-eyebrow">Efeito Anti-inflamatório</div>
+        <h2 class="sl-heading">Ação local, sem efeitos sistêmicos</h2>
+        <p class="sl-text">Efeito anti-inflamatório do laser:</p>
+        <ul class="sl-list">
+          <li>Aumento da microcirculação local</li>
+          <li>Promoção da angiogênese e vasodilatação</li>
+          <li>Inibição de mediadores inflamatórios (PGE2, COX-2, IL-1, mRNA)</li>
+          <li>Efeito antioxidante, reduzindo os radicais livres da resposta inflamatória</li>
+          <li>Aceleração da cicatrização</li>
+        </ul>
+        <p class="sl-text">
+          Vale ressaltar que o laser, ao contrário dos fármacos, tem <strong>ação local</strong> e não
+          resulta em efeitos negativos ao corpo, como úlceras gástricas ou toxicidade ao fígado.
+        </p>
+        <div class="sl-refs">
+          <strong>Referências:</strong> Schaffer et al., 2000; Mirsky et al., 2002; Campana et al., 1998;
+          Lopes-Martins et al., 2005; Bjordal et al., 2011.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTRAINDICAÇÕES ──────────────────────────────── -->
+<section class="sl-section" id="contraindicacoes">
+  <div class="sl-wrap">
+    <div style="text-align:center; margin-bottom:40px;">
+      <div class="sl-eyebrow">Segurança</div>
+      <h2 class="sl-heading" style="max-width:680px; margin:0 auto;">Contraindicações e cuidados</h2>
+    </div>
+
+    <div class="sl-warn">
+      <div class="sl-warn__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div class="sl-warn__text">
+        O principal cuidado durante a irradiação é o uso de <strong>óculos de proteção</strong> pelo
+        paciente e pelos profissionais. A radiação laser terapêutica (classe IIIb) ou cirúrgica
+        (classe IV) — de emissão vermelha e infravermelha — pode causar lesões na retina. O ideal é
+        usar os óculos fornecidos pelo fabricante, específicos para o comprimento de onda do equipamento.
+      </div>
+    </div>
+
+    <div class="sl-qa">
+      <div class="sl-qa__col">
+        <div class="sl-qa__item">
+          <div class="sl-qa__q">Existem efeitos colaterais da irradiação?</div>
+          <p class="sl-qa__a">
+            Os efeitos colaterais da laserterapia são praticamente nulos, já que a luz é absorvida
+            principalmente pelo tecido lesionado. A luz não é armazenada e seus efeitos não são
+            cumulativos. No entanto, podemos ter inibição ou exacerbação de algumas situações clínicas
+            dose-dependentes — por exemplo, em uma lesão crônica, o laser pode agudizá-la para promover
+            sua reparação.
+          </p>
+        </div>
+        <div class="sl-qa__item">
+          <div class="sl-qa__q">Qual a principal contraindicação?</div>
+          <p class="sl-qa__a">
+            A principal contraindicação em laserterapia é sua utilização em <strong>lesão sem
+            diagnóstico</strong>. Essa é a regra principal da equipe de professores da Allaser.
+          </p>
+        </div>
+      </div>
+      <div class="sl-qa__col">
+        <div class="sl-qa__item">
+          <div class="sl-qa__q">Outras situações que contraindicam o uso</div>
+          <ul class="sl-contra-list">
+            <li>Irradiação sobre tumores/neoplasias (benignos ou malignos)</li>
+            <li>Fenômenos de retenção de muco (glândulas salivares — mucoceles, por exemplo)</li>
+            <li>Em crianças: fontanelas e epífises de crescimento</li>
+            <li>Irradiação próxima a marcapasso</li>
+            <li>Mulheres grávidas (depende da aplicação)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TIPOS DE LASER ────────────────────────────────── -->
+<section class="sl-section sl-section--alt" id="tiposdelaser">
+  <div class="sl-wrap">
+    <div style="text-align:center; max-width:680px; margin:0 auto;">
+      <div class="sl-eyebrow">Tipos de Laser</div>
+      <h2 class="sl-heading">Três categorias de aplicação</h2>
+      <p class="sl-text">
+        Existem três tipos de lasers utilizados na saúde: laser de alta potência, laser de baixa
+        potência e laser para diagnóstico — cada um com objetivos e mecanismos de interação distintos.
+      </p>
+    </div>
+
+    <div class="sl-cards">
+      <div class="sl-card">
+        <div class="sl-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="sl-card__tag">1 – 30 W</div>
+        <h3>Alta Potência</h3>
+        <p>
+          Objetiva corte tecidual, coagulação e redução microbiana por meio de efeitos térmicos.
+          Exige casamento entre o tecido-alvo e a faixa de emissão. Destacam-se os lasers de Érbio
+          (Er:YAG e Er,Cr:YSGG), CO₂, Neodímio (Nd:YAG), argônio e diodo de alta potência.
+        </p>
+      </div>
+      <div class="sl-card">
+        <div class="sl-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+        </div>
+        <div class="sl-card__tag">He-Ne · Diodo</div>
+        <h3>Baixa Potência</h3>
+        <p>
+          Voltado à bioestimulação celular, sem efeitos térmicos de corte e sem dor. Representado pelos
+          lasers de He-Ne e de Diodo. Os lasers de diodo, por sua portabilidade e baixo custo, estão
+          difundidos por todo o mundo nos espectros vermelho e infravermelho.
+        </p>
+      </div>
+      <div class="sl-card">
+        <div class="sl-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <div class="sl-card__tag">Diagnóstico</div>
+        <h3>Para Diagnóstico</h3>
+        <p>
+          Utilizado como ferramenta auxiliar de diagnóstico, identificando e diferenciando tecidos por
+          meio da interação da luz, sem finalidade terapêutica ou cirúrgica.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EQUIPAMENTOS ──────────────────────────────────── -->
+<section class="sl-section" id="equipamentos">
+  <div class="sl-wrap">
+    <div style="text-align:center; max-width:680px; margin:0 auto;">
+      <div class="sl-eyebrow">Equipamentos</div>
+      <h2 class="sl-heading">De mesa e portáteis</h2>
+      <p class="sl-text">
+        Em relação aos lasers de diodo de baixa potência, há no mercado equipamentos de mesa e portáteis,
+        cada um com diferentes níveis de ajuste de dosimetria.
+      </p>
+    </div>
+
+    <div class="sl-equip">
+      <div class="sl-equip__card">
+        <div class="sl-equip__head">
+          <div class="sl-equip__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Equipamentos de mesa</h3>
+        </div>
+        <p>
+          Dependem de eletricidade e, em geral, possuem um software que permite ao operador ajustar no
+          display diversos parâmetros da dosimetria — comprimento de onda, potência, energia e modo de
+          emissão (contínuo ou pulsado) — ou ainda escolher protocolos pré-determinados sugeridos pelo
+          fabricante.
+        </p>
+      </div>
+      <div class="sl-equip__card">
+        <div class="sl-equip__head">
+          <div class="sl-equip__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <h3>Equipamentos portáteis</h3>
+        </div>
+        <p>
+          Bem menores que os de mesa, podem funcionar com ou sem fio (bateria). Em função da compactação,
+          os ajustes de dosimetria são mais simplificados — em geral, o operador escolhe o comprimento de
+          onda e a energia ou densidade de energia.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ─────────────────────────────────────── -->
+<section class="sl-cta">
+  <div class="sl-wrap">
+    <h2 class="sl-cta__title">Juntos levamos <span>luz</span> para o mundo</h2>
+    <p class="sl-cta__sub">Aprofunde-se na laserterapia com os cursos e formações da Allaser para profissionais da saúde.</p>
+    <a class="sl-cta__btn" href="/cursos.html">
+      Conheça nossos cursos
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- Rodapé injetado por components.js -->
+<div id="site-footer"></div>
+
+<!-- Scripts compartilhados -->
+<script src="/assets/components.js"></script>
+<script src="/assets/shared.js"></script>
+
+<!-- Define a página ativa no menu + scrollspy da sub-nav -->
+<script>
+  setActiveNav('sobre-laser');
+
+  (function () {
+    var bar      = document.querySelector('.sl-subnav');
+    var links    = Array.prototype.slice.call(document.querySelectorAll('.sl-subnav__link'));
+    var jump     = document.getElementById('slJump');
+    var hrefs    = links.map(function (l) { return l.getAttribute('href'); });
+    var sections = hrefs.map(function (h) { return document.querySelector(h); });
+    var lastActive = -1;
+
+    // altura do header + subnav, para compensar âncoras e o scrollspy
+    function offset() {
+      var headerH = window.innerWidth <= 900 ? 60 : 68;
+      return headerH + (bar ? bar.offsetHeight : 48) + 12;
+    }
+
+    function scrollToSection(hash) {
+      var target = document.querySelector(hash);
+      if (!target) return;
+      var y = target.getBoundingClientRect().top + window.scrollY - offset();
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+
+    function onScroll() {
+      var pos = window.scrollY + offset() + 20;
+      var current = 0;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i] && sections[i].offsetTop <= pos) current = i;
+      }
+      if (current !== lastActive) {
+        lastActive = current;
+        links.forEach(function (l, i) { l.classList.toggle('is-active', i === current); });
+        if (jump) jump.value = hrefs[current];   // mantém o dropdown sincronizado
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // abas (desktop)
+    links.forEach(function (l) {
+      l.addEventListener('click', function (e) {
+        e.preventDefault();
+        scrollToSection(l.getAttribute('href'));
+      });
+    });
+
+    // dropdown (mobile)
+    if (jump) {
+      jump.addEventListener('change', function () { scrollToSection(jump.value); });
+    }
+  })();
+</script>
+
+</body>
+</html>

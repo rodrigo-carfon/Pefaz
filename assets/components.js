@@ -45,6 +45,9 @@
         <a href="/sobre.html" class="nav__link" data-page="sobre">Quem Somos</a>
       </div>
       <div class="nav__item">
+        <a href="/sobre-o-laser.html" class="nav__link" data-page="sobre-laser">Sobre o Laser</a>
+      </div>
+      <div class="nav__item">
         <a href="/blog.html" class="nav__link" data-page="blog">Blog</a>
       </div>
       <div class="nav__item">
@@ -84,6 +87,9 @@
       </div>
       <div class="mnav__item">
         <a href="/sobre.html" class="mnav__link" data-page="sobre">Quem Somos</a>
+      </div>
+      <div class="mnav__item">
+        <a href="/sobre-o-laser.html" class="mnav__link" data-page="sobre-laser">Sobre o Laser</a>
       </div>
       <div class="mnav__item">
         <a href="/blog.html" class="mnav__link" data-page="blog">Blog</a>

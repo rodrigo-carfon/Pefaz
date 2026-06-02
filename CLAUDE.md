@@ -87,12 +87,12 @@ Pefaz/
 | ✅ | Home | `index.html` | Hero 3D (three.js), carrossel de destaques, depoimentos em vídeo do YouTube, prof, FAQ, modal de captura |
 | ✅ | Encontre profissional | `encontre.html` | Mapa SVG do Brasil (IBGE), filtros, JSON com 35 credenciados |
 | ✅ | Cursos | `cursos.html` | Hub hierárquico com 50+ produtos do Odoo, categorias colapsáveis, banner Start Laser |
-| 🔲 | Sobre / Quem Somos | `sobre.html` | |
+| ✅ | Sobre / Quem Somos | `sobre.html` | Tema claro. Hero + Missão/Visão/Valores + fundadora (Dra. Daiane) + CTA |
 | 🔲 | Professores | `professores.html` | |
 | 🔲 | FAQ completo | `faq.html` | |
-| 🔲 | Sobre o Laser | `sobre-o-laser.html` | Com âncoras: #historia, #tiposdelaser, #equipamentos |
+| ✅ | Sobre o Laser | `sobre-o-laser.html` | Recriada do WP. Sub-nav sticky com scrollspy. Âncoras: #historia, #reparacao, #analgesico, #antiinflamatorio, #contraindicacoes, #tiposdelaser, #equipamentos. Imagens locais `laser-*` em `/assets/images/` |
 | 🔲 | Contato | `contato.html` | |
-| 🔲 | Blog (index + posts) | `blog.html` + posts/ | Decisão: vai virar estático também |
+| ✅ | Blog (index + posts) | `blog.html` + `blog/` | Estático, gerado por `scripts/generate-blog.js` a partir da API WP. 78 posts com imagem, sidebar Start Laser, posts relacionados, filtros 5×2 |
 | 🔲 | Categorias | odontologia, medicina, enfermagem, veterinária, oncologia | |
 
 > **Menu enxuto**: o header só lista as 3 páginas prontas (Home, Cursos, Encontre um Profissional). Os itens "Quem Somos", "Sobre o Laser", Podcast, Vídeos, Contato foram removidos do header em 2026-05-13 — quando essas páginas existirem localmente, adicionar de volta em `assets/components.js` (sections `<nav class="nav">` desktop e `<div class="mobile-panel__body">` mobile). O footer ainda lista alguns desses itens apontando pro WP atual.
