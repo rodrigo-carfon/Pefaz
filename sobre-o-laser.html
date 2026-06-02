@@ -145,14 +145,6 @@
 .sl-section { padding: 80px 0; }
 .sl-section--alt { background: var(--gray-50); border-top: 1px solid var(--gray-100); border-bottom: 1px solid var(--gray-100); }
 
-.sl-eyebrow {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--lime-dark);
-  margin-bottom: 12px;
-}
 .sl-heading {
   font-family: 'Outfit', sans-serif;
   font-size: clamp(1.6rem, 3.4vw, 2.2rem);
@@ -526,6 +518,9 @@
   .sl-hero { padding: 64px 0 44px; }
   .sl-section { padding: 56px 0; }
   .sl-cta { padding: 60px 0; }
+  /* material de referência: empilhado e centralizado no mobile */
+  .sl-bib { flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+  .sl-bib__list { flex-direction: column; align-items: center; gap: 10px; }
 }
 </style>
 <!-- Google Tag Manager -->
@@ -616,7 +611,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <figcaption class="sl-media__cap">Theodore H. Maiman e o primeiro laser de rubi, 1960</figcaption>
       </div>
       <div>
-        <div class="sl-eyebrow">História do Laser</div>
         <h2 class="sl-heading">A luz como instrumento de cura</h2>
         <p class="sl-text">
           A terapia com luz, ou fototerapia, é um dos métodos terapêuticos mais antigos usados pelo
@@ -652,7 +646,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           alt="Esquema do efeito do laser na reparação tecidual">
       </figure>
       <div>
-        <div class="sl-eyebrow">Efeito na Reparação</div>
         <h2 class="sl-heading">Regeneração e remodelamento tecidual</h2>
         <p class="sl-text">Efeitos do laser de baixa potência na reparação:</p>
         <ul class="sl-list">
@@ -681,7 +674,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           alt="Aplicação do laser para alívio da dor">
       </figure>
       <div>
-        <div class="sl-eyebrow">Efeito Analgésico</div>
         <h2 class="sl-heading">Alívio da dor sem fármacos</h2>
         <p class="sl-text">Efeito analgésico do laser de baixa potência:</p>
         <ul class="sl-list">
@@ -713,7 +705,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           alt="Ilustração do efeito anti-inflamatório do laser">
       </figure>
       <div>
-        <div class="sl-eyebrow">Efeito Anti-inflamatório</div>
         <h2 class="sl-heading">Ação local, sem efeitos sistêmicos</h2>
         <p class="sl-text">Efeito anti-inflamatório do laser:</p>
         <ul class="sl-list">
@@ -740,7 +731,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="sl-section" id="contraindicacoes">
   <div class="sl-wrap">
     <div class="sl-section__head">
-      <div class="sl-eyebrow">Segurança</div>
       <h2 class="sl-heading">Contraindicações e cuidados</h2>
     </div>
 
@@ -802,7 +792,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="sl-section sl-section--alt" id="tiposdelaser">
   <div class="sl-wrap">
     <div class="sl-section__head">
-      <div class="sl-eyebrow">Tipos de Laser</div>
       <h2 class="sl-heading">Três categorias de aplicação</h2>
       <p class="sl-text">
         Existem três tipos de lasers utilizados na saúde: laser de alta potência, laser de baixa
@@ -866,7 +855,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="sl-section" id="equipamentos">
   <div class="sl-wrap">
     <div class="sl-section__head">
-      <div class="sl-eyebrow">Equipamentos</div>
       <h2 class="sl-heading">De mesa e portáteis</h2>
       <p class="sl-text">
         Em relação aos lasers de diodo de baixa potência, há no mercado equipamentos de mesa e portáteis,
