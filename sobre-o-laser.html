@@ -289,13 +289,12 @@
 .sl-warn__text { font-size: 0.95rem; color: var(--gray-600); line-height: 1.75; max-width: 560px; }
 .sl-warn__text strong { color: var(--dark-800); }
 
-.sl-qa { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
-.sl-qa__col { display: flex; flex-direction: column; gap: 18px; }
+.sl-qa { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
 .sl-qa__item {
   background: var(--white);
   border: 1px solid var(--gray-100);
   border-radius: var(--radius-md);
-  padding: 22px 24px;
+  padding: 26px 24px;
 }
 .sl-qa__q {
   font-family: 'Outfit', sans-serif;
@@ -753,36 +752,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="sl-qa">
-      <div class="sl-qa__col">
-        <div class="sl-qa__item">
-          <div class="sl-qa__q">Existem efeitos colaterais da irradiação?</div>
-          <p class="sl-qa__a">
-            Os efeitos colaterais da laserterapia são praticamente nulos, já que a luz é absorvida
-            principalmente pelo tecido lesionado. A luz não é armazenada e seus efeitos não são
-            cumulativos. No entanto, podemos ter inibição ou exacerbação de algumas situações clínicas
-            dose-dependentes — por exemplo, em uma lesão crônica, o laser pode agudizá-la para promover
-            sua reparação.
-          </p>
-        </div>
-        <div class="sl-qa__item">
-          <div class="sl-qa__q">Qual a principal contraindicação?</div>
-          <p class="sl-qa__a">
-            A principal contraindicação em laserterapia é sua utilização em <strong>lesão sem
-            diagnóstico</strong>. Essa é a regra principal da equipe de professores da Allaser.
-          </p>
-        </div>
+      <div class="sl-qa__item">
+        <div class="sl-qa__q">Existem efeitos colaterais da irradiação?</div>
+        <p class="sl-qa__a">
+          Os efeitos colaterais da laserterapia são praticamente nulos, já que a luz é absorvida
+          principalmente pelo tecido lesionado. A luz não é armazenada e seus efeitos não são
+          cumulativos. No entanto, podemos ter inibição ou exacerbação de algumas situações clínicas
+          dose-dependentes — por exemplo, em uma lesão crônica, o laser pode agudizá-la para promover
+          sua reparação.
+        </p>
       </div>
-      <div class="sl-qa__col">
-        <div class="sl-qa__item">
-          <div class="sl-qa__q">Outras situações que contraindicam o uso</div>
-          <ul class="sl-contra-list">
-            <li>Irradiação sobre tumores/neoplasias (benignos ou malignos)</li>
-            <li>Fenômenos de retenção de muco (glândulas salivares — mucoceles, por exemplo)</li>
-            <li>Em crianças: fontanelas e epífises de crescimento</li>
-            <li>Irradiação próxima a marcapasso</li>
-            <li>Mulheres grávidas (depende da aplicação)</li>
-          </ul>
-        </div>
+      <div class="sl-qa__item">
+        <div class="sl-qa__q">Qual a principal contraindicação?</div>
+        <p class="sl-qa__a">
+          A principal contraindicação em laserterapia é sua utilização em <strong>lesão sem
+          diagnóstico</strong>. Essa é a regra principal da equipe de professores da Allaser.
+        </p>
+      </div>
+      <div class="sl-qa__item">
+        <div class="sl-qa__q">Outras situações que contraindicam o uso</div>
+        <ul class="sl-contra-list">
+          <li>Irradiação sobre tumores/neoplasias (benignos ou malignos)</li>
+          <li>Fenômenos de retenção de muco (glândulas salivares — mucoceles, por exemplo)</li>
+          <li>Em crianças: fontanelas e epífises de crescimento</li>
+          <li>Irradiação próxima a marcapasso</li>
+          <li>Mulheres grávidas (depende da aplicação)</li>
+        </ul>
       </div>
     </div>
   </div>
