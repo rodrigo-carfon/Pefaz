@@ -245,13 +245,33 @@
 .sl-refs strong { color: var(--dark-700); }
 
 /* ── Contraindicações (Q&A + warning) ──────────────── */
+.sl-contra-top {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 28px;
+  align-items: center;
+  max-width: 1060px;
+  margin: 0 auto 40px;
+}
+.sl-contra-figure {
+  position: relative;
+  margin: 0;
+}
+.sl-contra-figure img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  display: block;
+}
 .sl-warn {
   display: flex;
   gap: 14px;
   align-items: flex-start;
-  max-width: 1060px;
-  margin: 0 auto 40px;
-  padding: 22px 24px;
+  padding: 24px 26px;
   background: #fff;
   border: 1px solid rgba(201,220,68,0.4);
   border-radius: var(--radius-lg);
@@ -311,6 +331,7 @@
   border: 1px solid var(--gray-100);
   border-radius: var(--radius-lg);
   padding: 32px 26px;
+  text-align: center;
   transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
 }
 .sl-section--alt .sl-card { background: var(--white); }
@@ -321,7 +342,7 @@
   background: var(--lime-subtle);
   border: 1px solid rgba(201,220,68,0.18);
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 18px;
+  margin: 0 auto 18px;
 }
 .sl-card__icon svg { width: 24px; height: 24px; stroke: var(--lime-dark); }
 .sl-card__tag {
@@ -341,6 +362,67 @@
   line-height: 1.25;
 }
 .sl-card p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.7; }
+
+/* ── Material de referência ────────────────────────── */
+.sl-bib {
+  max-width: 1060px;
+  margin: 32px auto 0;
+  padding: 22px 26px;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 28px;
+}
+.sl-bib__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dark-700);
+}
+.sl-bib__title svg { width: 17px; height: 17px; stroke: var(--lime-dark); }
+.sl-bib__list {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+.sl-bib__list li { display: inline-flex; }
+.sl-bib__list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gray-600);
+  background: var(--lime-subtle);
+  border: 1px solid rgba(201,220,68,0.25);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.sl-bib__list a::before {
+  content: '';
+  width: 13px; height: 13px;
+  flex-shrink: 0;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.sl-bib__list a:hover {
+  background: var(--lime);
+  color: var(--dark-800);
+  border-color: var(--lime);
+}
 
 /* ── Equipamentos (2 cards) ────────────────────────── */
 .sl-equip { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1060px; margin: 40px auto 0; }
@@ -420,6 +502,8 @@
   .sl-cards { grid-template-columns: 1fr; max-width: 460px; }
   .sl-qa { grid-template-columns: 1fr; }
   .sl-equip { grid-template-columns: 1fr; max-width: 520px; }
+  .sl-contra-top { grid-template-columns: 1fr; max-width: 560px; gap: 20px; }
+  .sl-contra-figure img { min-height: 0; max-height: 280px; }
 }
 @media (max-width: 900px) {
   /* header tem 60px no mobile (topbar oculta) */
@@ -649,15 +733,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 class="sl-heading" style="max-width:680px; margin:0 auto;">Contraindicações e cuidados</h2>
     </div>
 
-    <div class="sl-warn">
-      <div class="sl-warn__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      </div>
-      <div class="sl-warn__text">
-        O principal cuidado durante a irradiação é o uso de <strong>óculos de proteção</strong> pelo
-        paciente e pelos profissionais. A radiação laser terapêutica (classe IIIb) ou cirúrgica
-        (classe IV) — de emissão vermelha e infravermelha — pode causar lesões na retina. O ideal é
-        usar os óculos fornecidos pelo fabricante, específicos para o comprimento de onda do equipamento.
+    <div class="sl-contra-top">
+      <figure class="sl-contra-figure">
+        <img src="/assets/images/laser-contraindicacoes-oculos.jpeg"
+          alt="Profissional usando óculos de proteção durante a aplicação do laser">
+      </figure>
+      <div class="sl-warn">
+        <div class="sl-warn__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="sl-warn__text">
+          O principal cuidado durante a irradiação é o uso de <strong>óculos de proteção</strong> pelo
+          paciente e pelos profissionais. A radiação laser terapêutica (classe IIIb) ou cirúrgica
+          (classe IV) — de emissão vermelha e infravermelha — pode causar lesões na retina. O ideal é
+          usar os óculos fornecidos pelo fabricante, específicos para o comprimento de onda do equipamento.
+        </div>
       </div>
     </div>
 
@@ -745,6 +835,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           meio da interação da luz, sem finalidade terapêutica ou cirúrgica.
         </p>
       </div>
+    </div>
+
+    <div class="sl-bib">
+      <div class="sl-bib__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Material de referência
+      </div>
+      <ul class="sl-bib__list">
+        <li><a href="https://allaser.com.br/wp-content/uploads/2017/08/Tipos_de_Laser_Resumo_2_-_Cavalcanti_2011.png" target="_blank" rel="noopener">Colluzi 2004</a></li>
+        <li><a href="https://allaser.com.br/wp-content/uploads/2017/08/Tipos_de_Laser_Resumo_2_-_Cavalcanti_2011.png" target="_blank" rel="noopener">Cavalcanti 2011</a></li>
+        <li><a href="https://allaser.com.br/wp-content/uploads/2017/08/Tipos_de_Laser_Resumo_3_-_Piccione_2004.png" target="_blank" rel="noopener">Piccione 2004</a></li>
+      </ul>
     </div>
   </div>
 </section>
