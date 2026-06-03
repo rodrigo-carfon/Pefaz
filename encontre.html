@@ -20,6 +20,8 @@
   border-bottom: 1px solid var(--gray-100);
 }
 .encontre-intro .section-eyebrow { justify-content: center; }
+/* eyebrow com linha dos dois lados (shared.css esta com cache antigo no CDN) */
+.section-eyebrow::after { content: ''; width: 20px; height: 2px; background: var(--lime); border-radius: 1px; }
 .encontre-intro .section-title { margin-bottom: 12px; }
 .encontre-intro .section-sub { margin: 0 auto; }
 
