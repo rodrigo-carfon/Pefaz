@@ -163,6 +163,7 @@ function generatePostPage(post, catMap, allPosts) {
       ${related.map(r => `
       <a href="/blog/${r.slug}.html" class="related-card">
         <div class="related-card__img-wrap">
+          <img src="${r.img}" class="related-card__img-bg" aria-hidden="true" loading="lazy">
           <img src="${r.img}" alt="${r.title}" class="related-card__img" loading="lazy">
         </div>
         <div class="related-card__body">
@@ -290,8 +291,9 @@ ${FONTS}
 .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .related-card { display: flex; flex-direction: column; text-decoration: none; border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #ebebeb; transition: box-shadow 0.2s, transform 0.2s; }
 .related-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
-.related-card__img-wrap { overflow: hidden; }
-.related-card__img { width: 100%; height: auto; display: block; transition: transform 0.3s; }
+.related-card__img-wrap { position: relative; overflow: hidden; aspect-ratio: 1 / 1; background: #e8e8e4; }
+.related-card__img-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(16px); transform: scale(1.15); }
+.related-card__img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: contain; display: block; transition: transform 0.3s; }
 .related-card:hover .related-card__img { transform: scale(1.03); }
 .related-card__body { padding: 16px; display: flex; flex-direction: column; gap: 6px; }
 .related-card__cat {
