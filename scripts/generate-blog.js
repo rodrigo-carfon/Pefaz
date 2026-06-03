@@ -425,7 +425,7 @@ ${FONTS}
   content: '';
   display: block;
   width: 28px;
-  height: 2px;
+  height: 1.5px;
   background: #9aaa1a;
   opacity: 0.4;
   border-radius: 1px;
