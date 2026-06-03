@@ -376,6 +376,7 @@ function generateBlogIndex(posts, catMap) {
     return `
   <article class="blog-card" data-cats="${catIds}">
     <a href="/blog/${post.slug}.html" class="blog-card__img-wrap">
+      <img src="${img}" class="blog-card__img-bg" aria-hidden="true" loading="lazy">
       <img src="${img}" alt="${post.title.rendered}" class="blog-card__img" loading="lazy">
     </a>
     <div class="blog-card__body">
@@ -489,8 +490,9 @@ ${FONTS}
 }
 .blog-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); transform: translateY(-2px); }
 .blog-card.hidden { display: none; }
-.blog-card__img-wrap { display: block; overflow: hidden; background: #e8e8e4; }
-.blog-card__img { width: 100%; height: auto; display: block; transition: transform 0.35s; }
+.blog-card__img-wrap { position: relative; display: block; overflow: hidden; background: #e8e8e4; aspect-ratio: 1 / 1; }
+.blog-card__img-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(16px); transform: scale(1.15); }
+.blog-card__img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: contain; display: block; transition: transform 0.35s; }
 .blog-card__img-wrap:hover .blog-card__img { transform: scale(1.02); }
 .blog-card__body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
 .blog-card__cats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
