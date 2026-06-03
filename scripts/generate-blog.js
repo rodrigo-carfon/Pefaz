@@ -425,9 +425,10 @@ ${FONTS}
   content: '';
   display: block;
   width: 28px;
-  height: 1.5px;
+  height: 2px;
   background: #9aaa1a;
   opacity: 0.4;
+  border-radius: 1px;
 }
 .blog-hero__title {
   font-family: 'Outfit', sans-serif;

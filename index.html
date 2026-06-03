@@ -270,9 +270,8 @@
 .cta-section::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(201,220,68,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,220,68,0.06) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
 .cta-inner { position: relative; z-index: 1; max-width: 1260px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 48px; padding: 48px 56px; background: #fff; border-radius: 20px; border: 1px solid var(--gray-100); box-shadow: 0 8px 40px rgba(0,0,0,0.06); border-left: 4px solid var(--lime); }
 .cta-section .section-eyebrow { color: var(--lime-dark); margin-bottom: 12px; }
-/* eyebrow com linha dos dois lados (shared.css esta com cache antigo no CDN) */
-.section-eyebrow::after { content: ''; width: 20px; height: 2px; background: var(--lime); border-radius: 1px; }
-.cta-section .section-eyebrow::before, .cta-section .section-eyebrow::after { background: var(--lime-dark); }
+/* eyebrow: linha dos dois lados, uniforme (shared.css esta com cache antigo no CDN) */
+.section-eyebrow::before, .section-eyebrow::after { content: ''; width: 28px; height: 2px; background: var(--lime-dark); opacity: 0.4; border-radius: 1px; }
 .cta-section .section-title { color: var(--dark-900); margin-bottom: 10px; font-size: clamp(26px, 3vw, 40px); }
 .cta-sub { font-size: 0.94rem; color: var(--gray-400); line-height: 1.65; max-width: 480px; }
 .cta-actions { display: flex; flex-direction: column; gap: 10px; align-items: stretch; min-width: 220px; }
