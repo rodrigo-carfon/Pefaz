@@ -117,7 +117,7 @@ window.CURSOS_DATA = [
     desc: 'Cicatrização de feridas crônicas, úlceras e pós-operatório com protocolos baseados em evidências.',
     cargaHoraria: '16h',
     inicio: 'Início imediato',
-    url: 'https://allasercursos.odoo.com/shop/feridas-laserterapia-em-feridas-57',
+    url: 'https://allasercursos.odoo.com/shop/2229771-start-laser-feridas-laserterapia-em-feridas-61', // vende-se como combo (avulso negociado à parte)
     lp: 'https://allaser.com.br/curso-de-laserterapia-no-tratamento-de-feridas/',
     destaque: false,
     detalhes: {
@@ -148,7 +148,7 @@ window.CURSOS_DATA = [
     desc: 'Protocolos para fisioterapia: dor, inflamação, reabilitação musculoesquelética e esportiva.',
     cargaHoraria: '24h',
     inicio: 'Início imediato',
-    url: 'https://allasercursos.odoo.com/shop/fisio-laserterapia-para-fisioterapeutas-58',
+    url: 'https://allasercursos.odoo.com/shop/1704321-start-laser-fisio-laserterapia-para-fisioterapeutas-62', // vende-se como combo (avulso negociado à parte)
     lp: 'https://allaser.com.br/curso-de-laserterapia-para-fisioterapeutas/',
     destaque: false,
     detalhes: {
@@ -179,7 +179,7 @@ window.CURSOS_DATA = [
     desc: 'Aplicações do laser no sistema nervoso. Protocolos, indicações e evidências científicas atualizadas.',
     cargaHoraria: '24h',
     inicio: 'Início imediato',
-    url: 'https://allasercursos.odoo.com/shop/fotoneuromodulacao-60',
+    url: 'https://allasercursos.odoo.com/shop/2445951-start-laser-fotoneuromodulacao-64', // vende-se como combo (avulso negociado à parte)
     lp: 'https://allaser.com.br/curso-de-fotoneuromodulacao/',
     destaque: false,
     detalhes: {
@@ -210,7 +210,7 @@ window.CURSOS_DATA = [
     desc: 'Guia completo de protocolos para uso domiciliar do laser. Ideal para pacientes e profissionais.',
     cargaHoraria: null,
     inicio: 'Início imediato',
-    url: 'https://allasercursos.odoo.com/shop/home-laser-todos-protocolos-74',
+    url: 'https://allasercursos.odoo.com/shop/2929568-start-laser-home-laser-67', // vende-se como combo (avulso negociado à parte)
     destaque: false,
     detalhes: null,
   },
@@ -224,7 +224,7 @@ window.CURSOS_DATA = [
     desc: 'Protocolos completos de laserterapia em pediatria com abordagem segura e baseada em evidências.',
     cargaHoraria: null,
     inicio: 'Início imediato',
-    url: 'https://allasercursos.odoo.com/shop/2755095-pediatria-protocolos-de-pediatria-todos-protocolos-73',
+    url: 'https://allasercursos.odoo.com/shop/2929570-start-laser-pediatria-protocolos-de-pediatria-todos-protocolos-66', // vende-se como combo (avulso negociado à parte)
     destaque: false,
     detalhes: null,
   },
@@ -238,7 +238,7 @@ window.CURSOS_DATA = [
     desc: 'Combinação de protocolos para o pós-parto e pediatria em um único pacote.',
     cargaHoraria: null,
     inicio: 'Início imediato',
-    url: 'https://allasercursos.odoo.com/shop/pos-parto-pediatria-59',
+    url: 'https://allasercursos.odoo.com/shop/2881467-start-laser-pos-parto-pediatria-63', // vende-se como combo (avulso negociado à parte)
     lp: 'https://allaser.com.br/curso-de-laserterapia-no-pos-parto/',
     destaque: false,
     detalhes: null,
@@ -259,6 +259,7 @@ window.CURSOS_DATA = [
   },
   {
     id: 'combo-start-home',
+    oculto: true, // exibido via card avulso 'Home Laser'; combo é o produto real
     categoria: 'complementar',
     modalidade: 'Online',
     areas: [],
@@ -273,6 +274,7 @@ window.CURSOS_DATA = [
   },
   {
     id: 'combo-start-pediatria',
+    oculto: true, // exibido via card avulso 'Pediatria'; combo é o produto real
     categoria: 'complementar',
     modalidade: 'Online',
     areas: [],
@@ -291,7 +293,7 @@ window.CURSOS_DATA = [
     modalidade: 'Online',
     areas: ['Medicina'],
     thumb: '/assets/images/curso-combo-start-medicas.webp',
-    nome: 'Start Laser + Habilitação em Fotobiomodulação nas Especialidades Médicas',
+    nome: 'Habilitação em Fotobiomodulação nas Especialidades Médicas',
     desc: 'Formação completa para médicos: base laser + especialidades médicas.',
     cargaHoraria: null,
     inicio: 'Início imediato',
@@ -302,6 +304,7 @@ window.CURSOS_DATA = [
   },
   {
     id: 'combo-start-foto',
+    oculto: true, // exibido via card avulso 'Fotoneuromodulação'; combo é o produto real
     categoria: 'complementar',
     modalidade: 'Online',
     areas: [],
@@ -316,6 +319,7 @@ window.CURSOS_DATA = [
   },
   {
     id: 'combo-start-pos-parto',
+    oculto: true, // exibido via card avulso 'Pós Parto + Pediatria'; combo é o produto real
     categoria: 'complementar',
     modalidade: 'Online',
     areas: [],
@@ -330,6 +334,7 @@ window.CURSOS_DATA = [
   },
   {
     id: 'combo-start-fisio',
+    oculto: true, // exibido via card avulso 'Fisio'; combo é o produto real
     categoria: 'complementar',
     modalidade: 'Online',
     areas: ['Fisioterapia'],
@@ -344,6 +349,7 @@ window.CURSOS_DATA = [
   },
   {
     id: 'combo-start-feridas',
+    oculto: true, // exibido via card avulso 'Feridas'; combo é o produto real
     categoria: 'complementar',
     modalidade: 'Online',
     areas: ['Enfermagem', 'Medicina'],

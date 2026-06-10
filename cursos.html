@@ -1299,6 +1299,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 (function () {
 
+  /* Oculta cursos marcados com oculto:true (ex.: combos vendidos via card avulso) */
+  if (window.CURSOS_DATA) window.CURSOS_DATA = window.CURSOS_DATA.filter(function (c) { return !c.oculto; });
+
   /* ── Categorias ──────────────────────────────────── */
   var CATEGORIAS = [
     { id: 'base',         label: 'Formação Base'           },
