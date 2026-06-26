@@ -273,6 +273,83 @@
   .sobre-cta { padding: 60px 0; }
   .fundadora__photo-wrap { max-width: 240px; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   Conteúdo movido da home (2026-06-09)
+   Por que Allaser, Depoimentos, Professora, FAQ
+═══════════════════════════════════════════════════════ */
+
+/* WHY ALLASER */
+.why-section { background: var(--white); padding: 96px 32px; }
+.why-header { max-width: 1260px; margin: 0 auto 48px; }
+.why-header .section-title { margin-bottom: 12px; }
+.why-header .section-sub { max-width: 560px; }
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 1260px; margin: 0 auto; }
+.why-item { display: flex; align-items: flex-start; gap: 16px; padding: 20px 22px; background: var(--gray-50); border: 1px solid var(--gray-100); border-radius: var(--radius-md); transition: border-color 0.2s, box-shadow 0.2s; }
+.why-item:hover { border-color: rgba(201,220,68,0.45); box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+.why-icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--lime-subtle); display: flex; align-items: center; justify-content: center; }
+.why-icon svg { width: 18px; height: 18px; stroke: var(--lime-dark); }
+.why-item h4 { font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--dark-700); margin-bottom: 4px; }
+.why-item p { font-size: 0.82rem; color: var(--gray-400); line-height: 1.55; }
+
+/* TESTIMONIALS */
+.testimonials-section { background: var(--gray-50); padding: 96px 32px; }
+.test-header { text-align: center; margin-bottom: 52px; }
+.test-header .section-eyebrow { justify-content: center; }
+.test-header .section-sub { margin: 0 auto; }
+.carousel--video { max-width: 820px; margin: 0 auto; position: relative; }
+.carousel--video .carousel__viewport { box-shadow: 0 6px 24px rgba(0,0,0,0.10); border-radius: var(--radius-lg); overflow: hidden; }
+.carousel--video .carousel__track { display: flex; transition: transform 0.5s var(--ease-out); }
+.carousel--video .carousel__slide { flex: 0 0 100%; aspect-ratio: 16/9; background: var(--dark-900); }
+.carousel--video .carousel__slide iframe { width: 100%; height: 100%; border: 0; display: block; }
+.carousel--video .carousel__btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: var(--white); border: 1px solid var(--gray-200); color: var(--dark-700); font-size: 22px; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: grid; place-items: center; transition: all 0.2s; }
+.carousel--video .carousel__btn:hover { background: var(--lime); border-color: var(--lime); }
+.carousel--video .carousel__btn--prev { left: -22px; }
+.carousel--video .carousel__btn--next { right: -22px; }
+.carousel--video .carousel__dots { display: flex; gap: 8px; justify-content: center; margin-top: 18px; }
+.carousel--video .carousel__dot { width: 10px; height: 10px; border-radius: 50%; border: none; background: var(--gray-200); cursor: pointer; padding: 0; transition: all 0.2s; }
+.carousel--video .carousel__dot.is-active { background: var(--lime-dark); width: 28px; border-radius: 99px; }
+
+/* PROFESSORA */
+.prof-section { background: var(--white); padding: 96px 32px; }
+.prof-inner { display: grid; grid-template-columns: 420px 1fr; gap: 80px; align-items: center; max-width: 1260px; margin: 0 auto; }
+.prof-image-wrap { position: relative; }
+.prof-image-wrap::before { content: ''; position: absolute; top: -14px; left: -14px; right: 14px; bottom: 14px; border-radius: 22px; background: var(--lime-subtle); border: 1px solid rgba(201,220,68,0.25); z-index: 0; }
+.prof-image-wrap img { position: relative; z-index: 1; width: 100%; border-radius: 18px; display: block; object-fit: cover; box-shadow: 0 16px 60px rgba(0,0,0,0.1); }
+.prof-badge { position: absolute; z-index: 2; bottom: 20px; right: -20px; background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-md); padding: 14px 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.09); min-width: 220px; }
+.prof-badge h4 { font-family: 'Outfit', sans-serif; font-size: 0.86rem; font-weight: 700; color: var(--dark-700); margin-bottom: 3px; }
+.prof-badge p { font-size: 0.73rem; color: var(--lime-dark); font-weight: 500; }
+.prof-content .section-sub { margin-bottom: 28px; }
+.pillars { display: flex; flex-direction: column; gap: 11px; margin-bottom: 32px; }
+.pillar { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--dark-600); }
+.pillar::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
+
+/* FAQ */
+.faq-section { background: var(--gray-50); padding: 96px 32px; }
+.faq-wrap { max-width: 760px; margin: 0 auto; }
+.faq-header { text-align: center; margin-bottom: 48px; }
+.faq-header .section-eyebrow { justify-content: center; }
+.faq-item { border-bottom: 1px solid var(--gray-100); }
+.faq-question { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 20px 0; background: none; border: none; color: var(--dark-700); font-family: 'Outfit', sans-serif; font-size: 0.96rem; font-weight: 600; text-align: left; cursor: pointer; gap: 20px; letter-spacing: -0.01em; transition: color 0.2s; }
+.faq-question:hover { color: var(--lime-dark); }
+.faq-chevron { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--gray-200); display: grid; place-items: center; color: var(--lime-dark); font-size: 12px; transition: all 0.28s; flex-shrink: 0; }
+.faq-item.open .faq-chevron { background: var(--lime); border-color: var(--lime); color: var(--dark-900); transform: rotate(180deg); }
+.faq-answer { font-size: 0.88rem; color: var(--gray-500); line-height: 1.75; max-height: 0; overflow: hidden; transition: all 0.38s var(--ease-out); }
+.faq-item.open .faq-answer { max-height: 280px; padding-bottom: 20px; }
+
+@media (max-width: 1024px) {
+  .prof-inner { grid-template-columns: 1fr; gap: 44px; }
+  .why-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .prof-image-wrap { max-width: 380px; margin: 0 auto; }
+  .why-section, .testimonials-section, .prof-section, .faq-section { padding: 64px 20px; }
+  .carousel--video .carousel__btn--prev { left: 8px; }
+  .carousel--video .carousel__btn--next { right: 8px; }
+}
+@media (max-width: 640px) {
+  .prof-badge { right: 0; }
+}
 </style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -407,6 +484,141 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       Conheça nossos cursos
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     Conteúdo movido da home (2026-06-09)
+     Por que Allaser · Depoimentos · Professora · FAQ
+═══════════════════════════════════════════════════════ -->
+
+<!-- POR QUE ALLASER -->
+<section class="why-section" id="por-que">
+  <div class="why-header">
+    <div class="section-eyebrow">Por que Allaser</div>
+    <h2 class="section-title">Formação que faz diferença real</h2>
+    <p class="section-sub">Não nascemos nas redes sociais. Somos pioneiros em ensino de laserterapia com mais de uma década de resultado comprovado.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-item"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><h4>Professores Doutores pela USP</h4><p>Corpo docente com titulação máxima e atuação clínica ativa e atualizada.</p></div></div>
+    <div class="why-item"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div><h4>4,9 estrelas no Google</h4><p>Aprovada e recomendada por centenas de ex-alunos em todo o Brasil.</p></div></div>
+    <div class="why-item"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div><h4>Didática diferenciada</h4><p>Aulas dinâmicas, apostilas, charts e PDFs de apoio para facilitar o aprendizado.</p></div></div>
+    <div class="why-item"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div><h4>Início imediato</h4><p>Comece a aprender no mesmo dia da matrícula, sem esperar turma.</p></div></div>
+    <div class="why-item"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><h4>Suporte dos professores</h4><p>Webinários ao vivo, grupos de discussão e acesso direto à equipe docente.</p></div></div>
+    <div class="why-item"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><rect x="6" y="2" width="12" height="20" rx="1"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div><div><h4>12 anos no mercado</h4><p>Pioneiros em cursos de laserterapia, com tradição e credibilidade comprovadas.</p></div></div>
+    <div class="why-item"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><div><h4>Retorno rápido do investimento</h4><p>Alunos saem aptos a realizar procedimentos e já atender pacientes após o curso.</p></div></div>
+    <div class="why-item"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg></div><div><h4>Embasamento científico</h4><p>Todo conteúdo baseado em pesquisa clínica e evidências atualizadas.</p></div></div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS — carrossel de vídeos do YouTube -->
+<section class="testimonials-section">
+  <div class="test-header">
+    <div class="section-eyebrow">Depoimentos</div>
+    <h2 class="section-title">O que nossos alunos dizem</h2>
+    <p class="section-sub">Mais de 5.000 profissionais transformados em todo o Brasil.</p>
+  </div>
+
+  <div class="carousel carousel--video" id="depoimentosCarousel" aria-roledescription="carrossel" aria-label="Depoimentos em vídeo">
+    <div class="carousel__viewport">
+      <div class="carousel__track" id="depoimentosTrack">
+        <div class="carousel__slide">
+          <iframe src="https://www.youtube.com/embed/ZXvj-kvzVj4" title="Depoimento Ana Samways — Laserpuntura" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="carousel__slide">
+          <iframe src="https://www.youtube.com/embed/iF5zJI0UTt8" title="Depoimento Maria Oliveira — Laserpuntura" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="carousel__slide">
+          <iframe src="https://www.youtube.com/embed/MLrORjx6OiI" title="Depoimento Rosangela Fuzimotto" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <button class="carousel__btn carousel__btn--prev" id="depoimentosPrev" aria-label="Vídeo anterior">‹</button>
+    <button class="carousel__btn carousel__btn--next" id="depoimentosNext" aria-label="Próximo vídeo">›</button>
+    <div class="carousel__dots" id="depoimentosDots" role="tablist" aria-label="Selecionar vídeo"></div>
+  </div>
+</section>
+
+<script>
+/* Carrossel de depoimentos — sem auto-rotate (vídeo está sendo assistido) */
+(function() {
+  const track  = document.getElementById('depoimentosTrack');
+  const dotsEl = document.getElementById('depoimentosDots');
+  const prev   = document.getElementById('depoimentosPrev');
+  const next   = document.getElementById('depoimentosNext');
+  if (!track) return;
+  const slides = track.querySelectorAll('.carousel__slide');
+  if (!slides.length) return;
+  dotsEl.innerHTML = Array.from(slides).map(function(_, i) {
+    return '<button class="carousel__dot' + (i === 0 ? ' is-active' : '') + '" data-i="' + i + '" role="tab" aria-label="Vídeo ' + (i + 1) + '"></button>';
+  }).join('');
+  const dots = dotsEl.querySelectorAll('.carousel__dot');
+  let current = 0;
+  function goto(i) {
+    current = (i + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach(function(d, idx) { d.classList.toggle('is-active', idx === current); });
+  }
+  prev.addEventListener('click', function() { goto(current - 1); });
+  next.addEventListener('click', function() { goto(current + 1); });
+  dots.forEach(function(d) { d.addEventListener('click', function() { goto(parseInt(this.dataset.i, 10)); }); });
+  if (slides.length <= 1) { prev.style.display = 'none'; next.style.display = 'none'; dotsEl.style.display = 'none'; }
+})();
+</script>
+
+<!-- PROFESSORA -->
+<section class="prof-section" id="professores">
+  <div class="prof-inner">
+    <div class="prof-image-wrap">
+      <img src="/assets/images/prof-daiane.jpg" alt="Profa. Dra. Daiane T. Meneguzzo" onerror="this.src='/assets/images/prof-daiane-fallback.jpg'">
+      <div class="prof-badge">
+        <h4>Profa. Dra. Daiane T. Meneguzzo</h4>
+        <p>Fundadora · Doutora pela USP</p>
+      </div>
+    </div>
+    <div class="prof-content">
+      <div class="section-eyebrow">Ministradora & Fundadora</div>
+      <h2 class="section-title">Aprenda com quem<br>pesquisa laserterapia</h2>
+      <p class="section-sub">Doutora pela Universidade de São Paulo, a Profa. Daiane é referência nacional em fotobiomodulação — com anos de pesquisa clínica e formação de profissionais em todo o Brasil.</p>
+      <div class="pillars">
+        <div class="pillar">Doutora pela Universidade de São Paulo (USP)</div>
+        <div class="pillar">Pesquisadora ativa em fotobiomodulação</div>
+        <div class="pillar">Mais de 12 anos de ensino e atuação clínica</div>
+        <div class="pillar">Pioneira no ensino de laserterapia no Brasil</div>
+        <div class="pillar">Palestrante em congressos nacionais e internacionais</div>
+      </div>
+      <a href="https://allaser.com.br/professores-allaser/" class="btn btn--sm btn--courses" style="border-radius:8px;">Conhecer toda a equipe →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="faq-wrap">
+    <div class="faq-header">
+      <div class="section-eyebrow">Perguntas Frequentes</div>
+      <h2 class="section-title">Tire suas dúvidas</h2>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">A laserterapia possui efeito colateral? <span class="faq-chevron">▾</span></button>
+      <div class="faq-answer">Não. A laserterapia não possui efeitos colaterais quando aplicada corretamente. O que pode ocorrer é a utilização de doses incorretas, impedindo que o resultado seja alcançado. Contraindicações incluem aplicação sobre tumores sem diagnóstico e uso em pacientes com marcapasso.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">A aplicação do laser dói? <span class="faq-chevron">▾</span></button>
+      <div class="faq-answer">Na laserterapia de baixa potência, não. O equipamento não promove corte nem aumento de temperatura nos tecidos. Apenas para lasercirurgia de alta potência é necessária anestesia pelo profissional responsável.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Como estabelecer um protocolo para meu paciente? <span class="faq-chevron">▾</span></button>
+      <div class="faq-answer">Os protocolos são estabelecidos pela dosimetria, levando em conta fatores do equipamento (comprimento de onda, energia, potência) e do paciente (tipo de pele, peso, fase da lesão). Nossos cursos ensinam como criar protocolos personalizados para cada caso clínico.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Qual a diferença entre os formatos de curso? <span class="faq-chevron">▾</span></button>
+      <div class="faq-answer">Oferecemos três modalidades: (1) Online gravado com início imediato — ideal para quem tem rotina intensa. (2) Híbrido online — aulas gravadas + encontros ao vivo. (3) Híbrido presencial — aulas introdutórias gravadas + aulas presenciais em Campinas, SP.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Recebo certificado ao concluir o curso? <span class="faq-chevron">▾</span></button>
+      <div class="faq-answer">Sim. Ao concluir você recebe certificado emitido pela Allaser — 12 anos de mercado, professores doutores pela USP. Nossos certificados são reconhecidos nacionalmente.</div>
+    </div>
   </div>
 </section>
 

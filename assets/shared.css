@@ -273,9 +273,7 @@ section { padding: 96px 32px; }
   .topbar { display: none; }
   .header__inner { height: 60px; padding: 0 18px; }
   .logo__img { height: 34px; }
-  .btn--whatsapp span { display: none; }
-  .btn--whatsapp { width: 40px; height: 40px; padding: 0; border-radius: 50%; justify-content: center; }
-  .btn--whatsapp svg { width: 18px; height: 18px; }
+  .btn--whatsapp { display: none; }
   .footer__main { padding: 44px 20px 36px; }
   .footer__grid { grid-template-columns: 1fr; gap: 32px; }
   .footer__brand-text { max-width: 100%; }

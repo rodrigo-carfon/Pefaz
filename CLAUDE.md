@@ -84,10 +84,10 @@ Pefaz/
 
 | Estado | Página | Arquivo | Notas |
 |---|---|---|---|
-| ✅ | Home | `index.html` | Hero 3D (three.js), carrossel de destaques, depoimentos em vídeo do YouTube, prof, FAQ, modal de captura |
+| ✅ | Home | `index.html` | **Refocada em conversão de cursos**: Hero V2 (foto Daiane + fundo abstrato) → carrossel de destaques (banners) → catálogo completo dos cursos (renderiza window.CURSOS_DATA). Modal de captura ainda no DOM mas órfão (sem trigger). |
 | ✅ | Encontre profissional | `encontre.html` | Mapa SVG do Brasil (IBGE), filtros, JSON com 35 credenciados |
 | ✅ | Cursos | `cursos.html` | Hub hierárquico com 50+ produtos do Odoo, categorias colapsáveis, banner Start Laser |
-| ✅ | Sobre / Quem Somos | `sobre.html` | Tema claro. Hero + Missão/Visão/Valores + fundadora (Dra. Daiane) + CTA |
+| ✅ | Sobre / Quem Somos | `sobre.html` | Tema claro. Hero + Missão/Visão/Valores + fundadora (Dra. Daiane) + CTA. **Recebeu (2026-06-09)** as seções movidas da home: Por que Allaser, Depoimentos em vídeo, Professora Daiane (#professores), FAQ (#faq). Reorganizar depois. |
 | 🔲 | Professores | `professores.html` | |
 | 🔲 | FAQ completo | `faq.html` | |
 | ✅ | Sobre o Laser | `sobre-o-laser.html` | Recriada do WP. Sub-nav sticky com scrollspy. Âncoras: #historia, #reparacao, #analgesico, #antiinflamatorio, #contraindicacoes, #tiposdelaser, #equipamentos. Imagens locais `laser-*` em `/assets/images/` |
