@@ -83,10 +83,10 @@ Pefaz/
 
 | Estado | Página | Arquivo | Notas |
 |---|---|---|---|
-| ✅ | Home | `index.html` | **Refocada em conversão de cursos**: Hero V2 (foto Daiane + fundo abstrato) → catálogo dos cursos em pôsteres 9:16 sobre fundo branco (renderiza window.CURSOS_DATA). Carrossel de destaques removido em 2026-06-26 (visualmente competia com a hero e o catálogo). Modal de captura ainda no DOM mas órfão (sem trigger). |
+| ✅ | Home | `index.html` | **Refocada em conversão de cursos**: Hero V2 (foto Daiane + fundo abstrato) → catálogo dos cursos em pôsteres 9:16 sobre fundo branco (renderiza window.CURSOS_DATA) → seção Professora Daiane (#professores, devolvida em 2026-06-26). Carrossel de destaques removido em 2026-06-26 (competia com a hero e o catálogo). Modal de captura ainda no DOM mas órfão (sem trigger). |
 | ✅ | Encontre profissional | `encontre.html` | Mapa SVG do Brasil (IBGE), filtros, JSON com 35 credenciados |
 | ✅ | Cursos | `cursos.html` | Hub hierárquico com 30 produtos do Odoo (todos com capa 9:16), categorias colapsáveis. Banner Start Laser removido em 2026-06-26 (redundante com o catálogo, que já mostra o Start Laser como primeiro card). |
-| ✅ | Sobre / Quem Somos | `sobre.html` | Tema claro. Hero + Missão/Visão/Valores + fundadora (Dra. Daiane) + CTA. **Recebeu (2026-06-09)** as seções movidas da home: Por que Allaser, Depoimentos em vídeo, Professora Daiane (#professores), FAQ (#faq). Reorganizar depois. |
+| ✅ | Sobre / Quem Somos | `sobre.html` | Tema claro. Hero + Missão/Visão/Valores + fundadora (Dra. Daiane) + CTA. **Recebeu (2026-06-09)** seções movidas da home: Por que Allaser, Depoimentos em vídeo, FAQ (#faq). A seção Professora Daiane (#professores) voltou pra home em 2026-06-26. Reorganizar depois. |
 | 🔲 | Professores | `professores.html` | |
 | 🔲 | FAQ completo | `faq.html` | |
 | ✅ | Sobre o Laser | `sobre-o-laser.html` | Recriada do WP. Sub-nav sticky com scrollspy. Âncoras: #historia, #reparacao, #analgesico, #antiinflamatorio, #contraindicacoes, #tiposdelaser, #equipamentos. Imagens locais `laser-*` em `/assets/images/` |

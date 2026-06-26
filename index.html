@@ -322,6 +322,30 @@
   .fm-card { padding: 28px 22px; }
   .fm-options { grid-template-columns: 1fr; }
 }
+
+/* PROFESSORA — apresentação da Dra. Daiane no final da home */
+.prof-section { background: var(--white); padding: 96px 32px; }
+.prof-inner { display: grid; grid-template-columns: 420px 1fr; gap: 80px; align-items: center; max-width: 1260px; margin: 0 auto; }
+.prof-image-wrap { position: relative; }
+.prof-image-wrap::before { content: ''; position: absolute; top: -14px; left: -14px; right: 14px; bottom: 14px; border-radius: 22px; background: var(--lime-subtle); border: 1px solid rgba(201,220,68,0.25); z-index: 0; }
+.prof-image-wrap img { position: relative; z-index: 1; width: 100%; border-radius: 18px; display: block; object-fit: cover; box-shadow: 0 16px 60px rgba(0,0,0,0.1); }
+.prof-badge { position: absolute; z-index: 2; bottom: 20px; right: -20px; background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-md); padding: 14px 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.09); min-width: 220px; }
+.prof-badge h4 { font-family: 'Outfit', sans-serif; font-size: 0.86rem; font-weight: 700; color: var(--dark-700); margin-bottom: 3px; }
+.prof-badge p { font-size: 0.73rem; color: var(--lime-dark); font-weight: 500; }
+.prof-content .section-sub { margin-bottom: 28px; }
+.pillars { display: flex; flex-direction: column; gap: 11px; margin-bottom: 32px; }
+.pillar { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--dark-600); }
+.pillar::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
+@media (max-width: 1024px) {
+  .prof-inner { grid-template-columns: 1fr; gap: 44px; }
+}
+@media (max-width: 768px) {
+  .prof-image-wrap { max-width: 380px; margin: 0 auto; }
+  .prof-section { padding: 64px 20px; }
+}
+@media (max-width: 640px) {
+  .prof-badge { right: 0; }
+}
 </style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -473,6 +497,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }).join('');
 })();
 </script>
+
+<!-- PROFESSORA -->
+<section class="prof-section" id="professores">
+  <div class="prof-inner">
+    <div class="prof-image-wrap">
+      <img src="/assets/images/prof-daiane.jpg" alt="Profa. Dra. Daiane T. Meneguzzo" onerror="this.src='/assets/images/prof-daiane-fallback.jpg'">
+      <div class="prof-badge">
+        <h4>Profa. Dra. Daiane T. Meneguzzo</h4>
+        <p>Fundadora · Doutora pela USP</p>
+      </div>
+    </div>
+    <div class="prof-content">
+      <div class="section-eyebrow">Ministradora & Fundadora</div>
+      <h2 class="section-title">Aprenda com quem<br>pesquisa laserterapia</h2>
+      <p class="section-sub">Doutora pela Universidade de São Paulo, a Profa. Daiane é referência nacional em fotobiomodulação — com anos de pesquisa clínica e formação de profissionais em todo o Brasil.</p>
+      <div class="pillars">
+        <div class="pillar">Doutora pela Universidade de São Paulo (USP)</div>
+        <div class="pillar">Pesquisadora ativa em fotobiomodulação</div>
+        <div class="pillar">Mais de 12 anos de ensino e atuação clínica</div>
+        <div class="pillar">Pioneira no ensino de laserterapia no Brasil</div>
+        <div class="pillar">Palestrante em congressos nacionais e internacionais</div>
+      </div>
+      <a href="https://allaser.com.br/professores-allaser/" class="btn btn--sm btn--courses" style="border-radius:8px;">Conhecer toda a equipe →</a>
+    </div>
+  </div>
+</section>
 
 </main>
 
