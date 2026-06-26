@@ -75,7 +75,6 @@ Pefaz/
 - **Header/footer do site público**: NÃO duplicar em páginas. Usar placeholders `<div id="site-header"></div>` e `<div id="site-footer"></div>` que o `components.js` preenche.
 - **Header do admin**: NÃO duplicar entre páginas do `/admin/`. Usar `<?php $active_page = 'X'; include __DIR__ . '/_header.php'; ?>` no topo do `<body>` (X = `'credenciados'`, `'usuarios'` ou `'meus-dados'`). Editar `admin/_header.php` propaga a mudança em todas as páginas do admin.
 - **Item de menu ativo**: cada página chama `setActiveNav('home')` (ou `'cursos'`, `'encontre'`...) no fim do `<body>`.
-- **Carrossel de destaques da home**: banners ficam numa lista `const DESTAQUES_BANNERS` no `<script>` inline do `index.html`. Pra adicionar/remover banner, edita só essa lista — não mexe no HTML/CSS. Cada item: `{ src, alt, href }`. Imagem recomendada 1920×1080.
 - **Commits**: PT-BR, minúsculo, atômicos (1 unidade de trabalho por commit), corpo explica o porquê não o quê.
 
 ---
@@ -84,7 +83,7 @@ Pefaz/
 
 | Estado | Página | Arquivo | Notas |
 |---|---|---|---|
-| ✅ | Home | `index.html` | **Refocada em conversão de cursos**: Hero V2 (foto Daiane + fundo abstrato) → carrossel de destaques (banners) → catálogo dos cursos em estilo Academy/Netflix (pôsteres 9:16 sobre fundo escuro #0c1010, renderiza window.CURSOS_DATA). Modal de captura ainda no DOM mas órfão (sem trigger). |
+| ✅ | Home | `index.html` | **Refocada em conversão de cursos**: Hero V2 (foto Daiane + fundo abstrato) → catálogo dos cursos em estilo Academy/Netflix (pôsteres 9:16 sobre fundo escuro #0c1010, renderiza window.CURSOS_DATA). Carrossel de destaques removido em 2026-06-26 (visualmente competia com a hero e o catálogo). Modal de captura ainda no DOM mas órfão (sem trigger). |
 | ✅ | Encontre profissional | `encontre.html` | Mapa SVG do Brasil (IBGE), filtros, JSON com 35 credenciados |
 | ✅ | Cursos | `cursos.html` | Hub hierárquico com 30 produtos do Odoo (todos com capa 9:16), categorias colapsáveis, banner Start Laser |
 | ✅ | Sobre / Quem Somos | `sobre.html` | Tema claro. Hero + Missão/Visão/Valores + fundadora (Dra. Daiane) + CTA. **Recebeu (2026-06-09)** as seções movidas da home: Por que Allaser, Depoimentos em vídeo, Professora Daiane (#professores), FAQ (#faq). Reorganizar depois. |
