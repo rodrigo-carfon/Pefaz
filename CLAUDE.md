@@ -85,7 +85,7 @@ Pefaz/
 |---|---|---|---|
 | ✅ | Home | `index.html` | **Refocada em conversão de cursos**: Hero V2 (foto Daiane + fundo abstrato) → catálogo dos cursos em pôsteres 9:16 sobre fundo branco (renderiza window.CURSOS_DATA). Carrossel de destaques removido em 2026-06-26 (visualmente competia com a hero e o catálogo). Modal de captura ainda no DOM mas órfão (sem trigger). |
 | ✅ | Encontre profissional | `encontre.html` | Mapa SVG do Brasil (IBGE), filtros, JSON com 35 credenciados |
-| ✅ | Cursos | `cursos.html` | Hub hierárquico com 30 produtos do Odoo (todos com capa 9:16), categorias colapsáveis, banner Start Laser |
+| ✅ | Cursos | `cursos.html` | Hub hierárquico com 30 produtos do Odoo (todos com capa 9:16), categorias colapsáveis. Banner Start Laser removido em 2026-06-26 (redundante com o catálogo, que já mostra o Start Laser como primeiro card). |
 | ✅ | Sobre / Quem Somos | `sobre.html` | Tema claro. Hero + Missão/Visão/Valores + fundadora (Dra. Daiane) + CTA. **Recebeu (2026-06-09)** as seções movidas da home: Por que Allaser, Depoimentos em vídeo, Professora Daiane (#professores), FAQ (#faq). Reorganizar depois. |
 | 🔲 | Professores | `professores.html` | |
 | 🔲 | FAQ completo | `faq.html` | |
@@ -154,7 +154,6 @@ Depois acessa `http://localhost:8000/admin/setup.php` pra criar TEU usuário loc
 - **`100vh` em iOS Safari** pode dar layout shift pela barra do navegador. Considerar `100dvh` se virar problema.
 - **CRLF warnings** ao commitar — `core.autocrlf=true` do Git for Windows convertendo line endings. Normal, não é erro.
 - **YouTube embed em vídeo "Não listado"**: a flag **"Permitir incorporação"** é uma configuração SEPARADA da visibilidade — está em Detalhes → Mostrar mais. Sem ela ligada, o embed mostra "Vídeo indisponível" mesmo o vídeo estando no ar. Verificar por vídeo no YouTube Studio quando algum embed falhar.
-- **Banner do Start Laser** salvo em `/assets/images/banner-start-laser.jpg` (1920×1080). Exibido com `width:100%; height:auto; max-width:1060px; max-height:600px; object-fit:contain` — não cortar com `cover`.
 - **`cursos-data.js` tem 30 entradas** — todos com capa 9:16 em `/assets/images/capas-cursos/`. Cursos sem capa (presenciais com data específica, fóruns gravados, materiais avulsos, plantão start-laser, combos ocultos, avançados) foram removidos em 2026-06-26 quando padronizamos o pôster 9:16. Se precisar reativar algum, providencie a capa antes de re-adicionar no `cursos-data.js`.
 - **`body { overflow-x: clip }`** (não `hidden`) em `shared.css` — necessário para que `position: sticky` funcione dentro de containers com overflow. Não reverter para `hidden`.
 
