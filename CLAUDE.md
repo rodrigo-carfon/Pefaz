@@ -83,7 +83,7 @@ Pefaz/
 
 | Estado | Página | Arquivo | Notas |
 |---|---|---|---|
-| ✅ | Home | `index.html` | **Refocada em conversão de cursos**: Hero V2 (foto Daiane + fundo abstrato) → catálogo dos cursos em pôsteres 9:16 sobre fundo branco (renderiza window.CURSOS_DATA) → seção Professora Daiane (#professores, devolvida em 2026-06-26). Carrossel de destaques removido em 2026-06-26 (competia com a hero e o catálogo). Modal de captura ainda no DOM mas órfão (sem trigger). |
+| ✅ | Home | `index.html` | **Refocada em conversão de cursos**: Hero V2 (foto Daiane + fundo abstrato em .webp) → catálogo dos cursos em pôsteres 9:16 sobre fundo branco (renderiza window.CURSOS_DATA) → seção Professora Daiane (#professores, devolvida em 2026-06-26). Carrossel de destaques removido em 2026-06-26 (competia com a hero e o catálogo). Modal de captura ainda no DOM mas órfão (sem trigger). |
 | ✅ | Encontre profissional | `encontre.html` | Mapa SVG do Brasil (IBGE), filtros, JSON com 35 credenciados |
 | ✅ | Cursos | `cursos.html` | Hub hierárquico com 30 produtos do Odoo (todos com capa 9:16), categorias colapsáveis. Banner Start Laser removido em 2026-06-26 (redundante com o catálogo, que já mostra o Start Laser como primeiro card). |
 | ✅ | Sobre / Quem Somos | `sobre.html` | Tema claro. Hero + Missão/Visão/Valores + fundadora (Dra. Daiane) + CTA. **Recebeu (2026-06-09)** seções movidas da home: Por que Allaser, Depoimentos em vídeo, FAQ (#faq). A seção Professora Daiane (#professores) voltou pra home em 2026-06-26. Reorganizar depois. |
@@ -156,6 +156,7 @@ Depois acessa `http://localhost:8000/admin/setup.php` pra criar TEU usuário loc
 - **YouTube embed em vídeo "Não listado"**: a flag **"Permitir incorporação"** é uma configuração SEPARADA da visibilidade — está em Detalhes → Mostrar mais. Sem ela ligada, o embed mostra "Vídeo indisponível" mesmo o vídeo estando no ar. Verificar por vídeo no YouTube Studio quando algum embed falhar.
 - **`cursos-data.js` tem 30 entradas** — todos com capa 9:16 em `/assets/images/capas-cursos/`. Cursos sem capa (presenciais com data específica, fóruns gravados, materiais avulsos, plantão start-laser, combos ocultos, avançados) foram removidos em 2026-06-26 quando padronizamos o pôster 9:16. Se precisar reativar algum, providencie a capa antes de re-adicionar no `cursos-data.js`.
 - **`body { overflow-x: clip }`** (não `hidden`) em `shared.css` — necessário para que `position: sticky` funcione dentro de containers com overflow. Não reverter para `hidden`.
+- **Pipeline de otimização de imagens**: as capas em `/assets/images/capas-cursos/` foram redimensionadas in-place de 1080×1920 (~190 KB cada) para 540×960 (~40 KB cada) em 2026-06-26 pra resolver LCP de 12,9s. Os arquivos originais 1080×1920 ficam em `C:\Users\Pichau\Documents\allaser-capas-cursos\imagens\` — fonte de verdade caso precise regerar. Hero usa `.webp` (era `.png` de 1,2 MB → 25 KB). Comando padrão: `ffmpeg -i in.webp -vf "scale=540:960:flags=lanczos" -c:v libwebp -quality 78 -compression_level 6 out.webp`. Pra adicionar capa nova, redimensione para 540×960 antes de copiar pro repo.
 
 ---
 

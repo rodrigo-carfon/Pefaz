@@ -6,7 +6,10 @@
 <title>Allaser — Cursos de Laserterapia</title>
 <meta name="description" content="Formação em laserterapia com professores Doutores pela USP. Cursos online, híbridos e presenciais. Mais de 5.000 profissionais formados desde 2012.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="/assets/images/hero-fundo.webp" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/images/hero-daiane.webp" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/shared.css">
 <style>
 /* ═══════════════════════════════════════════════════════
@@ -388,8 +391,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- HERO V2 — fundo + Daiane + texto -->
 <section class="hero">
   <div class="hero__bg" aria-hidden="true">
-    <img src="/assets/images/hero-fundo.png" alt="" class="hero__bg-img" loading="eager" fetchpriority="high">
-    <img src="/assets/images/hero-daiane.png" alt="Profa. Dra. Daiane T. Meneguzzo" class="hero__person" loading="eager" fetchpriority="high">
+    <img src="/assets/images/hero-fundo.webp" alt="" class="hero__bg-img" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="async">
+    <img src="/assets/images/hero-daiane.webp" alt="Profa. Dra. Daiane T. Meneguzzo" class="hero__person" width="533" height="799" loading="eager" fetchpriority="high" decoding="async">
   </div>
   <!-- Divisor wavy no final da hero -->
   <svg class="hero__divider" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
@@ -484,7 +487,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return [
       '<a class="home-curso-card" href="' + href + '" ' + target + '>',
         '<div class="home-curso-card__thumb">',
-          '<img src="' + thumb + '" alt="' + (c.nome || '') + '" loading="lazy" onerror="this.style.display=\'none\'">',
+          '<img src="' + thumb + '" alt="' + (c.nome || '') + '" width="540" height="960" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">',
         '</div>',
         '<div class="home-curso-card__body">',
           cat ? '<div class="home-curso-card__cat">' + cat + '</div>' : '',
@@ -519,7 +522,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="pillar">Pioneira no ensino de laserterapia no Brasil</div>
         <div class="pillar">Palestrante em congressos nacionais e internacionais</div>
       </div>
-      <a href="https://allaser.com.br/professores-allaser/" class="btn btn--sm btn--courses" style="border-radius:8px;">Conhecer toda a equipe →</a>
     </div>
   </div>
 </section>
