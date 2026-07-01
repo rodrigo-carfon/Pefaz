@@ -197,63 +197,180 @@
   .stats-card__num { font-size: 24px; }
 }
 
-/* NOSSOS CURSOS — catalogo na home (cards renderizados de cursos-data.js) */
-/* Pôsteres verticais 9:16 sobre fundo claro */
-.home-cursos { background: #fff; padding: 80px 24px 100px; }
-.home-cursos__head { max-width: 1260px; margin: 0 auto 48px; text-align: center; }
+/* NOSSOS CURSOS — catalogo na home (mesmo padrao do hub /cursos.html) */
+/* Explorer com filtro lateral + resultados agrupados por categoria */
+.home-cursos { background: #fff; padding: 72px 0 96px; }
+.home-cursos__head { max-width: 1260px; margin: 0 auto 32px; text-align: center; padding: 0 24px; }
 .home-cursos__head .section-eyebrow { justify-content: center; }
 .home-cursos__head .section-sub { margin: 0 auto; }
-.home-cursos__grid {
-  max-width: 1320px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 22px 14px;
+
+.cursos-explorer {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 8px 24px 0;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  align-items: start;
 }
-.home-curso-card {
-  background: transparent;
-  border-radius: 12px;
-  overflow: visible;
-  transition: transform 0.25s var(--ease-out);
-  text-decoration: none;
-  color: inherit;
-  display: flex; flex-direction: column;
-  gap: 10px;
-}
-.home-curso-card__thumb {
-  aspect-ratio: 9 / 16;
-  background: var(--gray-50);
+.cursos-filter {
+  position: sticky;
+  top: 88px;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-lg);
   overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.cursos-filter__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gray-300);
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--gray-100);
+}
+.filter-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 16px; cursor: pointer;
+  border-bottom: 1px solid var(--gray-50);
+  transition: background 0.12s;
+  user-select: none;
+}
+.filter-item:hover { background: var(--gray-50); }
+.filter-item.active { background: var(--lime-subtle); }
+.filter-item__check {
+  width: 14px; height: 14px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 50%; flex-shrink: 0;
+  background: var(--white);
+  transition: background 0.12s, border-color 0.12s;
+}
+.filter-item.active .filter-item__check {
+  border-color: var(--lime-dark);
+  background: var(--lime-dark);
+  box-shadow: inset 0 0 0 3px var(--white);
+}
+.filter-item__label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--gray-500); flex: 1; line-height: 1.3;
+}
+.filter-item.active .filter-item__label { color: var(--lime-dark); }
+.filter-item__count {
+  font-size: 0.62rem; font-weight: 700;
+  color: var(--gray-300);
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+  padding: 1px 7px; border-radius: 99px;
+  flex-shrink: 0;
+}
+.filter-item.active .filter-item__count {
+  color: var(--lime-dark);
+  background: rgba(201,220,68,0.15);
+  border-color: rgba(201,220,68,0.25);
+}
+.cursos-filter__clear {
+  width: 100%; background: none; border: none;
+  border-top: 1px solid var(--gray-100);
+  padding: 10px 16px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--gray-300); cursor: pointer;
+  text-align: left;
+  transition: color 0.12s, background 0.12s;
+}
+.cursos-filter__clear:hover { color: var(--lime-dark); background: var(--lime-subtle); }
+
+.cursos-results__header { margin-bottom: 28px; display: flex; flex-direction: column; gap: 6px; }
+.cursos-results__cat-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 800;
+  color: var(--dark-800);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin: 0;
+  position: relative;
+  padding-left: 16px;
+}
+.cursos-results__cat-title::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 10%; bottom: 10%;
+  width: 4px; border-radius: 99px;
+  background: var(--lime);
+}
+.cursos-results__count { font-size: 0.72rem; color: var(--gray-300); font-weight: 500; }
+.cursos-results__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 22px 14px;
+  align-items: stretch;
+}
+.cursos-results__section { margin-bottom: 48px; }
+.cursos-results__section:last-child { margin-bottom: 0; }
+.cursos-results__header--section { margin-bottom: 20px; }
+
+/* Course card — postres 9:16 (mesma identidade do hub) */
+.course-card {
+  background: transparent; border: none;
+  border-radius: 12px; overflow: visible;
+  display: flex; flex-direction: column;
+  height: 100%; gap: 10px;
+  transition: transform 0.22s var(--ease-out);
+  position: relative; cursor: pointer;
+  text-decoration: none; color: inherit;
+}
+.course-card:focus-visible {
+  outline: 2px solid var(--lime-dark);
+  outline-offset: 2px;
+  border-radius: 14px;
+}
+.course-thumb-wrap {
+  position: relative; width: 100%; overflow: hidden;
+  background: var(--gray-50);
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  flex-shrink: 0;
   transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
 }
-.home-curso-card__thumb img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-}
-.home-curso-card:hover .home-curso-card__thumb {
+.course-thumb-wrap::before { content: ''; display: block; padding-top: 177.78%; }
+.course-card:hover .course-thumb-wrap {
   transform: scale(1.04);
   box-shadow: 0 14px 32px rgba(0,0,0,0.18), 0 0 0 2px rgba(201,220,68,0.45);
 }
-.home-curso-card__body { padding: 2px 4px 0; flex: 1; }
-.home-curso-card__cat {
-  font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--lime-dark); margin-bottom: 4px;
+.course-thumb-wrap img {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
 }
-.home-curso-card__name {
-  font-family: 'Outfit', sans-serif; font-size: 0.86rem; font-weight: 700;
-  color: var(--dark-800); line-height: 1.3; margin-bottom: 4px;
+.course-body { padding: 2px 4px 4px; display: flex; flex-direction: column; flex: 1; }
+.course-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.84rem; font-weight: 700;
+  color: var(--dark-800); line-height: 1.3;
+  margin-bottom: 6px;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
-.home-curso-card__desc {
-  font-size: 0.74rem; color: var(--gray-400); line-height: 1.45;
+.course-desc {
+  font-size: 0.72rem; color: var(--gray-400); line-height: 1.45;
+  flex: 1;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
-.home-curso-card__cta { display: none; }
+
+@media (max-width: 860px) {
+  .cursos-explorer { grid-template-columns: 1fr; gap: 20px; }
+  .cursos-filter { position: static; }
+  .cursos-filter__list { display: flex; flex-wrap: wrap; }
+  .filter-item { flex: 0 0 auto; border: 1px solid var(--gray-100); border-radius: var(--radius-md); border-bottom: 1px solid var(--gray-100); }
+}
 @media (max-width: 640px) {
-  .home-cursos { padding: 56px 16px 72px; }
-  .home-cursos__grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 18px 10px; }
-  .home-curso-card__name { font-size: 0.8rem; }
-  .home-curso-card__desc { font-size: 0.7rem; -webkit-line-clamp: 2; }
+  .home-cursos { padding: 56px 0 72px; }
+  .cursos-explorer { padding: 8px 16px 0; }
+  .cursos-results__grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 18px 10px; }
+  .course-name { font-size: 0.78rem; }
+  .course-desc { font-size: 0.68rem; }
 }
 
 /* eyebrow: linha dos dois lados, uniforme */
@@ -462,42 +579,133 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<!-- NOSSOS CURSOS — catalogo completo carregado de cursos-data.js -->
+<!-- NOSSOS CURSOS — catalogo completo (mesmo padrao do hub /cursos.html) -->
 <section class="home-cursos" id="cursos-home">
   <div class="home-cursos__head">
     <div class="section-eyebrow">Nossos Cursos</div>
     <h2 class="section-title">Catálogo completo</h2>
     <p class="section-sub">Conheça todos os cursos, masterclasses e protocolos da Allaser.</p>
   </div>
-  <div class="home-cursos__grid" id="homeCursosGrid"></div>
+
+  <div class="cursos-explorer">
+    <aside class="cursos-filter" aria-label="Filtrar por categoria">
+      <div class="cursos-filter__title">Categorias</div>
+      <div class="cursos-filter__list" id="homeCursosFilterList"></div>
+      <button class="cursos-filter__clear" id="homeCursosClearFilter">Ver todos os cursos</button>
+    </aside>
+    <div class="cursos-results" id="homeCursosResults"></div>
+  </div>
 </section>
 
-<script src="/assets/cursos-data.js?v=20260609"></script>
+<script src="/assets/cursos-data.js?v=20260701"></script>
 <script>
-/* Render grid simples de todos os cursos a partir de window.CURSOS_DATA */
-(function() {
-  const grid = document.getElementById('homeCursosGrid');
-  if (!grid || !window.CURSOS_DATA) return;
-  const placeholder = '/assets/images/placeholder-curso.jpg';
-  grid.innerHTML = window.CURSOS_DATA.map(function(c) {
-    const thumb = c.thumb || placeholder;
-    const href  = c.lp || c.url || '/cursos.html';
-    const target = (c.lp || c.url) ? 'target="_blank" rel="noopener"' : '';
-    const cat   = (c.categoria || '').replace(/^./, function(s){return s.toUpperCase()});
-    return [
-      '<a class="home-curso-card" href="' + href + '" ' + target + '>',
-        '<div class="home-curso-card__thumb">',
-          '<img src="' + thumb + '" alt="' + (c.nome || '') + '" width="540" height="960" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">',
-        '</div>',
-        '<div class="home-curso-card__body">',
-          cat ? '<div class="home-curso-card__cat">' + cat + '</div>' : '',
-          '<h3 class="home-curso-card__name">' + (c.nome || '') + '</h3>',
-          c.desc ? '<p class="home-curso-card__desc">' + c.desc + '</p>' : '',
-        '</div>',
-        '<div class="home-curso-card__cta">Ver detalhes →</div>',
-      '</a>'
-    ].join('');
-  }).join('');
+/* ── Home catalogo: filtro lateral + agrupamento por categoria ─────
+   Mesma logica do hub /cursos.html, usando as mesmas classes CSS
+   pra manter identidade visual identica. ─────────────────────────── */
+(function () {
+  if (!window.CURSOS_DATA) return;
+  var CURSOS = window.CURSOS_DATA.filter(function (c) { return !c.oculto; });
+
+  var CATEGORIAS = [
+    { id: 'base',         label: 'Comece por aqui'         },
+    { id: 'complementar', label: 'Aprofundamento'          },
+    { id: 'masterclass',  label: 'Master Classes'          },
+    { id: 'presencial',   label: 'Presencial & ao vivo'    },
+    { id: 'plantao',      label: 'Plantões de Dúvidas'     },
+    { id: 'protocolo',    label: 'Protocolos Clínicos'     },
+    { id: 'assinatura',   label: 'Allaser Academy'         },
+    { id: 'outro',        label: 'Mini Cursos'             },
+  ];
+
+  var activeCat = 'all';
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function cardHtml(c) {
+    var thumb = c.thumb || '/assets/images/placeholder-curso.jpg';
+    var href  = c.lp || c.url || '/cursos.html';
+    var target = (c.lp || c.url) ? ' target="_blank" rel="noopener"' : '';
+    return '<a class="course-card" href="' + esc(href) + '"' + target + '>'
+      + '<div class="course-thumb-wrap">'
+      +   '<img src="' + esc(thumb) + '" alt="' + esc(c.nome) + '" width="540" height="960" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">'
+      + '</div>'
+      + '<div class="course-body">'
+      +   '<h3 class="course-name">' + esc(c.nome) + '</h3>'
+      +   (c.desc ? '<p class="course-desc">' + esc(c.desc) + '</p>' : '')
+      + '</div>'
+      + '</a>';
+  }
+
+  function renderFilter() {
+    var el = document.getElementById('homeCursosFilterList');
+    if (!el) return;
+    var total = CURSOS.length;
+    var html = '<div class="filter-item' + (activeCat === 'all' ? ' active' : '') + '" onclick="homeToggleFilter(\'all\')" role="radio" aria-checked="' + (activeCat === 'all') + '">'
+      + '<span class="filter-item__check"></span>'
+      + '<span class="filter-item__label">Todas</span>'
+      + '<span class="filter-item__count">' + total + '</span>'
+      + '</div>';
+    CATEGORIAS.forEach(function (cat) {
+      var count = CURSOS.filter(function (c) { return c.categoria === cat.id; }).length;
+      if (!count) return;
+      var active = activeCat === cat.id;
+      html += '<div class="filter-item' + (active ? ' active' : '') + '" onclick="homeToggleFilter(\'' + cat.id + '\')" role="radio" aria-checked="' + active + '">'
+        + '<span class="filter-item__check"></span>'
+        + '<span class="filter-item__label">' + esc(cat.label) + '</span>'
+        + '<span class="filter-item__count">' + count + '</span>'
+        + '</div>';
+    });
+    el.innerHTML = html;
+  }
+
+  function renderResults() {
+    var el = document.getElementById('homeCursosResults');
+    if (!el) return;
+
+    if (activeCat !== 'all') {
+      var filtered = CURSOS.filter(function (c) { return c.categoria === activeCat; });
+      var n = filtered.length;
+      var catObj = CATEGORIAS.find(function (cat) { return cat.id === activeCat; });
+      var catLabel = catObj ? '<h2 class="cursos-results__cat-title">' + esc(catObj.label) + '</h2>' : '';
+      el.innerHTML = '<div class="cursos-results__header">' + catLabel
+        + '<span class="cursos-results__count" style="padding-left:16px">' + n + ' curso' + (n !== 1 ? 's' : '') + '</span></div>'
+        + '<div class="cursos-results__grid">' + filtered.map(cardHtml).join('') + '</div>';
+      return;
+    }
+
+    // Modo "Todas": agrupa por categoria com titulo de secao
+    var total = CURSOS.length;
+    var html = '<div class="cursos-results__header"><span class="cursos-results__count">' + total + ' cursos no total</span></div>';
+    CATEGORIAS.forEach(function (cat) {
+      var grupo = CURSOS.filter(function (c) { return c.categoria === cat.id; });
+      if (!grupo.length) return;
+      html += '<div class="cursos-results__section">'
+        + '<div class="cursos-results__header cursos-results__header--section">'
+        + '<h2 class="cursos-results__cat-title">' + esc(cat.label) + '</h2>'
+        + '<span class="cursos-results__count" style="padding-left:16px">' + grupo.length + ' curso' + (grupo.length !== 1 ? 's' : '') + '</span>'
+        + '</div>'
+        + '<div class="cursos-results__grid">' + grupo.map(cardHtml).join('') + '</div>'
+        + '</div>';
+    });
+    el.innerHTML = html;
+  }
+
+  window.homeToggleFilter = function (catId) {
+    activeCat = catId;
+    renderFilter();
+    renderResults();
+  };
+
+  renderFilter();
+  renderResults();
+  var clearBtn = document.getElementById('homeCursosClearFilter');
+  if (clearBtn) clearBtn.addEventListener('click', function () {
+    activeCat = 'all';
+    renderFilter();
+    renderResults();
+  });
 })();
 </script>
 

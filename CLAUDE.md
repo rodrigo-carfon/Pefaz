@@ -83,7 +83,7 @@ Pefaz/
 
 | Estado | Página | Arquivo | Notas |
 |---|---|---|---|
-| ✅ | Home | `index.html` | **Refocada em conversão de cursos**: Hero V2 (foto Daiane + fundo abstrato em .webp) → catálogo dos cursos em pôsteres 9:16 sobre fundo branco (renderiza window.CURSOS_DATA) → seção Professora Daiane (#professores, devolvida em 2026-06-26). Carrossel de destaques removido em 2026-06-26 (competia com a hero e o catálogo). Modal de captura ainda no DOM mas órfão (sem trigger). |
+| ✅ | Home | `index.html` | **Refocada em conversão de cursos**: Hero V2 (foto Daiane + fundo abstrato em .webp) → catálogo no mesmo padrão do hub `/cursos.html` (sidebar de filtro por categoria + resultados agrupados com títulos de seção, pôsteres 9:16). Reaproveita as classes `.cursos-explorer/.cursos-filter/.filter-item/.cursos-results/.course-card` do hub — se atualizar layout num, replicar no outro. → seção Professora Daiane (#professores). Carrossel de destaques e catálogo em grid único removidos em 2026-06/07. Modal de captura ainda no DOM mas órfão (sem trigger). |
 | ✅ | Encontre profissional | `encontre.html` | Mapa SVG do Brasil (IBGE), filtros, JSON com 35 credenciados |
 | ✅ | Cursos | `cursos.html` | Hub hierárquico com 30 produtos do Odoo (todos com capa 9:16), categorias colapsáveis. Banner Start Laser removido em 2026-06-26 (redundante com o catálogo, que já mostra o Start Laser como primeiro card). |
 | ✅ | Sobre / Quem Somos | `sobre.html` | Tema claro. Hero + Missão/Visão/Valores + fundadora (Dra. Daiane) + CTA. **Recebeu (2026-06-09)** seções movidas da home: Por que Allaser, Depoimentos em vídeo, FAQ (#faq). A seção Professora Daiane (#professores) voltou pra home em 2026-06-26. Reorganizar depois. |
